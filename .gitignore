@@ -1,0 +1,8 @@
+# xcode user data and temporaries
+*.xccheckout
+xcuserdata/
+
+# backups
+*~
+.DS_Store
+._.*

@@ -1,0 +1,564 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		576DD1D01E92A88100CAA1C9 /* GfycatApiKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 576DD1CF1E92A88100CAA1C9 /* GfycatApiKitTests.m */; };
+		576DD1D21E92A88100CAA1C9 /* GfycatApiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E17737F51E3ABFD200276E0E /* GfycatApiKit.framework */; };
+		E10B7E691E4BFDE4004DD902 /* GfycatModelConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E10B7E671E4BFDE4004DD902 /* GfycatModelConstants.h */; };
+		E10B7E6A1E4BFDE4004DD902 /* GfycatModelConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B7E681E4BFDE4004DD902 /* GfycatModelConstants.m */; };
+		E12AC99B1E4D0BBC00F76BE2 /* GfycatCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = E12AC9991E4D0BBC00F76BE2 /* GfycatCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E12AC99C1E4D0BBC00F76BE2 /* GfycatCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = E12AC99A1E4D0BBC00F76BE2 /* GfycatCategory.m */; };
+		E13B7F091E78B59D00D0D43F /* GfycatUploadKey.h in Headers */ = {isa = PBXBuildFile; fileRef = E13B7F071E78B59D00D0D43F /* GfycatUploadKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E13B7F0A1E78B59D00D0D43F /* GfycatUploadKey.m in Sources */ = {isa = PBXBuildFile; fileRef = E13B7F081E78B59D00D0D43F /* GfycatUploadKey.m */; };
+		E17737FA1E3ABFD200276E0E /* GfycatApiKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E17737F81E3ABFD200276E0E /* GfycatApiKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E17738091E3AC01100276E0E /* GfycatApi.h in Headers */ = {isa = PBXBuildFile; fileRef = E17738011E3AC01100276E0E /* GfycatApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E177380A1E3AC01100276E0E /* GfycatApi.m in Sources */ = {isa = PBXBuildFile; fileRef = E17738021E3AC01100276E0E /* GfycatApi.m */; };
+		E177380B1E3AC01100276E0E /* GfycatMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = E17738051E3AC01100276E0E /* GfycatMedia.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E177380C1E3AC01100276E0E /* GfycatMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = E17738061E3AC01100276E0E /* GfycatMedia.m */; };
+		E177380D1E3AC01100276E0E /* GfycatModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E17738071E3AC01100276E0E /* GfycatModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E177380E1E3AC01100276E0E /* GfycatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E17738081E3AC01100276E0E /* GfycatModel.m */; };
+		E17738111E3AC06B00276E0E /* GfycatApiConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E177380F1E3AC06B00276E0E /* GfycatApiConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E17738121E3AC06B00276E0E /* GfycatApiConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E17738101E3AC06B00276E0E /* GfycatApiConstants.m */; };
+		E19BB0FC1E3BF6C1007E1933 /* GfycatPaginationInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E19BB0FA1E3BF6C1007E1933 /* GfycatPaginationInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E19BB0FD1E3BF6C1007E1933 /* GfycatPaginationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E19BB0FB1E3BF6C1007E1933 /* GfycatPaginationInfo.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		576DD1D31E92A88100CAA1C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E17737EC1E3ABFD200276E0E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E17737F41E3ABFD200276E0E;
+			remoteInfo = GfycatApiKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		24432D8C7B8F5669E3E12B96 /* Pods-GfycatApiKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GfycatApiKit.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-GfycatApiKit/Pods-GfycatApiKit.debug.xcconfig"; sourceTree = "<group>"; };
+		52E09A6ED8E62B31C19EF4C8 /* Pods-GfycatApiKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GfycatApiKit.release.xcconfig"; path = "../Pods/Target Support Files/Pods-GfycatApiKit/Pods-GfycatApiKit.release.xcconfig"; sourceTree = "<group>"; };
+		573CE84F1E92871C009F8AF6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		573CE8501E92871C009F8AF6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		573CE8531E928722009F8AF6 /* GfycatApiKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GfycatApiKit.podspec; sourceTree = "<group>"; };
+		573CE8551E92872E009F8AF6 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		576DD1CD1E92A88100CAA1C9 /* GfycatApiKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GfycatApiKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		576DD1CF1E92A88100CAA1C9 /* GfycatApiKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GfycatApiKitTests.m; sourceTree = "<group>"; };
+		576DD1D11E92A88100CAA1C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		576DD1D81E92A8F000CAA1C9 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		576DD1D91E92A8F000CAA1C9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		68C42AF695557875DC6DE474 /* Pods_GfycatApiKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GfycatApiKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E10B7E671E4BFDE4004DD902 /* GfycatModelConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatModelConstants.h; sourceTree = "<group>"; };
+		E10B7E681E4BFDE4004DD902 /* GfycatModelConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfycatModelConstants.m; sourceTree = "<group>"; };
+		E12AC9991E4D0BBC00F76BE2 /* GfycatCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatCategory.h; sourceTree = "<group>"; };
+		E12AC99A1E4D0BBC00F76BE2 /* GfycatCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfycatCategory.m; sourceTree = "<group>"; };
+		E13B7F071E78B59D00D0D43F /* GfycatUploadKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatUploadKey.h; sourceTree = "<group>"; };
+		E13B7F081E78B59D00D0D43F /* GfycatUploadKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfycatUploadKey.m; sourceTree = "<group>"; };
+		E17737F51E3ABFD200276E0E /* GfycatApiKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GfycatApiKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E17737F81E3ABFD200276E0E /* GfycatApiKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GfycatApiKit.h; sourceTree = "<group>"; };
+		E17737F91E3ABFD200276E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E17738011E3AC01100276E0E /* GfycatApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatApi.h; sourceTree = "<group>"; };
+		E17738021E3AC01100276E0E /* GfycatApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfycatApi.m; sourceTree = "<group>"; };
+		E17738051E3AC01100276E0E /* GfycatMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatMedia.h; sourceTree = "<group>"; };
+		E17738061E3AC01100276E0E /* GfycatMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfycatMedia.m; sourceTree = "<group>"; };
+		E17738071E3AC01100276E0E /* GfycatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatModel.h; sourceTree = "<group>"; };
+		E17738081E3AC01100276E0E /* GfycatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfycatModel.m; sourceTree = "<group>"; };
+		E177380F1E3AC06B00276E0E /* GfycatApiConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatApiConstants.h; sourceTree = "<group>"; };
+		E17738101E3AC06B00276E0E /* GfycatApiConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfycatApiConstants.m; sourceTree = "<group>"; };
+		E19BB0FA1E3BF6C1007E1933 /* GfycatPaginationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatPaginationInfo.h; sourceTree = "<group>"; };
+		E19BB0FB1E3BF6C1007E1933 /* GfycatPaginationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfycatPaginationInfo.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		576DD1CA1E92A88100CAA1C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				576DD1D21E92A88100CAA1C9 /* GfycatApiKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E17737F11E3ABFD200276E0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D0B8CE62C65A3E146AA56CB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				24432D8C7B8F5669E3E12B96 /* Pods-GfycatApiKit.debug.xcconfig */,
+				52E09A6ED8E62B31C19EF4C8 /* Pods-GfycatApiKit.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		573CE84E1E928714009F8AF6 /* Meta */ = {
+			isa = PBXGroup;
+			children = (
+				573CE8551E92872E009F8AF6 /* .gitignore */,
+				576DD1D81E92A8F000CAA1C9 /* Cartfile */,
+				573CE8531E928722009F8AF6 /* GfycatApiKit.podspec */,
+				573CE8501E92871C009F8AF6 /* LICENSE */,
+				576DD1D91E92A8F000CAA1C9 /* Podfile */,
+				573CE84F1E92871C009F8AF6 /* README.md */,
+			);
+			name = Meta;
+			sourceTree = "<group>";
+		};
+		576DD1CE1E92A88100CAA1C9 /* GfycatApiKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				576DD1CF1E92A88100CAA1C9 /* GfycatApiKitTests.m */,
+				576DD1D11E92A88100CAA1C9 /* Info.plist */,
+			);
+			path = GfycatApiKitTests;
+			sourceTree = "<group>";
+		};
+		BA4B5ACDC8D9C2EBABB25992 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68C42AF695557875DC6DE474 /* Pods_GfycatApiKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E17737EB1E3ABFD200276E0E = {
+			isa = PBXGroup;
+			children = (
+				573CE84E1E928714009F8AF6 /* Meta */,
+				E17737F71E3ABFD200276E0E /* GfycatApiKit */,
+				576DD1CE1E92A88100CAA1C9 /* GfycatApiKitTests */,
+				E17737F61E3ABFD200276E0E /* Products */,
+				1D0B8CE62C65A3E146AA56CB /* Pods */,
+				BA4B5ACDC8D9C2EBABB25992 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E17737F61E3ABFD200276E0E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E17737F51E3ABFD200276E0E /* GfycatApiKit.framework */,
+				576DD1CD1E92A88100CAA1C9 /* GfycatApiKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E17737F71E3ABFD200276E0E /* GfycatApiKit */ = {
+			isa = PBXGroup;
+			children = (
+				E17737F81E3ABFD200276E0E /* GfycatApiKit.h */,
+				E177380F1E3AC06B00276E0E /* GfycatApiConstants.h */,
+				E17738101E3AC06B00276E0E /* GfycatApiConstants.m */,
+				E17738001E3AC01100276E0E /* API */,
+				E17738041E3AC01100276E0E /* Models */,
+				E17737F91E3ABFD200276E0E /* Info.plist */,
+			);
+			path = GfycatApiKit;
+			sourceTree = "<group>";
+		};
+		E17738001E3AC01100276E0E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				E17738011E3AC01100276E0E /* GfycatApi.h */,
+				E17738021E3AC01100276E0E /* GfycatApi.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		E17738041E3AC01100276E0E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E10B7E671E4BFDE4004DD902 /* GfycatModelConstants.h */,
+				E10B7E681E4BFDE4004DD902 /* GfycatModelConstants.m */,
+				E17738051E3AC01100276E0E /* GfycatMedia.h */,
+				E17738061E3AC01100276E0E /* GfycatMedia.m */,
+				E17738071E3AC01100276E0E /* GfycatModel.h */,
+				E17738081E3AC01100276E0E /* GfycatModel.m */,
+				E12AC9991E4D0BBC00F76BE2 /* GfycatCategory.h */,
+				E12AC99A1E4D0BBC00F76BE2 /* GfycatCategory.m */,
+				E19BB0FA1E3BF6C1007E1933 /* GfycatPaginationInfo.h */,
+				E19BB0FB1E3BF6C1007E1933 /* GfycatPaginationInfo.m */,
+				E13B7F071E78B59D00D0D43F /* GfycatUploadKey.h */,
+				E13B7F081E78B59D00D0D43F /* GfycatUploadKey.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E17737F21E3ABFD200276E0E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E10B7E691E4BFDE4004DD902 /* GfycatModelConstants.h in Headers */,
+				E17737FA1E3ABFD200276E0E /* GfycatApiKit.h in Headers */,
+				E17738111E3AC06B00276E0E /* GfycatApiConstants.h in Headers */,
+				E17738091E3AC01100276E0E /* GfycatApi.h in Headers */,
+				E13B7F091E78B59D00D0D43F /* GfycatUploadKey.h in Headers */,
+				E19BB0FC1E3BF6C1007E1933 /* GfycatPaginationInfo.h in Headers */,
+				E12AC99B1E4D0BBC00F76BE2 /* GfycatCategory.h in Headers */,
+				E177380D1E3AC01100276E0E /* GfycatModel.h in Headers */,
+				E177380B1E3AC01100276E0E /* GfycatMedia.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		576DD1CC1E92A88100CAA1C9 /* GfycatApiKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 576DD1D71E92A88100CAA1C9 /* Build configuration list for PBXNativeTarget "GfycatApiKitTests" */;
+			buildPhases = (
+				576DD1C91E92A88100CAA1C9 /* Sources */,
+				576DD1CA1E92A88100CAA1C9 /* Frameworks */,
+				576DD1CB1E92A88100CAA1C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				576DD1D41E92A88100CAA1C9 /* PBXTargetDependency */,
+			);
+			name = GfycatApiKitTests;
+			productName = GfycatApiKitTests;
+			productReference = 576DD1CD1E92A88100CAA1C9 /* GfycatApiKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E17737F41E3ABFD200276E0E /* GfycatApiKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E17737FD1E3ABFD200276E0E /* Build configuration list for PBXNativeTarget "GfycatApiKit" */;
+			buildPhases = (
+				E17737F01E3ABFD200276E0E /* Sources */,
+				E17737F11E3ABFD200276E0E /* Frameworks */,
+				E17737F21E3ABFD200276E0E /* Headers */,
+				E17737F31E3ABFD200276E0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GfycatApiKit;
+			productName = GfycatApiKit;
+			productReference = E17737F51E3ABFD200276E0E /* GfycatApiKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E17737EC1E3ABFD200276E0E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Gfycat;
+				TargetAttributes = {
+					576DD1CC1E92A88100CAA1C9 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = MLD6NY95RD;
+						ProvisioningStyle = Automatic;
+					};
+					E17737F41E3ABFD200276E0E = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = MLD6NY95RD;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E17737EF1E3ABFD200276E0E /* Build configuration list for PBXProject "GfycatApiKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E17737EB1E3ABFD200276E0E;
+			productRefGroup = E17737F61E3ABFD200276E0E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E17737F41E3ABFD200276E0E /* GfycatApiKit */,
+				576DD1CC1E92A88100CAA1C9 /* GfycatApiKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		576DD1CB1E92A88100CAA1C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E17737F31E3ABFD200276E0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		576DD1C91E92A88100CAA1C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				576DD1D01E92A88100CAA1C9 /* GfycatApiKitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E17737F01E3ABFD200276E0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E13B7F0A1E78B59D00D0D43F /* GfycatUploadKey.m in Sources */,
+				E17738121E3AC06B00276E0E /* GfycatApiConstants.m in Sources */,
+				E177380C1E3AC01100276E0E /* GfycatMedia.m in Sources */,
+				E19BB0FD1E3BF6C1007E1933 /* GfycatPaginationInfo.m in Sources */,
+				E177380A1E3AC01100276E0E /* GfycatApi.m in Sources */,
+				E12AC99C1E4D0BBC00F76BE2 /* GfycatCategory.m in Sources */,
+				E10B7E6A1E4BFDE4004DD902 /* GfycatModelConstants.m in Sources */,
+				E177380E1E3AC01100276E0E /* GfycatModel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		576DD1D41E92A88100CAA1C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E17737F41E3ABFD200276E0E /* GfycatApiKit */;
+			targetProxy = 576DD1D31E92A88100CAA1C9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		576DD1D51E92A88100CAA1C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = MLD6NY95RD;
+				INFOPLIST_FILE = GfycatApiKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfycat.GfycatApiKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		576DD1D61E92A88100CAA1C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = MLD6NY95RD;
+				INFOPLIST_FILE = GfycatApiKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfycat.GfycatApiKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E17737FB1E3ABFD200276E0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E17737FC1E3ABFD200276E0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E17737FE1E3ABFD200276E0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24432D8C7B8F5669E3E12B96 /* Pods-GfycatApiKit.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MLD6NY95RD;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = GfycatApiKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfycat.GfycatApiKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E17737FF1E3ABFD200276E0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52E09A6ED8E62B31C19EF4C8 /* Pods-GfycatApiKit.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MLD6NY95RD;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = GfycatApiKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfycat.GfycatApiKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		576DD1D71E92A88100CAA1C9 /* Build configuration list for PBXNativeTarget "GfycatApiKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				576DD1D51E92A88100CAA1C9 /* Debug */,
+				576DD1D61E92A88100CAA1C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E17737EF1E3ABFD200276E0E /* Build configuration list for PBXProject "GfycatApiKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E17737FB1E3ABFD200276E0E /* Debug */,
+				E17737FC1E3ABFD200276E0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E17737FD1E3ABFD200276E0E /* Build configuration list for PBXNativeTarget "GfycatApiKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E17737FE1E3ABFD200276E0E /* Debug */,
+				E17737FF1E3ABFD200276E0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E17737EC1E3ABFD200276E0E /* Project object */;
+}
