@@ -1,0 +1,11 @@
+# xcode user data and temporaries
+*.xccheckout
+xcuserdata/
+
+# carthage
+Carthage/
+
+# backups
+*~
+.DS_Store
+._.*
