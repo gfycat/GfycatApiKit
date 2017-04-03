@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		576DD1D01E92A88100CAA1C9 /* GfycatApiKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 576DD1CF1E92A88100CAA1C9 /* GfycatApiKitTests.m */; };
-		576DD1D21E92A88100CAA1C9 /* GfycatApiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E17737F51E3ABFD200276E0E /* GfycatApiKit.framework */; };
+		576DD1E01E92AA4200CAA1C9 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576DD1DE1E92AA4200CAA1C9 /* AFNetworking.framework */; };
+		576DD1E11E92AA4200CAA1C9 /* UICKeyChainStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576DD1DF1E92AA4200CAA1C9 /* UICKeyChainStore.framework */; };
+		576DD1E41E92AB2E00CAA1C9 /* GfycatApiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E17737F51E3ABFD200276E0E /* GfycatApiKit.framework */; };
+		576DD1E81E92AB5500CAA1C9 /* AFNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 576DD1DE1E92AA4200CAA1C9 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		576DD1E91E92AB5500CAA1C9 /* UICKeyChainStore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 576DD1DF1E92AA4200CAA1C9 /* UICKeyChainStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E10B7E691E4BFDE4004DD902 /* GfycatModelConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E10B7E671E4BFDE4004DD902 /* GfycatModelConstants.h */; };
 		E10B7E6A1E4BFDE4004DD902 /* GfycatModelConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B7E681E4BFDE4004DD902 /* GfycatModelConstants.m */; };
 		E12AC99B1E4D0BBC00F76BE2 /* GfycatCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = E12AC9991E4D0BBC00F76BE2 /* GfycatCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -38,9 +42,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		576DD1E71E92AB4600CAA1C9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				576DD1E81E92AB5500CAA1C9 /* AFNetworking.framework in CopyFiles */,
+				576DD1E91E92AB5500CAA1C9 /* UICKeyChainStore.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		24432D8C7B8F5669E3E12B96 /* Pods-GfycatApiKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GfycatApiKit.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-GfycatApiKit/Pods-GfycatApiKit.debug.xcconfig"; sourceTree = "<group>"; };
-		52E09A6ED8E62B31C19EF4C8 /* Pods-GfycatApiKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GfycatApiKit.release.xcconfig"; path = "../Pods/Target Support Files/Pods-GfycatApiKit/Pods-GfycatApiKit.release.xcconfig"; sourceTree = "<group>"; };
 		573CE84F1E92871C009F8AF6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		573CE8501E92871C009F8AF6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		573CE8531E928722009F8AF6 /* GfycatApiKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GfycatApiKit.podspec; sourceTree = "<group>"; };
@@ -49,8 +65,9 @@
 		576DD1CF1E92A88100CAA1C9 /* GfycatApiKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GfycatApiKitTests.m; sourceTree = "<group>"; };
 		576DD1D11E92A88100CAA1C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		576DD1D81E92A8F000CAA1C9 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
-		576DD1D91E92A8F000CAA1C9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		68C42AF695557875DC6DE474 /* Pods_GfycatApiKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GfycatApiKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		576DD1DC1E92A9FD00CAA1C9 /* Carthage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Carthage; sourceTree = "<group>"; };
+		576DD1DE1E92AA4200CAA1C9 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		576DD1DF1E92AA4200CAA1C9 /* UICKeyChainStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UICKeyChainStore.framework; path = Carthage/Build/iOS/UICKeyChainStore.framework; sourceTree = "<group>"; };
 		E10B7E671E4BFDE4004DD902 /* GfycatModelConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatModelConstants.h; sourceTree = "<group>"; };
 		E10B7E681E4BFDE4004DD902 /* GfycatModelConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfycatModelConstants.m; sourceTree = "<group>"; };
 		E12AC9991E4D0BBC00F76BE2 /* GfycatCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatCategory.h; sourceTree = "<group>"; };
@@ -77,7 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				576DD1D21E92A88100CAA1C9 /* GfycatApiKit.framework in Frameworks */,
+				576DD1E41E92AB2E00CAA1C9 /* GfycatApiKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,21 +102,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576DD1E01E92AA4200CAA1C9 /* AFNetworking.framework in Frameworks */,
+				576DD1E11E92AA4200CAA1C9 /* UICKeyChainStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1D0B8CE62C65A3E146AA56CB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				24432D8C7B8F5669E3E12B96 /* Pods-GfycatApiKit.debug.xcconfig */,
-				52E09A6ED8E62B31C19EF4C8 /* Pods-GfycatApiKit.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		573CE84E1E928714009F8AF6 /* Meta */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,7 +117,6 @@
 				576DD1D81E92A8F000CAA1C9 /* Cartfile */,
 				573CE8531E928722009F8AF6 /* GfycatApiKit.podspec */,
 				573CE8501E92871C009F8AF6 /* LICENSE */,
-				576DD1D91E92A8F000CAA1C9 /* Podfile */,
 				573CE84F1E92871C009F8AF6 /* README.md */,
 			);
 			name = Meta;
@@ -125,7 +134,8 @@
 		BA4B5ACDC8D9C2EBABB25992 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				68C42AF695557875DC6DE474 /* Pods_GfycatApiKit.framework */,
+				576DD1DE1E92AA4200CAA1C9 /* AFNetworking.framework */,
+				576DD1DF1E92AA4200CAA1C9 /* UICKeyChainStore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -134,10 +144,10 @@
 			isa = PBXGroup;
 			children = (
 				573CE84E1E928714009F8AF6 /* Meta */,
+				576DD1DC1E92A9FD00CAA1C9 /* Carthage */,
 				E17737F71E3ABFD200276E0E /* GfycatApiKit */,
 				576DD1CE1E92A88100CAA1C9 /* GfycatApiKitTests */,
 				E17737F61E3ABFD200276E0E /* Products */,
-				1D0B8CE62C65A3E146AA56CB /* Pods */,
 				BA4B5ACDC8D9C2EBABB25992 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -219,6 +229,7 @@
 			buildConfigurationList = 576DD1D71E92A88100CAA1C9 /* Build configuration list for PBXNativeTarget "GfycatApiKitTests" */;
 			buildPhases = (
 				576DD1C91E92A88100CAA1C9 /* Sources */,
+				576DD1E71E92AB4600CAA1C9 /* CopyFiles */,
 				576DD1CA1E92A88100CAA1C9 /* Frameworks */,
 				576DD1CB1E92A88100CAA1C9 /* Resources */,
 			);
@@ -346,6 +357,10 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = MLD6NY95RD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GfycatApiKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -359,6 +374,10 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = MLD6NY95RD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GfycatApiKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -491,7 +510,6 @@
 		};
 		E17737FE1E3ABFD200276E0E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24432D8C7B8F5669E3E12B96 /* Pods-GfycatApiKit.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -500,6 +518,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GfycatApiKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -511,7 +533,6 @@
 		};
 		E17737FF1E3ABFD200276E0E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52E09A6ED8E62B31C19EF4C8 /* Pods-GfycatApiKit.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -520,6 +541,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GfycatApiKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

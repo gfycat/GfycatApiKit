@@ -2,6 +2,9 @@
 *.xccheckout
 xcuserdata/
 
+# carthage
+Carthage/
+
 # backups
 *~
 .DS_Store

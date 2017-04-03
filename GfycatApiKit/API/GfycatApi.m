@@ -7,12 +7,12 @@
 //
 
 #import "GfycatApi.h"
-#import "AFNetworking.h"
 #import "GfycatMedia.h"
 #import "GfycatCategory.h"
 #import "GfycatPaginationInfo.h"
 #import "GfycatUploadKey.h"
-#import "UICKeyChainStore.h"
+#import <AFNetworking/AFNetworking.h>
+#import <UICKeyChainStore/UICKeyChainStore.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
