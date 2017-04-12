@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GfycatMedia Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Class/GfycatMedia" class="dashAnchor"></a>
+    <a title="GfycatMedia Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">GfycatApiKit Docs</a> (68% documented)</p>
+        <p class="header-right"><a href="https://github.com/gfycat/GfycatApiKit"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">GfycatApiKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        GfycatMedia Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatApi.html">GfycatApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatCategories.html">GfycatCategories</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatCategory.html">GfycatCategory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatMedia.html">GfycatMedia</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatMediaCollection.html">GfycatMediaCollection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatModel.html">GfycatModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatPaginationInfo.html">GfycatPaginationInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatUploadKey.html">GfycatUploadKey</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@GfycatApiKitErrorDomain">GfycatApiKitErrorDomain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@GfycatApiKitKeychainStore">GfycatApiKitKeychainStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@GfycatApiKitUserAuthenticationChangedNotification">GfycatApiKitUserAuthenticationChangedNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kCursor">kCursor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kDigest">kDigest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatApiKitAuthorizationURL">kGfycatApiKitAuthorizationURL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatApiKitAuthorizationURLConfigurationKey">kGfycatApiKitAuthorizationURLConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatApiKitBaseURL">kGfycatApiKitBaseURL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatApiKitBaseURLConfigurationKey">kGfycatApiKitBaseURLConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatAppClientIdConfigurationKey">kGfycatAppClientIdConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatAppClientSecretConfigurationKey">kGfycatAppClientSecretConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatAppRedirectURLConfigurationKey">kGfycatAppRedirectURLConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyAccessToken">kKeyAccessToken</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyAccessTokenExpiration">kKeyAccessTokenExpiration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyAuthorization">kKeyAuthorization</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyClientID">kKeyClientID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyClientSecret">kKeyClientSecret</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyGrantType">kKeyGrantType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyPassword">kKeyPassword</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyRefreshToken">kKeyRefreshToken</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyRefreshTokenExpiration">kKeyRefreshTokenExpiration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyUsername">kKeyUsername</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kLocale">kLocale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kNewGfycatDescription">kNewGfycatDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kNewGfycatPrivate">kNewGfycatPrivate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kNewGfycatTags">kNewGfycatTags</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kNewGfycatTitle">kNewGfycatTitle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPagination">kPagination</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPaginationCursor">kPaginationCursor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPaginationParameters">kPaginationParameters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPaginationPath">kPaginationPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPaginationType">kPaginationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionApprove">kRelationshipActionApprove</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionBlock">kRelationshipActionBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionFollow">kRelationshipActionFollow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionIgnore">kRelationshipActionIgnore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionKey">kRelationshipActionKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionUnblock">kRelationshipActionUnblock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionUnfollow">kRelationshipActionUnfollow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kTagName">kTagName</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/GfycatApiKitErrorCode.html">GfycatApiKitErrorCode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Type Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatCategoryArrayBlock">GfycatCategoryArrayBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatMediaBlock">GfycatMediaBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatMediaObjectBlock">GfycatMediaObjectBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatObjectBlock">GfycatObjectBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatPaginatiedResponseBlock">GfycatPaginatiedResponseBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatProgressBlock">GfycatProgressBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatResponseBlock">GfycatResponseBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatStringBlock">GfycatStringBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatSuccessBlock">GfycatSuccessBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatUploadKeyBlock">GfycatUploadKeyBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatUserBlock">GfycatUserBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatUsersBlock">GfycatUsersBlock</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>GfycatMedia</h1>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)averageColor"></a>
+                    <a name="//apple_ref/objc/Property/averageColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)averageColor">averageColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The average color value of the Media in HEX format.  e.g. <q>#010202</q></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">averageColor</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">averageColor</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L28">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)createDate"></a>
+                    <a name="//apple_ref/objc/Property/createDate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)createDate">createDate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Date of creation of the Media.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSDate</span> <span class="o">*</span><span class="n">createDate</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">createDate</span><span class="p">:</span> <span class="kt">Date</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L33">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)caption"></a>
+                    <a name="//apple_ref/objc/Property/caption" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)caption">caption</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Caption written by creator of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">caption</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">caption</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L38">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)dislikes"></a>
+                    <a name="//apple_ref/objc/Property/dislikes" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)dislikes">dislikes</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Number of dislikes on the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">dislikes</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">dislikes</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L43">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)frameRate"></a>
+                    <a name="//apple_ref/objc/Property/frameRate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)frameRate">frameRate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Original framerate of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">frameRate</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">frameRate</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L48">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)gfyName"></a>
+                    <a name="//apple_ref/objc/Property/gfyName" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)gfyName">gfyName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Name of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">gfyName</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">gfyName</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L53">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)gfyNumber"></a>
+                    <a name="//apple_ref/objc/Property/gfyNumber" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)gfyNumber">gfyNumber</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Serial number of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">gfyNumber</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">gfyNumber</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L58">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)gfyUrl"></a>
+                    <a name="//apple_ref/objc/Property/gfyUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)gfyUrl">gfyUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of Gfycat Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">gfyUrl</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">gfyUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L63">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)gifSize"></a>
+                    <a name="//apple_ref/objc/Property/gifSize" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)gifSize">gifSize</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Size in bytes of the original GIF representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">gifSize</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">gifSize</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L68">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)gifUrl"></a>
+                    <a name="//apple_ref/objc/Property/gifUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)gifUrl">gifUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of original GIF representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">gifUrl</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">gifUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L73">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)gif100Url"></a>
+                    <a name="//apple_ref/objc/Property/gif100Url" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)gif100Url">gif100Url</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of max 100 pixels wide GIF representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">gif100Url</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">gif100Url</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L78">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)gif1MbUrl"></a>
+                    <a name="//apple_ref/objc/Property/gif1MbUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)gif1MbUrl">gif1MbUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of max 1MB file GIF representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">gif1MbUrl</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">gif1MbUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L83">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)gif2MbUrl"></a>
+                    <a name="//apple_ref/objc/Property/gif2MbUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)gif2MbUrl">gif2MbUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of max 2MB file GIF representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">gif2MbUrl</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">gif2MbUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L88">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)gif5MbUrl"></a>
+                    <a name="//apple_ref/objc/Property/gif5MbUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)gif5MbUrl">gif5MbUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of max 5MB file GIF representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">gif5MbUrl</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">gif5MbUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L93">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)categories"></a>
+                    <a name="//apple_ref/objc/Property/categories" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)categories">categories</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Categories of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">NSString</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">categories</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">categories</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L98">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)likes"></a>
+                    <a name="//apple_ref/objc/Property/likes" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)likes">likes</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Number of likes on the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">likes</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">likes</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L103">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)md5"></a>
+                    <a name="//apple_ref/objc/Property/md5" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)md5">md5</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>MD5 checksum of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">md5</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">md5</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L108">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)mpgSize"></a>
+                    <a name="//apple_ref/objc/Property/mpgSize" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)mpgSize">mpgSize</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Size in bytes of the original MP4 representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">mpgSize</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">mpgSize</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L113">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)mpgUrl"></a>
+                    <a name="//apple_ref/objc/Property/mpgUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)mpgUrl">mpgUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of original MP4 representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">mpgUrl</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">mpgUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L118">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)mpg320Url"></a>
+                    <a name="//apple_ref/objc/Property/mpg320Url" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)mpg320Url">mpg320Url</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of 320 max pixel wide MP4 representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">mpg320Url</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">mpg320Url</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L123">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)mpg640Url"></a>
+                    <a name="//apple_ref/objc/Property/mpg640Url" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)mpg640Url">mpg640Url</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of 640 max pixel wide MP4 representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">mpg640Url</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">mpg640Url</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L128">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)mjpgUrl"></a>
+                    <a name="//apple_ref/objc/Property/mjpgUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)mjpgUrl">mjpgUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of MJPG representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">mjpgUrl</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">mjpgUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L133">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)nsfw"></a>
+                    <a name="//apple_ref/objc/Property/nsfw" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)nsfw">nsfw</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If the Media is NSFW</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">getter</span><span class="o">=</span><span class="n">isNsfw</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">nsfw</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">isNsfw</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L138">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)numberOfFrames"></a>
+                    <a name="//apple_ref/objc/Property/numberOfFrames" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)numberOfFrames">numberOfFrames</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Original total number of frames of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">numberOfFrames</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">numberOfFrames</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L143">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)posterUrl"></a>
+                    <a name="//apple_ref/objc/Property/posterUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)posterUrl">posterUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of JPG representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">posterUrl</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">posterUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L148">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)published"></a>
+                    <a name="//apple_ref/objc/Property/published" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)published">published</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If the Media is published</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">getter</span><span class="o">=</span><span class="n">isPublished</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">published</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">isPublished</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L153">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)sourceType"></a>
+                    <a name="//apple_ref/objc/Property/sourceType" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)sourceType">sourceType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Media was sourced from GIF or Video  // TODO - make enum.  1 = video 8 = GIF</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">sourceType</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">sourceType</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L158">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)sourceUrl"></a>
+                    <a name="//apple_ref/objc/Property/sourceUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)sourceUrl">sourceUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Source URL of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">sourceUrl</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">sourceUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L163">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)size"></a>
+                    <a name="//apple_ref/objc/Property/size" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)size">size</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Size, in pixels of the original media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">CGSize</span> <span class="n">size</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">CGSize</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L168">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)tags"></a>
+                    <a name="//apple_ref/objc/Property/tags" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)tags">tags</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tags on the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">NSString</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">tags</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">tags</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L173">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)thumbnail100Url"></a>
+                    <a name="//apple_ref/objc/Property/thumbnail100Url" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)thumbnail100Url">thumbnail100Url</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of 100 max pixel wide JPG representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">thumbnail100Url</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">thumbnail100Url</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L178">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)thumbnail320Url"></a>
+                    <a name="//apple_ref/objc/Property/thumbnail320Url" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)thumbnail320Url">thumbnail320Url</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of 320 max pixel wide JPG representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">thumbnail320Url</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">thumbnail320Url</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L183">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)thumbnail640Url"></a>
+                    <a name="//apple_ref/objc/Property/thumbnail640Url" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)thumbnail640Url">thumbnail640Url</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of 640 max pixel wide JPG representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">thumbnail640Url</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">thumbnail640Url</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L188">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)title"></a>
+                    <a name="//apple_ref/objc/Property/title" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)title">title</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Title of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">title</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L193">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)userName"></a>
+                    <a name="//apple_ref/objc/Property/userName" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)userName">userName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Username of the creator of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">userName</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">userName</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L198">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)views"></a>
+                    <a name="//apple_ref/objc/Property/views" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)views">views</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Number of views of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">views</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">views</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L203">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)webmSize"></a>
+                    <a name="//apple_ref/objc/Property/webmSize" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)webmSize">webmSize</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Size in bytes of the original WEBM representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">webmSize</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">webmSize</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L208">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)webmUrl"></a>
+                    <a name="//apple_ref/objc/Property/webmUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)webmUrl">webmUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of original WEBM representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">webmUrl</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">webmUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L213">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatMedia(py)webpUrl"></a>
+                    <a name="//apple_ref/objc/Property/webpUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatMedia(py)webpUrl">webpUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URL of original WEBP representation of the Media</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURL</span> <span class="o">*</span><span class="n">webpUrl</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">webpUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatMedia.h#L218">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://gfycat.com" target="_blank" rel="external">Gfycat</a>. All rights reserved. (Last updated: 2017-04-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

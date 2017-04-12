@@ -1,0 +1,334 @@
+{
+  "warnings": [
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/API/GfycatApi.h",
+      "line": 27,
+      "symbol": "GfycatApi",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/API/GfycatApi.h",
+      "line": 32,
+      "symbol": "GfycatApi.+shared",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 73,
+      "symbol": "GfycatApiKitUserAuthenticationChangedNotification",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 80,
+      "symbol": "GfycatApiKitErrorDomain",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 86,
+      "symbol": "GfycatApiKitKeychainStore",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 93,
+      "symbol": "GfycatApiKitErrorCode",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 93,
+      "symbol": "GfycatApiKitErrorCode",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 98,
+      "symbol": "GfycatApiKitErrorCode.GfycatApiKitReservedError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 103,
+      "symbol": "GfycatApiKitErrorCode.GfycatApiKitAuthenticationFailedError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 108,
+      "symbol": "GfycatApiKitErrorCode.GfycatApiKitAuthenticationCancelledError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 113,
+      "symbol": "GfycatApiKitErrorCode.GfycatApiKitJSONResponseError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 224,
+      "symbol": "kKeyClientSecret",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 225,
+      "symbol": "kKeyGrantType",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 226,
+      "symbol": "kKeyAccessToken",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 227,
+      "symbol": "kKeyAccessTokenExpiration",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 228,
+      "symbol": "kKeyRefreshToken",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 229,
+      "symbol": "kKeyRefreshTokenExpiration",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 230,
+      "symbol": "kKeyAuthorization",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 231,
+      "symbol": "kKeyUsername",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 232,
+      "symbol": "kKeyPassword",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 234,
+      "symbol": "kCursor",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 235,
+      "symbol": "kDigest",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 236,
+      "symbol": "kTagName",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 237,
+      "symbol": "kLocale",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 239,
+      "symbol": "kPagination",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 240,
+      "symbol": "kPaginationType",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 241,
+      "symbol": "kPaginationParameters",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 242,
+      "symbol": "kPaginationPath",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 243,
+      "symbol": "kPaginationCursor",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 245,
+      "symbol": "kRelationshipActionKey",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 246,
+      "symbol": "kRelationshipActionFollow",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 247,
+      "symbol": "kRelationshipActionUnfollow",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 248,
+      "symbol": "kRelationshipActionBlock",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 249,
+      "symbol": "kRelationshipActionUnblock",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 250,
+      "symbol": "kRelationshipActionApprove",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 251,
+      "symbol": "kRelationshipActionIgnore",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 253,
+      "symbol": "kNewGfycatTitle",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 254,
+      "symbol": "kNewGfycatDescription",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 255,
+      "symbol": "kNewGfycatTags",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/GfycatApiConstants.h",
+      "line": 256,
+      "symbol": "kNewGfycatPrivate",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/Models/GfycatCategory.h",
+      "line": 26,
+      "symbol": "GfycatCategory",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/Models/GfycatCategory.h",
+      "line": 58,
+      "symbol": "GfycatCategories",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/Models/GfycatMedia.h",
+      "line": 23,
+      "symbol": "GfycatMedia",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/Models/GfycatMedia.h",
+      "line": 222,
+      "symbol": "GfycatMediaCollection",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/Models/GfycatModel.h",
+      "line": 25,
+      "symbol": "GfycatModel",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/Models/GfycatPaginationInfo.h",
+      "line": 25,
+      "symbol": "GfycatPaginationInfo",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git/GfycatApiKit/Models/GfycatUploadKey.h",
+      "line": 23,
+      "symbol": "GfycatUploadKey",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Volumes/Data/Users/victor/Documents/Work/Gfycat/GfycatApiKit_git"
+}

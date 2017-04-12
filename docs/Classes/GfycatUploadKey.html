@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GfycatUploadKey Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Class/GfycatUploadKey" class="dashAnchor"></a>
+    <a title="GfycatUploadKey Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">GfycatApiKit Docs</a> (68% documented)</p>
+        <p class="header-right"><a href="https://github.com/gfycat/GfycatApiKit"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">GfycatApiKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        GfycatUploadKey Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatApi.html">GfycatApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatCategories.html">GfycatCategories</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatCategory.html">GfycatCategory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatMedia.html">GfycatMedia</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatMediaCollection.html">GfycatMediaCollection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatModel.html">GfycatModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatPaginationInfo.html">GfycatPaginationInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatUploadKey.html">GfycatUploadKey</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@GfycatApiKitErrorDomain">GfycatApiKitErrorDomain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@GfycatApiKitKeychainStore">GfycatApiKitKeychainStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@GfycatApiKitUserAuthenticationChangedNotification">GfycatApiKitUserAuthenticationChangedNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kCursor">kCursor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kDigest">kDigest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatApiKitAuthorizationURL">kGfycatApiKitAuthorizationURL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatApiKitAuthorizationURLConfigurationKey">kGfycatApiKitAuthorizationURLConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatApiKitBaseURL">kGfycatApiKitBaseURL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatApiKitBaseURLConfigurationKey">kGfycatApiKitBaseURLConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatAppClientIdConfigurationKey">kGfycatAppClientIdConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatAppClientSecretConfigurationKey">kGfycatAppClientSecretConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatAppRedirectURLConfigurationKey">kGfycatAppRedirectURLConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyAccessToken">kKeyAccessToken</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyAccessTokenExpiration">kKeyAccessTokenExpiration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyAuthorization">kKeyAuthorization</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyClientID">kKeyClientID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyClientSecret">kKeyClientSecret</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyGrantType">kKeyGrantType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyPassword">kKeyPassword</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyRefreshToken">kKeyRefreshToken</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyRefreshTokenExpiration">kKeyRefreshTokenExpiration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyUsername">kKeyUsername</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kLocale">kLocale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kNewGfycatDescription">kNewGfycatDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kNewGfycatPrivate">kNewGfycatPrivate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kNewGfycatTags">kNewGfycatTags</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kNewGfycatTitle">kNewGfycatTitle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPagination">kPagination</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPaginationCursor">kPaginationCursor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPaginationParameters">kPaginationParameters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPaginationPath">kPaginationPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPaginationType">kPaginationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionApprove">kRelationshipActionApprove</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionBlock">kRelationshipActionBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionFollow">kRelationshipActionFollow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionIgnore">kRelationshipActionIgnore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionKey">kRelationshipActionKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionUnblock">kRelationshipActionUnblock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionUnfollow">kRelationshipActionUnfollow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kTagName">kTagName</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/GfycatApiKitErrorCode.html">GfycatApiKitErrorCode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Type Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatCategoryArrayBlock">GfycatCategoryArrayBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatMediaBlock">GfycatMediaBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatMediaObjectBlock">GfycatMediaObjectBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatObjectBlock">GfycatObjectBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatPaginatiedResponseBlock">GfycatPaginatiedResponseBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatProgressBlock">GfycatProgressBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatResponseBlock">GfycatResponseBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatStringBlock">GfycatStringBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatSuccessBlock">GfycatSuccessBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatUploadKeyBlock">GfycatUploadKeyBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatUserBlock">GfycatUserBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatUsersBlock">GfycatUsersBlock</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>GfycatUploadKey</h1>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatUploadKey(py)secret"></a>
+                    <a name="//apple_ref/objc/Property/secret" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatUploadKey(py)secret">secret</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Secret key used for deletion later if the Gfycat was created anonymously</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">secret</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">secret</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatUploadKey.h#L28">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatUploadKey(im)initWithInfo:"></a>
+                    <a name="//apple_ref/objc/Method/-initWithInfo:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatUploadKey(im)initWithInfo:">-initWithInfo:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new instance.
+- parameter: info JSON dictionary</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithInfo</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">info</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="nf">init</span><span class="o">!</span><span class="p">(</span><span class="nv">info</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>info</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>JSON dictionary</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/Models/GfycatUploadKey.h#L34">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://gfycat.com" target="_blank" rel="external">Gfycat</a>. All rights reserved. (Last updated: 2017-04-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

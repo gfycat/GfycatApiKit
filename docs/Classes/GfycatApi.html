@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GfycatApi Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Class/GfycatApi" class="dashAnchor"></a>
+    <a title="GfycatApi Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">GfycatApiKit Docs</a> (68% documented)</p>
+        <p class="header-right"><a href="https://github.com/gfycat/GfycatApiKit"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">GfycatApiKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        GfycatApi Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatApi.html">GfycatApi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatCategories.html">GfycatCategories</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatCategory.html">GfycatCategory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatMedia.html">GfycatMedia</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatMediaCollection.html">GfycatMediaCollection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatModel.html">GfycatModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatPaginationInfo.html">GfycatPaginationInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GfycatUploadKey.html">GfycatUploadKey</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@GfycatApiKitErrorDomain">GfycatApiKitErrorDomain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@GfycatApiKitKeychainStore">GfycatApiKitKeychainStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@GfycatApiKitUserAuthenticationChangedNotification">GfycatApiKitUserAuthenticationChangedNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kCursor">kCursor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kDigest">kDigest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatApiKitAuthorizationURL">kGfycatApiKitAuthorizationURL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatApiKitAuthorizationURLConfigurationKey">kGfycatApiKitAuthorizationURLConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatApiKitBaseURL">kGfycatApiKitBaseURL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatApiKitBaseURLConfigurationKey">kGfycatApiKitBaseURLConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatAppClientIdConfigurationKey">kGfycatAppClientIdConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatAppClientSecretConfigurationKey">kGfycatAppClientSecretConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kGfycatAppRedirectURLConfigurationKey">kGfycatAppRedirectURLConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyAccessToken">kKeyAccessToken</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyAccessTokenExpiration">kKeyAccessTokenExpiration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyAuthorization">kKeyAuthorization</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyClientID">kKeyClientID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyClientSecret">kKeyClientSecret</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyGrantType">kKeyGrantType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyPassword">kKeyPassword</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyRefreshToken">kKeyRefreshToken</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyRefreshTokenExpiration">kKeyRefreshTokenExpiration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kKeyUsername">kKeyUsername</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kLocale">kLocale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kNewGfycatDescription">kNewGfycatDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kNewGfycatPrivate">kNewGfycatPrivate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kNewGfycatTags">kNewGfycatTags</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kNewGfycatTitle">kNewGfycatTitle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPagination">kPagination</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPaginationCursor">kPaginationCursor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPaginationParameters">kPaginationParameters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPaginationPath">kPaginationPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kPaginationType">kPaginationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionApprove">kRelationshipActionApprove</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionBlock">kRelationshipActionBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionFollow">kRelationshipActionFollow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionIgnore">kRelationshipActionIgnore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionKey">kRelationshipActionKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionUnblock">kRelationshipActionUnblock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kRelationshipActionUnfollow">kRelationshipActionUnfollow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@kTagName">kTagName</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/GfycatApiKitErrorCode.html">GfycatApiKitErrorCode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Type Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatCategoryArrayBlock">GfycatCategoryArrayBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatMediaBlock">GfycatMediaBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatMediaObjectBlock">GfycatMediaObjectBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatObjectBlock">GfycatObjectBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatPaginatiedResponseBlock">GfycatPaginatiedResponseBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatProgressBlock">GfycatProgressBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatResponseBlock">GfycatResponseBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatStringBlock">GfycatStringBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatSuccessBlock">GfycatSuccessBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatUploadKeyBlock">GfycatUploadKeyBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatUserBlock">GfycatUserBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatUsersBlock">GfycatUsersBlock</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>GfycatApi</h1>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(cm)shared"></a>
+                    <a name="//apple_ref/objc/Method/+shared" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(cm)shared">+shared</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(py)appClientID"></a>
+                    <a name="//apple_ref/objc/Property/appClientID" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(py)appClientID">appClientID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Client Id of your App, as registered with Gfycat.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">appClientID</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">appClientID</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L37">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(py)appClientSecret"></a>
+                    <a name="//apple_ref/objc/Property/appClientSecret" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(py)appClientSecret">appClientSecret</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Client Secret of your App, as registered with Gfycat.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">appClientSecret</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">appClientSecret</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L42">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(py)accessToken"></a>
+                    <a name="//apple_ref/objc/Property/accessToken" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(py)accessToken">accessToken</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The oauth token stored in the account store credential, if available.
+If not empty, this implies user has granted access.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">accessToken</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">accessToken</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L48">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(py)username"></a>
+                    <a name="//apple_ref/objc/Property/username" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(py)username">username</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The username stored in the account store credential, if available.
+If not empty, this implies user is logged in.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">username</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L54">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Authentication"></a>
+                <a name="//apple_ref/objc/Section/Authentication" class="dashAnchor"></a>
+                <a href="#/Authentication">
+                  <h3 class="section-name">Authentication</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)createAccountWithUsername:password:email:success:failure:"></a>
+                    <a name="//apple_ref/objc/Method/-createAccountWithUsername:password:email:success:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)createAccountWithUsername:password:email:success:failure:">-createAccountWithUsername:password:email:success:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new user account</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createAccountWithUsername</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">username</span>
+                         <span class="nf">password</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">password</span>
+                            <span class="nf">email</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">email</span>
+                          <span class="nf">success</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatResponseBlock">GfycatResponseBlock</a></span><span class="p">)</span><span class="nv">success</span>
+                          <span class="nf">failure</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a></span><span class="p">)</span><span class="nv">failure</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">createAccount</span><span class="p">(</span><span class="n">withUsername</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">email</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">failure</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Username for account</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>password</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Password for account</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>email</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Email address for account - Optional</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides a dictionary authorization and refresh tokens.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an error and a server status code.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L67-L71">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)validateSession:failure:"></a>
+                    <a name="//apple_ref/objc/Method/-validateSession:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)validateSession:failure:">-validateSession:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets authorization token and validates this session.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">validateSession</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatResponseBlock">GfycatResponseBlock</a></span><span class="p">)</span><span class="nv">success</span>
+                <span class="nf">failure</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a></span><span class="p">)</span><span class="nv">failure</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">validateSession</span><span class="p">(</span><span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">failure</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides a dictionary authorization token.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an error and a server status code.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L79-L80">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)refreshSession:failure:"></a>
+                    <a name="//apple_ref/objc/Method/-refreshSession:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)refreshSession:failure:">-refreshSession:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Refreshes authotization token if refresh token has not expired, 
+  otherwise fetches a new authorization token.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">refreshSession</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatResponseBlock">GfycatResponseBlock</a></span><span class="p">)</span><span class="nv">success</span>
+               <span class="nf">failure</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a></span><span class="p">)</span><span class="nv">failure</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">refreshSession</span><span class="p">(</span><span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">failure</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides a dictionary authorization token.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an error and a server status code.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L89-L90">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)isSessionValid"></a>
+                    <a name="//apple_ref/objc/Method/-isSessionValid" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)isSessionValid">-isSessionValid</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Validate if authorization is done.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">isSessionValid</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">isSessionValid</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>YES if access token present, otherwise NO.</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L97">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)isLoggedIn"></a>
+                    <a name="//apple_ref/objc/Method/-isLoggedIn" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)isLoggedIn">-isLoggedIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Validate if login is done.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">isLoggedIn</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">isLoggedIn</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>YES if user is logged in, otherwise NO.</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L104">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)logout"></a>
+                    <a name="//apple_ref/objc/Method/-logout" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)logout">-logout</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Clears stored access token and browser cookies.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">logout</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">logout</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L109">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Media"></a>
+                <a name="//apple_ref/objc/Section/Media" class="dashAnchor"></a>
+                <a href="#/Media">
+                  <h3 class="section-name">Media</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)getMedia:withSuccess:failure:"></a>
+                    <a name="//apple_ref/objc/Method/-getMedia:withSuccess:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)getMedia:withSuccess:failure:">-getMedia:withSuccess:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get information about a Media object.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getMedia</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">mediaId</span>
+     <span class="nf">withSuccess</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatMediaObjectBlock">GfycatMediaObjectBlock</a></span><span class="p">)</span><span class="nv">success</span>
+         <span class="nf">failure</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a></span><span class="p">)</span><span class="nv">failure</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getMedia</span><span class="p">(</span><span class="n">_</span> <span class="nv">mediaId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withSuccess</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">failure</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mediaId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Id of a Media object.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides a fully populated Media object.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an error and a server status code.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L121-L123">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)getCategoriesWithSuccess:failure:"></a>
+                    <a name="//apple_ref/objc/Method/-getCategoriesWithSuccess:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)getCategoriesWithSuccess:failure:">-getCategoriesWithSuccess:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get list of all categories.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getCategoriesWithSuccess</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatCategoryArrayBlock">GfycatCategoryArrayBlock</a></span><span class="p">)</span><span class="nv">success</span>
+                         <span class="nf">failure</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a></span><span class="p">)</span><span class="nv">failure</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getCategoriesWithSuccess</span><span class="p">(</span><span class="n">_</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">failure</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides a media list object.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an error and a server status code.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L131-L132">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)getCategoryMedia:count:WithSuccess:failure:"></a>
+                    <a name="//apple_ref/objc/Method/-getCategoryMedia:count:WithSuccess:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)getCategoryMedia:count:WithSuccess:failure:">-getCategoryMedia:count:WithSuccess:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get a list of media objects from a category.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getCategoryMedia</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">categoryTitle</span>
+                   <span class="nf">count</span><span class="p">:(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">count</span>
+             <span class="nf">WithSuccess</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatMediaBlock">GfycatMediaBlock</a></span><span class="p">)</span><span class="nv">success</span>
+                 <span class="nf">failure</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a></span><span class="p">)</span><span class="nv">failure</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getCategoryMedia</span><span class="p">(</span><span class="n">_</span> <span class="nv">categoryTitle</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">withSuccess</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">failure</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>categoryTitle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Title of category.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>count</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Count of objects to fetch.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an array of Media objects and Pagination info.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an error and a server status code.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L142-L145">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)searchMediaWithString:count:withSuccess:failure:"></a>
+                    <a name="//apple_ref/objc/Method/-searchMediaWithString:count:withSuccess:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)searchMediaWithString:count:withSuccess:failure:">-searchMediaWithString:count:withSuccess:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Search published Media with string.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">searchMediaWithString</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">searchString</span>
+                        <span class="nf">count</span><span class="p">:(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">count</span>
+                  <span class="nf">withSuccess</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatMediaBlock">GfycatMediaBlock</a></span><span class="p">)</span><span class="nv">success</span>
+                      <span class="nf">failure</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a></span><span class="p">)</span><span class="nv">failure</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">searchMedia</span><span class="p">(</span><span class="n">with</span> <span class="nv">searchString</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">withSuccess</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">failure</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>count</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Count of objects to fetch.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides a media list object.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an error and a server status code.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L154-L157">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Common%20Pagination%20Request"></a>
+                <a name="//apple_ref/objc/Section/Common Pagination Request" class="dashAnchor"></a>
+                <a href="#/Common%20Pagination%20Request">
+                  <h3 class="section-name">Common Pagination Request</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)getPaginatedItemsForInfo:withSuccess:failure:"></a>
+                    <a name="//apple_ref/objc/Method/-getPaginatedItemsForInfo:withSuccess:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)getPaginatedItemsForInfo:withSuccess:failure:">-getPaginatedItemsForInfo:withSuccess:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get paginated objects as specified by information contained in the PaginationInfo object.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">getPaginatedItemsForInfo</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/GfycatPaginationInfo.html">GfycatPaginationInfo</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">paginationInfo</span>
+                     <span class="nf">withSuccess</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatPaginatiedResponseBlock">GfycatPaginatiedResponseBlock</a></span><span class="p">)</span><span class="nv">success</span>
+                         <span class="nf">failure</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a></span><span class="p">)</span><span class="nv">failure</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getPaginatedItems</span><span class="p">(</span><span class="n">forInfo</span> <span class="nv">paginationInfo</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="n">withSuccess</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">failure</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>paginationInfo</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The PaginationInfo Object obtained from the previous endpoint success block.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an array of paginated Objects.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an error and a server status code.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L168-L170">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Gfycat%20Creation%20Request"></a>
+                <a name="//apple_ref/objc/Section/Gfycat Creation Request" class="dashAnchor"></a>
+                <a href="#/Gfycat%20Creation%20Request">
+                  <h3 class="section-name">Gfycat Creation Request</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)createGfycatWithParameters:success:failure:"></a>
+                    <a name="//apple_ref/objc/Method/-createGfycatWithParameters:success:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)createGfycatWithParameters:success:failure:">-createGfycatWithParameters:success:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new Gfycat upload target</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">createGfycatWithParameters</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">parameters</span>
+                           <span class="nf">success</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatUploadKeyBlock">GfycatUploadKeyBlock</a></span><span class="p">)</span><span class="nv">success</span>
+                           <span class="nf">failure</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a></span><span class="p">)</span><span class="nv">failure</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">createGfycat</span><span class="p">(</span><span class="n">withParameters</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">AnyHashable</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?,</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">failure</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Dictionary of optional parameters for new Gfycat.
+                     Valid keys are:
+                         kNewGfycatTitle as an NSString,
+                         kNewGfycatDescription as an NSString,
+                         kNewGfycatTags as an NSArray of NSString,
+                         kNewGfycatPrivate as an NSNumber 0 or 1;
+                         // TODO - Should we include the MD5 flag incase people want to upload duplicates?</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides a response dictionary with keys kNewGfycatName and kNewGfycatSecret.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an error and a server status code.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L187-L189">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)uploadFileUrl:forUploadKey:success:progress:failure:"></a>
+                    <a name="//apple_ref/objc/Method/-uploadFileUrl:forUploadKey:success:progress:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)uploadFileUrl:forUploadKey:success:progress:failure:">-uploadFileUrl:forUploadKey:success:progress:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Upload file to create new Gfycat</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">uploadFileUrl</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">fileUrl</span>
+         <span class="nf">forUploadKey</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/GfycatUploadKey.html">GfycatUploadKey</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">uploadKey</span>
+              <span class="nf">success</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatSuccessBlock">GfycatSuccessBlock</a></span><span class="p">)</span><span class="nv">success</span>
+             <span class="nf">progress</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatProgressBlock">GfycatProgressBlock</a></span><span class="p">)</span><span class="nv">progress</span>
+              <span class="nf">failure</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a></span><span class="p">)</span><span class="nv">failure</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">uploadFileUrl</span><span class="p">(</span><span class="n">_</span> <span class="nv">fileUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="n">forUploadKey</span> <span class="nv">uploadKey</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">progress</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">failure</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Called on success.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>progress</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an upload progress.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an error and a server status code.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L198-L202">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Gfycat%20Delete%20Request%20-%20TODO%20-%20IMPEMENT%20ME"></a>
+                <a name="//apple_ref/objc/Section/Gfycat Delete Request - TODO - IMPEMENT ME" class="dashAnchor"></a>
+                <a href="#/Gfycat%20Delete%20Request%20-%20TODO%20-%20IMPEMENT%20ME">
+                  <h3 class="section-name">Gfycat Delete Request - TODO - IMPEMENT ME</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)deleteGfycatWithParameters:success:failure:"></a>
+                    <a name="//apple_ref/objc/Method/-deleteGfycatWithParameters:success:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)deleteGfycatWithParameters:success:failure:">-deleteGfycatWithParameters:success:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Deletes a Gfycat target</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">deleteGfycatWithParameters</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">parameters</span>
+                           <span class="nf">success</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatUploadKeyBlock">GfycatUploadKeyBlock</a></span><span class="p">)</span><span class="nv">success</span>
+                           <span class="nf">failure</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a></span><span class="p">)</span><span class="nv">failure</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">deleteGfycat</span><span class="p">(</span><span class="n">withParameters</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">AnyHashable</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?,</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">failure</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Dictionary of optional parameters for new Gfycat.
+                     Valid keys are:
+                         kNewGfycatTitle as an NSString,
+                         kNewGfycatDescription as an NSString,
+                         kNewGfycatTags as an NSArray of NSString,
+                         kNewGfycatPrivate as an NSNumber 0 or 1;
+                         // TODO - Should we include the MD5 flag incase people want to upload duplicates?</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides a response dictionary with keys kNewGfycatName and kNewGfycatSecret.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an error and a server status code.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L218-L220">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Report%20Gfycat%20Request"></a>
+                <a name="//apple_ref/objc/Section/Report Gfycat Request" class="dashAnchor"></a>
+                <a href="#/Report%20Gfycat%20Request">
+                  <h3 class="section-name">Report Gfycat Request</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)GfycatApi(im)reportMedia:withSuccess:failure:"></a>
+                    <a name="//apple_ref/objc/Method/-reportMedia:withSuccess:failure:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)GfycatApi(im)reportMedia:withSuccess:failure:">-reportMedia:withSuccess:failure:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Report Media object as offensive.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">reportMedia</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">mediaId</span>
+        <span class="nf">withSuccess</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatResponseBlock">GfycatResponseBlock</a></span><span class="p">)</span><span class="nv">success</span>
+            <span class="nf">failure</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Type Definitions.html#/c:GfycatApiConstants.h@T@GfycatFailureBlock">GfycatFailureBlock</a></span><span class="p">)</span><span class="nv">failure</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">reportMedia</span><span class="p">(</span><span class="n">_</span> <span class="nv">mediaId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withSuccess</span> <span class="nv">success</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">failure</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mediaId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Id of a Media object.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides a dictionary server response if any.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provides an error and a server status code.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/gfycat/GfycatApiKit/blob/3a9d4eeacd84b6b9fc05a347018f201395e79abc/GfycatApiKit/API/GfycatApi.h#L231-L233">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://gfycat.com" target="_blank" rel="external">Gfycat</a>. All rights reserved. (Last updated: 2017-04-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
