@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.name                = 'GfycatApiKit'
   s.version             = '0.0.1'
   s.summary             = 'GfycatApiKit for iOS'
-  s.description         = 'GfycatApiKit provides convenient way to communicate with the Gfycat API.'
+  s.description         = 'GfycatApiKit provides building blocks to integrate apps with the Gfycat API.'
   s.homepage            = 'https://developers.gfycat.com/api/'
   s.license             = { :type => 'Commercial', :file => 'LICENSE' }
   s.author              = { 'Gfycat' => 'support@gfycat.com' }
