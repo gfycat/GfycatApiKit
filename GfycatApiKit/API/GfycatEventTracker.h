@@ -1,9 +1,9 @@
 //
-//  GfycatApiKit.h
+//  GfycatEventTracker.h
 //  GfycatApiKit
 //
-//  Created by Yin Zhu on 1/23/17.
-//  Copyright 2017 Gfycat
+//  Created by Victor Pavlychko on 3/31/17.
+//  Copyright © 2017 GfyCat. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,11 +18,16 @@
 //  limitations under the License.
 //
 
-#import "GfycatApiConstants.h"
-#import "GfycatApi.h"
-#import "GfycatCategory.h"
-#import "GfycatMedia.h"
-#import "GfycatModel.h"
-#import "GfycatPaginationInfo.h"
-#import "GfycatUploadKey.h"
-#import "GfycatEventTracker.h"
+#import <Foundation/Foundation.h>
+
+@interface GfycatEventTracker : NSObject
+
+@property (class, nonatomic, readonly) GfycatEventTracker *impressionsTracker;
+@property (class, nonatomic, readonly) GfycatEventTracker *analyticsTracker;
+
++ (instancetype)trackerWithBaseURL:(NSURL *)baseURL;
+- (instancetype)initWithBaseURL:(NSURL *)baseURL;
+
+- (void)trackEvent:(NSString *)name withParameters:(NSDictionary<NSString *, id> *)parameters;
+
+@end
