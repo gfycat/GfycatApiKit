@@ -156,6 +156,18 @@ NS_ASSUME_NONNULL_BEGIN
                   withSuccess:(GfycatMediaBlock)success
                       failure:(nullable GfycatFailureBlock)failure;
 
+/**
+ * Download media content with URL
+ *
+ * @param url           The url to download
+ * @param completion    The callback with the response, downloaded file path, error
+ *
+ * @return              The progress instance to track downloading progress, cancellable
+ */
+
+- (NSProgress *)downloadFileWithURL:(NSURL * _Nullable)url
+                         completion:(void(^)(NSURLResponse * _Nullable response, NSURL * _Nullable filePath, NSError * _Nullable error))completion;
+
 #pragma mark - Common Pagination Request -
 
 /**
