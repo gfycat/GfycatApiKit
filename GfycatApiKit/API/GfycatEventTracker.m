@@ -3,7 +3,7 @@
 //  GfycatApiKit
 //
 //  Created by Victor Pavlychko on 3/31/17.
-//  Copyright © 2017 GfyCat. All rights reserved.
+//  Copyright 2017 Gfycat
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.

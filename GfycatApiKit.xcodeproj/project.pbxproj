@@ -13,7 +13,7 @@
 		576DD1E41E92AB2E00CAA1C9 /* GfycatApiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E17737F51E3ABFD200276E0E /* GfycatApiKit.framework */; };
 		576DD1E81E92AB5500CAA1C9 /* AFNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 576DD1DE1E92AA4200CAA1C9 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		576DD1E91E92AB5500CAA1C9 /* UICKeyChainStore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 576DD1DF1E92AA4200CAA1C9 /* UICKeyChainStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9D52979E1EB38F8C002C885D /* GfycatEventTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D52979C1EB38F8C002C885D /* GfycatEventTracker.h */; };
+		9D52979E1EB38F8C002C885D /* GfycatEventTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D52979C1EB38F8C002C885D /* GfycatEventTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D52979F1EB38F8C002C885D /* GfycatEventTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D52979D1EB38F8C002C885D /* GfycatEventTracker.m */; };
 		E10B7E691E4BFDE4004DD902 /* GfycatModelConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E10B7E671E4BFDE4004DD902 /* GfycatModelConstants.h */; };
 		E10B7E6A1E4BFDE4004DD902 /* GfycatModelConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B7E681E4BFDE4004DD902 /* GfycatModelConstants.m */; };
