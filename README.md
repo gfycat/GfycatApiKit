@@ -36,3 +36,29 @@ Once you get those, update your `Info.plist` file accordingly.
 <key>GfycatApiClientSecret</key>
 <string>Your API Client Secret goes here</string>
 ```
+
+### Analytics
+
+The Gfycat server API endpoint ***requires*** view impressions and share event analytics to be reported.
+
+You can report view impressions like this:
+
+```objective-c
+[GfycatEventTracker.impressionsTracker trackEvent:@"video_played" withParameters:@{
+    @"gfyid": @"candidimmaterialdromedary",
+    @"context": @"search",
+    @"keyword": @"example_keyword",
+    @"flow": @"full",
+    @"viewtag": @"example_tag",
+}];
+```
+
+And share events like this:
+
+```objective-c
+[GfycatEventTracker.analyticsTracker trackEvent:@"send_video" withParameters:@{
+    @"gfyid": @"candidimmaterialdromedary",
+}];
+```
+
+Please refer to the [Gfycat Analytics documentation](https://developers.gfycat.com/analytics/#gfycat-analytics) for more details on events and parameters. 
