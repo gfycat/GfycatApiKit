@@ -20,10 +20,20 @@
 
 #import <Foundation/Foundation.h>
 
+#define GfycatEventTrackerSetupIDFA() \
+    do { \
+        NSString *gfy_idfa = [[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled] \
+            ? [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString \
+            : nil; \
+        [GfycatEventTracker setIDFA:gfy_idfa]; \
+    } while (0)
+
 @interface GfycatEventTracker : NSObject
 
 @property (class, nonatomic, readonly) GfycatEventTracker *impressionsTracker;
 @property (class, nonatomic, readonly) GfycatEventTracker *analyticsTracker;
+
++ (void)setIDFA:(NSString *)idfa;
 
 + (instancetype)trackerWithBaseURL:(NSURL *)baseURL;
 - (instancetype)initWithBaseURL:(NSURL *)baseURL;

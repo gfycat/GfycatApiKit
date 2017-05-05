@@ -20,13 +20,11 @@
 
 #import "GfycatEventTracker.h"
 #import <UIKit/UIKit.h>
-#import <AdSupport/AdSupport.h>
 #import <AFNetworking/AFNetworking.h>
 
 @interface GfycatEventTracker () {
     NSURL *_baseURL;
     AFURLSessionManager *_sessionManager;
-    NSDictionary<NSString *, id> *_globalParameters;
 }
 
 @end
@@ -65,6 +63,30 @@ static NSString *stringValueForObject(id object) {
     return analyticsTracker;
 }
 
++ (NSMutableDictionary<NSString *,id> *)globalParameters {
+    static NSMutableDictionary<NSString *,id> *globalParameters = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSString *idfv = [UIDevice currentDevice].identifierForVendor.UUIDString;
+        NSString *bundleIdentifier = [NSBundle mainBundle].infoDictionary[(NSString *)kCFBundleIdentifierKey];
+        NSString *versionString = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
+        NSString *buildString = [NSBundle mainBundle].infoDictionary[(NSString *)kCFBundleVersionKey];
+        NSString *versionAndBuildString = [NSString stringWithFormat:@"%@.%@", versionString, buildString];
+        globalParameters = [@{
+            @"idfa": [NSNull null],
+            @"idfv": idfv ?: [NSNull null],
+            @"app_id": bundleIdentifier ?: [NSNull null],
+            @"ver": versionAndBuildString ?: [NSNull null],
+        } mutableCopy];
+    });
+
+    return globalParameters;
+}
+
++ (void)setIDFA:(NSString *)idfa {
+    [self.globalParameters setObject:[idfa copy] ?: [NSNull null] forKey:@"idfa"];
+}
+
 + (instancetype)trackerWithBaseURL:(NSURL *)baseURL {
     return [[self alloc] initWithBaseURL:baseURL];
 }
@@ -77,22 +99,6 @@ static NSString *stringValueForObject(id object) {
         sessionConfiguration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         _sessionManager = [[AFURLSessionManager alloc] initWithSessionConfiguration:sessionConfiguration];
         _sessionManager.responseSerializer = [AFHTTPResponseSerializer new];
-        
-        NSString *idfa = [[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]
-            ? [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString
-            : nil;
-        NSString *idfv = [UIDevice currentDevice].identifierForVendor.UUIDString;
-        NSString *bundleIdentifier = [NSBundle mainBundle].infoDictionary[(NSString *)kCFBundleIdentifierKey];
-        NSString *versionString = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
-        NSString *buildString = [NSBundle mainBundle].infoDictionary[(NSString *)kCFBundleVersionKey];
-        NSString *versionAndBuildString = [NSString stringWithFormat:@"%@.%@", versionString, buildString];
-
-        _globalParameters = @{
-            @"idfa": idfa ?: [NSNull null],
-            @"idfv": idfv ?: [NSNull null],
-            @"app_id": bundleIdentifier ?: [NSNull null],
-            @"ver": versionAndBuildString ?: [NSNull null],
-        };
     }
     
     return self;
@@ -109,7 +115,7 @@ static NSString *stringValueForObject(id object) {
     }];
     
     [aggregatedParameters setObject:name forKey:@"event"];
-    [aggregatedParameters addEntriesFromDictionary:_globalParameters];
+    [aggregatedParameters addEntriesFromDictionary:[[self class] globalParameters]];
     [aggregatedParameters addEntriesFromDictionary:parameters ?: @{}];
     
     NSMutableArray<NSURLQueryItem *> *queryItems = [[NSMutableArray alloc] initWithCapacity:aggregatedParameters.count];
