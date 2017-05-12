@@ -60,4 +60,6 @@ And share events like this:
 
 Please refer to the [Gfycat Analytics documentation](https://developers.gfycat.com/analytics/#gfycat-analytics) for more details on events and parameters. 
 
-Any questions/comments please send them to yin@gfycat.com
+## Contact Us
+
+Any questions or comments please send them to yin@gfycat.com
