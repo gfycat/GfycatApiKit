@@ -28,7 +28,6 @@ NSString *const kGfycatApiKitAuthorizationURL = @"/oauth/token";
 
 NSString *const kGfycatAppClientIdConfigurationKey = @"GfycatApiClientId";
 NSString *const kGfycatAppClientSecretConfigurationKey = @"GfycatApiClientSecret";
-NSString *const kGfycatAppRedirectURLConfigurationKey = @"GfycatApiRedirectURL";
 
 NSString *const GfycatApiKitUserAuthenticationChangedNotification = @"com.gfycatkit.token.change";
 NSString *const GfycatApiKitErrorDomain = @"com.gfycatkit";

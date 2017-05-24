@@ -40,7 +40,6 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 
 @property (nonatomic, copy, nonnull) NSString *appClientID;
 @property (nonatomic, copy, nonnull) NSString *appClientSecret;
-@property (nonatomic, copy, nonnull) NSString *appRedirectURL;
 @property (nonatomic, strong, nonnull) AFHTTPSessionManager *httpManager;
 @property (nonatomic, strong, nonnull) AFHTTPSessionManager *httpUploadManager;
 
@@ -90,50 +89,69 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     return _authenticationQueue;
 }
 
-- (instancetype)init {
-    
-    if (self = [super init]) {
-        NSURL *baseURL = [NSURL URLWithString:kGfycatApiKitBaseURL];
-        self.httpManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-        self.httpManager.responseSerializer = [AFJSONResponseSerializer new];
-        self.httpManager.requestSerializer = [AFJSONRequestSerializer new];
-        
-        self.httpUploadManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-        self.httpUploadManager.responseSerializer = [AFHTTPResponseSerializer new];
-        self.httpUploadManager.requestSerializer = [AFHTTPRequestSerializer new];
-        
-        NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
-        
-        self.appClientID = info[kGfycatAppClientIdConfigurationKey];
-        self.appClientSecret = info[kGfycatAppClientSecretConfigurationKey];
-        self.appRedirectURL = info[kGfycatAppRedirectURLConfigurationKey];
-        
-        if (!self.appClientID || [self.appClientID isEqualToString:@""]) {
-            NSLog(@"[GfycatApiKit] ERROR : Invalid Client ID. Please set a valid value for the key \"%@\" in the App's Info.plist file",kGfycatAppClientIdConfigurationKey);
-        }
-        
-        if (!self.appClientSecret || [self.appClientSecret isEqualToString:@""]) {
-            NSLog(@"[GfycatApiKit] ERROR : Invalid Client Secret. Please set a valid value for the key \"%@\" in the App's Info.plist file",kGfycatAppClientSecretConfigurationKey);
-        }
-        
-        if (!self.appRedirectURL || [self.appRedirectURL isEqualToString:@""]) {
-            NSLog(@"[GfycatApiKit] ERROR : Invalid Redirect URL. Please set a valid value for the key \"%@\" in the App's Info.plist file",kGfycatAppRedirectURLConfigurationKey);
-        }
-        
-        self.keychainStore = [UICKeyChainStore keyChainStoreWithService:GfycatApiKitKeychainStore];
-        self.accessToken = self.keychainStore[kKeychainAccessTokenKey];
-        _username = self.keychainStore[kKeychainUsernameKey];
-        _password = self.keychainStore[kKeychainPasswordKey];
-        _refreshToken = self.keychainStore[kKeychainRefreshTokenKey];
-        _refreshTokenExpirationDate = [self.dateFormatter dateFromString:self.keychainStore[kKeychainRefreshTokenExpirationDateKey]];
-        _accessTokenExpirationDate = [self.dateFormatter dateFromString:self.keychainStore[kKeychainAccessTokenExpirationDateKey]];
+- (void)configureWithDefaultData
+{
+    if (![self checkBeforeConfiguration]) {
+        return;
     }
-    return self;
+    
+    NSURL *baseURL = [NSURL URLWithString:kGfycatApiKitBaseURL];
+    [self configureHTTPManagersWithBaseURL:baseURL];
+    [self configureCredentials];
+}
+
+- (void)configureWithCustomData:(GfycatApiConfiguration *)configuration
+{
+    if (![self checkBeforeConfiguration]) {
+        return;
+    }
+    
+    [self configureHTTPManagersWithBaseURL:configuration.baseURL];
+    [self configureCredentials];
+}
+
+- (void)configureHTTPManagersWithBaseURL:(NSURL *)baseURL
+{
+    self.httpManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    self.httpManager.responseSerializer = [AFJSONResponseSerializer new];
+    self.httpManager.requestSerializer = [AFJSONRequestSerializer new];
+    
+    self.httpUploadManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    self.httpUploadManager.responseSerializer = [AFHTTPResponseSerializer new];
+    self.httpUploadManager.requestSerializer = [AFHTTPRequestSerializer new];
+}
+
+- (void)configureCredentials
+{
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    
+    self.appClientID = info[kGfycatAppClientIdConfigurationKey];
+    self.appClientSecret = info[kGfycatAppClientSecretConfigurationKey];
+    
+    if (!self.appClientID || [self.appClientID isEqualToString:@""]) {
+        NSLog(@"[GfycatApiKit] ERROR : Invalid Client ID. Please set a valid value for the key \"%@\" in the App's Info.plist file",kGfycatAppClientIdConfigurationKey);
+    }
+    
+    if (!self.appClientSecret || [self.appClientSecret isEqualToString:@""]) {
+        NSLog(@"[GfycatApiKit] ERROR : Invalid Client Secret. Please set a valid value for the key \"%@\" in the App's Info.plist file",kGfycatAppClientSecretConfigurationKey);
+    }
+    
+    self.keychainStore = [UICKeyChainStore keyChainStoreWithService:GfycatApiKitKeychainStore];
+    self.accessToken = self.keychainStore[kKeychainAccessTokenKey];
+    _username = self.keychainStore[kKeychainUsernameKey];
+    _password = self.keychainStore[kKeychainPasswordKey];
+    _refreshToken = self.keychainStore[kKeychainRefreshTokenKey];
+    _refreshTokenExpirationDate = [self.dateFormatter dateFromString:self.keychainStore[kKeychainRefreshTokenExpirationDateKey]];
+    _accessTokenExpirationDate = [self.dateFormatter dateFromString:self.keychainStore[kKeychainAccessTokenExpirationDateKey]];
 }
 
 #pragma mark -
 
 - (void)setAccessToken:(nullable NSString *)accessToken {
+    if (![self configurationCheck]) {
+        return;
+    }
+    
     _accessToken = [accessToken copy];
     
     self.keychainStore[kKeychainAccessTokenKey] = accessToken;
@@ -352,6 +370,10 @@ NSInteger const kTokenExpirationThreshold = 30;
         success:(GfycatObjectBlock)success
         failure:(nullable GfycatFailureBlock)failure {
     
+    if (![self configurationCheck]) {
+        return;
+    }
+    
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
     NSString *percentageEscapedPath = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.httpManager GET:percentageEscapedPath
@@ -380,6 +402,10 @@ NSInteger const kTokenExpirationThreshold = 30;
            responseModel:(Class)modelClass
                  success:(GfycatPaginatiedResponseBlock)success
                  failure:(nullable GfycatFailureBlock)failure {
+    
+    if (![self configurationCheck]) {
+        return;
+    }
     
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
     NSString *percentageEscapedPath = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -413,6 +439,10 @@ NSInteger const kTokenExpirationThreshold = 30;
          success:(GfycatResponseBlock)success
          failure:(nullable GfycatFailureBlock)failure {
     
+    if (![self configurationCheck]) {
+        return;
+    }
+    
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
     [self.httpManager POST:path
                 parameters:params
@@ -430,6 +460,10 @@ NSInteger const kTokenExpirationThreshold = 30;
         parameters:(NSDictionary *)parameters
            success:(GfycatResponseBlock)success
            failure:(nullable GfycatFailureBlock)failure {
+    
+    if (![self configurationCheck]) {
+        return;
+    }
     
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
     [self.httpManager DELETE:path
@@ -535,6 +569,10 @@ NSInteger const kTokenExpirationThreshold = 30;
 - (NSProgress *)downloadFileWithURL:(NSURL * _Nullable)url
                          completion:(void(^)(NSURLResponse * _Nullable response, NSURL * _Nullable filePath, NSError * _Nullable error))completion {
     
+    if (![self configurationCheck]) {
+        return nil;
+    }
+    
     NSString *uniqueComponent = [[NSProcessInfo processInfo] globallyUniqueString];
     NSString *fileExt = (url.pathExtension.length > 0) ? url.pathExtension : @"tmp";
     NSURL *tempFileContentURL = [[[NSURL fileURLWithPath:NSTemporaryDirectory()] URLByAppendingPathComponent:uniqueComponent] URLByAppendingPathExtension:fileExt];
@@ -593,6 +631,10 @@ NSInteger const kTokenExpirationThreshold = 30;
              progress:(nullable GfycatProgressBlock)progress
               failure:(nullable GfycatFailureBlock)failure {
     
+    if (![self configurationCheck]) {
+        return;
+    }
+    
     NSError *error;
     NSString *urlString = [NSString stringWithFormat:@"https://filedrop.gfycat.com/%@", uploadKey.gfyId];
     NSURLRequest *request = [self.httpUploadManager.requestSerializer multipartFormRequestWithMethod:@"PUT" URLString:urlString parameters:nil
@@ -644,6 +686,26 @@ NSInteger const kTokenExpirationThreshold = 30;
     }
     
     return @"en";
+}
+
+- (BOOL)configurationCheck
+{
+    if (self.httpManager == nil || self.httpUploadManager == nil) {
+        NSLog(@"[GfycatApiKit] ERROR : API client should be configured before use.");
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL)checkBeforeConfiguration
+{
+    if (self.httpManager != nil || self.httpUploadManager != nil) {
+        NSLog(@"[GfycatApiKit] ERROR : API client was already configured.");
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end

@@ -21,6 +21,7 @@
 #import <Foundation/Foundation.h>
 #import "GfycatApiConstants.h"
 #import "GfycatModel.h"
+#import "GfycatApiConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -52,6 +53,16 @@ NS_ASSUME_NONNULL_BEGIN
  *  If not empty, this implies user is logged in.
  */
 @property (nonatomic, copy, readonly, nullable) NSString *username;
+
+/**
+ *  Configuration data will be retrieved from the .plist file.
+ */
+- (void)configureWithDefaultData;
+
+/**
+ *  Allows to configure with custom base URL.
+ */
+- (void)configureWithCustomData:(GfycatApiConfiguration *)configuration;
 
 #pragma mark - Authentication -
 

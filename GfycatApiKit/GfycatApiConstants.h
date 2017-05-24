@@ -50,11 +50,6 @@ extern NSString *const kGfycatAppClientIdConfigurationKey;
  */
 extern NSString *const kGfycatAppClientSecretConfigurationKey;
 
-/**
- *  Configuration Key for the Redirect URL of your App, registered with Gfycat.
- */
-extern NSString *const kGfycatAppRedirectURLConfigurationKey;
-
 
 /*!
  @typedef   GfycatApiKitLoginScope enum
