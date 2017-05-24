@@ -89,25 +89,17 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     return _authenticationQueue;
 }
 
-- (void)configureWithDefaultData
+- (instancetype)init
 {
-    if (![self checkBeforeConfiguration]) {
-        return;
+    self = [super init];
+    
+    if (self) {
+        NSURL *baseURL = [NSURL URLWithString:kGfycatApiKitBaseURL];
+        [self configureHTTPManagersWithBaseURL:baseURL];
+        [self configureCredentials];
     }
     
-    NSURL *baseURL = [NSURL URLWithString:kGfycatApiKitBaseURL];
-    [self configureHTTPManagersWithBaseURL:baseURL];
-    [self configureCredentials];
-}
-
-- (void)configureWithCustomData:(GfycatApiConfiguration *)configuration
-{
-    if (![self checkBeforeConfiguration]) {
-        return;
-    }
-    
-    [self configureHTTPManagersWithBaseURL:configuration.baseURL];
-    [self configureCredentials];
+    return self;
 }
 
 - (void)configureHTTPManagersWithBaseURL:(NSURL *)baseURL
@@ -127,15 +119,6 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     
     self.appClientID = info[kGfycatAppClientIdConfigurationKey];
     self.appClientSecret = info[kGfycatAppClientSecretConfigurationKey];
-    
-    if (!self.appClientID || [self.appClientID isEqualToString:@""]) {
-        NSLog(@"[GfycatApiKit] ERROR : Invalid Client ID. Please set a valid value for the key \"%@\" in the App's Info.plist file",kGfycatAppClientIdConfigurationKey);
-    }
-    
-    if (!self.appClientSecret || [self.appClientSecret isEqualToString:@""]) {
-        NSLog(@"[GfycatApiKit] ERROR : Invalid Client Secret. Please set a valid value for the key \"%@\" in the App's Info.plist file",kGfycatAppClientSecretConfigurationKey);
-    }
-    
     self.keychainStore = [UICKeyChainStore keyChainStoreWithService:GfycatApiKitKeychainStore];
     self.accessToken = self.keychainStore[kKeychainAccessTokenKey];
     _username = self.keychainStore[kKeychainUsernameKey];
@@ -145,13 +128,20 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     _accessTokenExpirationDate = [self.dateFormatter dateFromString:self.keychainStore[kKeychainAccessTokenExpirationDateKey]];
 }
 
+- (void)setAppID:(NSString *)appID andAppSecret:(NSString *)appSecret
+{
+    self.appClientID = appID;
+    self.appClientSecret = appSecret;
+}
+
+- (void)setBaseURL:(NSURL *)baseURL
+{
+    [self configureHTTPManagersWithBaseURL:baseURL];
+}
+
 #pragma mark -
 
 - (void)setAccessToken:(nullable NSString *)accessToken {
-    if (![self configurationCheck]) {
-        return;
-    }
-    
     _accessToken = [accessToken copy];
     
     self.keychainStore[kKeychainAccessTokenKey] = accessToken;
@@ -370,10 +360,6 @@ NSInteger const kTokenExpirationThreshold = 30;
         success:(GfycatObjectBlock)success
         failure:(nullable GfycatFailureBlock)failure {
     
-    if (![self configurationCheck]) {
-        return;
-    }
-    
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
     NSString *percentageEscapedPath = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.httpManager GET:percentageEscapedPath
@@ -402,10 +388,6 @@ NSInteger const kTokenExpirationThreshold = 30;
            responseModel:(Class)modelClass
                  success:(GfycatPaginatiedResponseBlock)success
                  failure:(nullable GfycatFailureBlock)failure {
-    
-    if (![self configurationCheck]) {
-        return;
-    }
     
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
     NSString *percentageEscapedPath = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -439,10 +421,6 @@ NSInteger const kTokenExpirationThreshold = 30;
          success:(GfycatResponseBlock)success
          failure:(nullable GfycatFailureBlock)failure {
     
-    if (![self configurationCheck]) {
-        return;
-    }
-    
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
     [self.httpManager POST:path
                 parameters:params
@@ -460,10 +438,6 @@ NSInteger const kTokenExpirationThreshold = 30;
         parameters:(NSDictionary *)parameters
            success:(GfycatResponseBlock)success
            failure:(nullable GfycatFailureBlock)failure {
-    
-    if (![self configurationCheck]) {
-        return;
-    }
     
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
     [self.httpManager DELETE:path
@@ -569,10 +543,6 @@ NSInteger const kTokenExpirationThreshold = 30;
 - (NSProgress *)downloadFileWithURL:(NSURL * _Nullable)url
                          completion:(void(^)(NSURLResponse * _Nullable response, NSURL * _Nullable filePath, NSError * _Nullable error))completion {
     
-    if (![self configurationCheck]) {
-        return nil;
-    }
-    
     NSString *uniqueComponent = [[NSProcessInfo processInfo] globallyUniqueString];
     NSString *fileExt = (url.pathExtension.length > 0) ? url.pathExtension : @"tmp";
     NSURL *tempFileContentURL = [[[NSURL fileURLWithPath:NSTemporaryDirectory()] URLByAppendingPathComponent:uniqueComponent] URLByAppendingPathExtension:fileExt];
@@ -631,10 +601,6 @@ NSInteger const kTokenExpirationThreshold = 30;
              progress:(nullable GfycatProgressBlock)progress
               failure:(nullable GfycatFailureBlock)failure {
     
-    if (![self configurationCheck]) {
-        return;
-    }
-    
     NSError *error;
     NSString *urlString = [NSString stringWithFormat:@"https://filedrop.gfycat.com/%@", uploadKey.gfyId];
     NSURLRequest *request = [self.httpUploadManager.requestSerializer multipartFormRequestWithMethod:@"PUT" URLString:urlString parameters:nil
@@ -686,26 +652,6 @@ NSInteger const kTokenExpirationThreshold = 30;
     }
     
     return @"en";
-}
-
-- (BOOL)configurationCheck
-{
-    if (self.httpManager == nil || self.httpUploadManager == nil) {
-        NSLog(@"[GfycatApiKit] ERROR : API client should be configured before use.");
-        return NO;
-    }
-    
-    return YES;
-}
-
-- (BOOL)checkBeforeConfiguration
-{
-    if (self.httpManager != nil || self.httpUploadManager != nil) {
-        NSLog(@"[GfycatApiKit] ERROR : API client was already configured.");
-        return NO;
-    }
-    
-    return YES;
 }
 
 @end

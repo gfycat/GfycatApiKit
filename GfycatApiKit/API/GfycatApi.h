@@ -21,7 +21,6 @@
 #import <Foundation/Foundation.h>
 #import "GfycatApiConstants.h"
 #import "GfycatModel.h"
-#import "GfycatApiConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -55,14 +54,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly, nullable) NSString *username;
 
 /**
- *  Configuration data will be retrieved from the .plist file.
+ *  Allow to set custom application ID and application secret from code.
  */
-- (void)configureWithDefaultData;
+- (void)setAppID:(NSString *)appID andAppSecret:(NSString *)appSecret;
 
 /**
- *  Allows to configure with custom base URL.
+ *  Setting custom base URL to make API calls.
  */
-- (void)configureWithCustomData:(GfycatApiConfiguration *)configuration;
+- (void)setBaseURL:(NSURL *)baseURL;
 
 #pragma mark - Authentication -
 
