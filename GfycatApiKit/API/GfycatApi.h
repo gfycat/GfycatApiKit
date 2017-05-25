@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Allow to set custom application ID and application secret from code.
  */
-- (void)setAppID:(NSString *)appID andAppSecret:(NSString *)appSecret;
+- (void)setAppClientID:(NSString *)appClientID withSecret:(NSString *)appClientSecret;
 
 /**
  *  Setting custom base URL to make API calls.

@@ -91,9 +91,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 
 - (instancetype)init
 {
-    self = [super init];
-    
-    if (self) {
+    if (self = [super init]) {
         NSURL *baseURL = [NSURL URLWithString:kGfycatApiKitBaseURL];
         [self configureHTTPManagersWithBaseURL:baseURL];
         [self configureCredentials];
@@ -128,10 +126,10 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     _accessTokenExpirationDate = [self.dateFormatter dateFromString:self.keychainStore[kKeychainAccessTokenExpirationDateKey]];
 }
 
-- (void)setAppID:(NSString *)appID andAppSecret:(NSString *)appSecret
+- (void)setAppClientID:(NSString *)appClientID withSecret:(NSString *)appClientSecret
 {
-    self.appClientID = appID;
-    self.appClientSecret = appSecret;
+    self.appClientID = appClientID;
+    self.appClientSecret = appClientSecret;
 }
 
 - (void)setBaseURL:(NSURL *)baseURL
