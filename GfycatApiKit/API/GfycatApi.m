@@ -40,7 +40,6 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 
 @property (nonatomic, copy, nonnull) NSString *appClientID;
 @property (nonatomic, copy, nonnull) NSString *appClientSecret;
-@property (nonatomic, copy, nonnull) NSString *appRedirectURL;
 @property (nonatomic, strong, nonnull) AFHTTPSessionManager *httpManager;
 @property (nonatomic, strong, nonnull) AFHTTPSessionManager *httpUploadManager;
 
@@ -90,45 +89,52 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     return _authenticationQueue;
 }
 
-- (instancetype)init {
-    
+- (instancetype)init
+{
     if (self = [super init]) {
         NSURL *baseURL = [NSURL URLWithString:kGfycatApiKitBaseURL];
-        self.httpManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-        self.httpManager.responseSerializer = [AFJSONResponseSerializer new];
-        self.httpManager.requestSerializer = [AFJSONRequestSerializer new];
-        
-        self.httpUploadManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-        self.httpUploadManager.responseSerializer = [AFHTTPResponseSerializer new];
-        self.httpUploadManager.requestSerializer = [AFHTTPRequestSerializer new];
-        
-        NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
-        
-        self.appClientID = info[kGfycatAppClientIdConfigurationKey];
-        self.appClientSecret = info[kGfycatAppClientSecretConfigurationKey];
-        self.appRedirectURL = info[kGfycatAppRedirectURLConfigurationKey];
-        
-        if (!self.appClientID || [self.appClientID isEqualToString:@""]) {
-            NSLog(@"[GfycatApiKit] ERROR : Invalid Client ID. Please set a valid value for the key \"%@\" in the App's Info.plist file",kGfycatAppClientIdConfigurationKey);
-        }
-        
-        if (!self.appClientSecret || [self.appClientSecret isEqualToString:@""]) {
-            NSLog(@"[GfycatApiKit] ERROR : Invalid Client Secret. Please set a valid value for the key \"%@\" in the App's Info.plist file",kGfycatAppClientSecretConfigurationKey);
-        }
-        
-        if (!self.appRedirectURL || [self.appRedirectURL isEqualToString:@""]) {
-            NSLog(@"[GfycatApiKit] ERROR : Invalid Redirect URL. Please set a valid value for the key \"%@\" in the App's Info.plist file",kGfycatAppRedirectURLConfigurationKey);
-        }
-        
-        self.keychainStore = [UICKeyChainStore keyChainStoreWithService:GfycatApiKitKeychainStore];
-        self.accessToken = self.keychainStore[kKeychainAccessTokenKey];
-        _username = self.keychainStore[kKeychainUsernameKey];
-        _password = self.keychainStore[kKeychainPasswordKey];
-        _refreshToken = self.keychainStore[kKeychainRefreshTokenKey];
-        _refreshTokenExpirationDate = [self.dateFormatter dateFromString:self.keychainStore[kKeychainRefreshTokenExpirationDateKey]];
-        _accessTokenExpirationDate = [self.dateFormatter dateFromString:self.keychainStore[kKeychainAccessTokenExpirationDateKey]];
+        [self configureHTTPManagersWithBaseURL:baseURL];
+        [self configureCredentials];
     }
+    
     return self;
+}
+
+- (void)configureHTTPManagersWithBaseURL:(NSURL *)baseURL
+{
+    self.httpManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    self.httpManager.responseSerializer = [AFJSONResponseSerializer new];
+    self.httpManager.requestSerializer = [AFJSONRequestSerializer new];
+    
+    self.httpUploadManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
+    self.httpUploadManager.responseSerializer = [AFHTTPResponseSerializer new];
+    self.httpUploadManager.requestSerializer = [AFHTTPRequestSerializer new];
+}
+
+- (void)configureCredentials
+{
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    
+    self.appClientID = info[kGfycatAppClientIdConfigurationKey];
+    self.appClientSecret = info[kGfycatAppClientSecretConfigurationKey];
+    self.keychainStore = [UICKeyChainStore keyChainStoreWithService:GfycatApiKitKeychainStore];
+    self.accessToken = self.keychainStore[kKeychainAccessTokenKey];
+    _username = self.keychainStore[kKeychainUsernameKey];
+    _password = self.keychainStore[kKeychainPasswordKey];
+    _refreshToken = self.keychainStore[kKeychainRefreshTokenKey];
+    _refreshTokenExpirationDate = [self.dateFormatter dateFromString:self.keychainStore[kKeychainRefreshTokenExpirationDateKey]];
+    _accessTokenExpirationDate = [self.dateFormatter dateFromString:self.keychainStore[kKeychainAccessTokenExpirationDateKey]];
+}
+
+- (void)setAppClientID:(NSString *)appClientID withSecret:(NSString *)appClientSecret
+{
+    self.appClientID = appClientID;
+    self.appClientSecret = appClientSecret;
+}
+
+- (void)setBaseURL:(NSURL *)baseURL
+{
+    [self configureHTTPManagersWithBaseURL:baseURL];
 }
 
 #pragma mark -

@@ -53,6 +53,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy, readonly, nullable) NSString *username;
 
+/**
+ *  Allow to set custom application ID and application secret from code.
+ */
+- (void)setAppClientID:(NSString *)appClientID withSecret:(NSString *)appClientSecret;
+
+/**
+ *  Setting custom base URL to make API calls.
+ */
+- (void)setBaseURL:(NSURL *)baseURL;
+
 #pragma mark - Authentication -
 
 /**
