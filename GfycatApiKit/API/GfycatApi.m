@@ -119,6 +119,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     self.appClientSecret = info[kGfycatAppClientSecretConfigurationKey];
     self.keychainStore = [UICKeyChainStore keyChainStoreWithService:GfycatApiKitKeychainStore];
     self.accessToken = self.keychainStore[kKeychainAccessTokenKey];
+    self.sharedContainerIdentifier = info[kGfycatApiKitSharedContainerIdentifierConfigurationKey];
     _username = self.keychainStore[kKeychainUsernameKey];
     _password = self.keychainStore[kKeychainPasswordKey];
     _refreshToken = self.keychainStore[kKeychainRefreshTokenKey];

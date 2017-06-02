@@ -63,6 +63,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setBaseURL:(NSURL *)baseURL;
 
+/**
+ *  The identifier of the shared data container into which files in background sessions should be downloaded.
+ *  App extensions wishing to use background sessions *must* set this property to a valid container identifier, or
+ *  all transfers in that session will fail with NSURLErrorBackgroundSessionRequiresSharedContainer.
+ */
+@property (nonatomic, copy, nullable) NSString *sharedContainerIdentifier;
+
+
 #pragma mark - Authentication -
 
 /**

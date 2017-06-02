@@ -50,6 +50,10 @@ extern NSString *const kGfycatAppClientIdConfigurationKey;
  */
 extern NSString *const kGfycatAppClientSecretConfigurationKey;
 
+/**
+ *  Configuration Key for the Gfycat API's sharedContainerIdentifier
+ */
+extern NSString *const kGfycatApiKitSharedContainerIdentifierConfigurationKey;
 
 /*!
  @typedef   GfycatApiKitLoginScope enum
