@@ -88,7 +88,7 @@
         self.gif5MbUrl = [NSURL URLWithString:gfyItem[kGif5MbUrl]];
         number = gfyItem[kHeight]; self.height = number.integerValue;
         self.categories = gfyItem[kCategories];
-        number = gfyItem[kLikes]; self.likes = number.integerValue;
+        number = GfyNotNull(gfyItem[kLikes]) ? gfyItem[kLikes] : nil ; self.likes = number.integerValue;
         self.md5 = GfyNotNull(gfyItem[kMd5]) ? [[NSString alloc] initWithString:gfyItem[kMd5]] : nil;
         number = gfyItem[kMpgSize]; self.mpgSize = number.integerValue;
         self.mpgUrl = [NSURL URLWithString:gfyItem[kMpgUrl]];

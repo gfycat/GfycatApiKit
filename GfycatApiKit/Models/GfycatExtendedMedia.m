@@ -23,7 +23,7 @@
     if (self && GfyNotNull(info)) {
         NSMutableDictionary *gfyItem = GfyNotNull(info[kGfyItem]) ? info[kGfyItem] : info;
         
-        NSNumber *number = gfyItem[kLikeState]; self.likeState = number.integerValue;
+        NSNumber *number = GfyNotNull(gfyItem[kLikeState]) ? gfyItem[kLikeState] : nil; self.likeState = number.integerValue;
         number = gfyItem[kBookmarkState]; self.bookmarkState = number.integerValue;
     }
     return self;
