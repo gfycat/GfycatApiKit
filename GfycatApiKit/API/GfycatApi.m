@@ -20,6 +20,7 @@
 
 #import "GfycatApi.h"
 #import "GfycatMedia.h"
+#import "GfycatExtendedMedia.h"
 #import "GfycatCategory.h"
 #import "GfycatPaginationInfo.h"
 #import "GfycatUploadKey.h"
@@ -449,6 +450,23 @@ NSInteger const kTokenExpirationThreshold = 30;
                      }];
 }
 
+- (void)putPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(GfycatResponseBlock)success
+        failure:(nullable GfycatFailureBlock)failure {
+    
+    NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
+    [self.httpManager PUT:path
+               parameters:params
+                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                      GfySafeExecute(success, (NSDictionary *)responseObject);
+                  }
+                  failure:^(NSURLSessionDataTask *task, NSError *error) {
+                      GfySafeExecute(failure, error,((NSHTTPURLResponse*)[task response]).statusCode);
+                  }];
+    
+}
+
 
 #pragma mark - Media -
 
@@ -462,6 +480,19 @@ NSInteger const kTokenExpirationThreshold = 30;
         [weakSelf getPath:[kGfycatApiKitBaseURL stringByAppendingFormat:@"/gfycats/%@", mediaId]
                parameters:@{}
             responseModel:[GfycatMedia class]
+                  success:success
+                  failure:failure];
+    } failure:^(NSError *error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
+
+- (void)getExtendedMedia:(NSString *)mediaId withSuccess:(GfycatExtendedMediaObjectBlock)success failure:(nullable GfycatFailureBlock)failure {
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        [weakSelf getPath:[kGfycatApiKitBaseURL stringByAppendingFormat:@"/me/gfycats/%@/full", mediaId]
+               parameters:@{}
+            responseModel:[GfycatExtendedMedia class]
                   success:success
                   failure:failure];
     } failure:^(NSError *error, NSInteger serverStatusCode) {
@@ -556,6 +587,39 @@ NSInteger const kTokenExpirationThreshold = 30;
                                                                            }];
     [downloadTask resume];
     return [self.httpManager downloadProgressForTask:downloadTask];
+}
+
+- (void)likeMedia:(NSString *)mediaId forTag:(nullable NSString *)tag withSuccess:(GfycatResponseBlock)success failure:(nullable GfycatFailureBlock)failure
+{
+    __weak __typeof(self) weakSelf = self;
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:@{
+                                                                                    @"value" : @"1",
+                                                                                    }];
+    if (tag) {
+        params[@"tag"] = tag;
+    }
+    
+    [weakSelf putPath:[kGfycatApiKitBaseURL stringByAppendingFormat:@"/me/gfycats/%@/like", mediaId] parameters:params success:^(NSDictionary * _Nonnull serverResponse) {
+        GfySafeExecute(success, serverResponse);
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
+
+- (void)dislikeMedia:(NSString *)mediaId forTag:(nullable NSString *)tag withSuccess:(GfycatResponseBlock)success failure:(nullable GfycatFailureBlock)failure {
+    __weak __typeof(self) weakSelf = self;
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:@{
+                                                                                    @"value" : @"1",
+                                                                                    }];
+    if (tag) {
+        params[@"tag"] = tag;
+    }
+    
+    [weakSelf putPath:[kGfycatApiKitBaseURL stringByAppendingFormat:@"/me/gfycats/%@/dislike", mediaId] parameters:params success:^(NSDictionary * _Nonnull serverResponse) {
+        GfySafeExecute(success, serverResponse);
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
 }
 
 #pragma mark - Users -

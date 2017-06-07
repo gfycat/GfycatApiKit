@@ -141,6 +141,17 @@ NS_ASSUME_NONNULL_BEGIN
          failure:(nullable GfycatFailureBlock)failure;
 
 /**
+ *  Get user-specific information about a Media object.
+ *
+ *  @param mediaId  Id of a Media object.
+ *  @param success  Provides a fully populated Media object.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)getExtendedMedia:(NSString *)mediaId
+             withSuccess:(GfycatExtendedMediaObjectBlock)success
+                 failure:(nullable GfycatFailureBlock)failure;
+
+/**
  *  Get list of all categories.
  *
  *  @param success  Provides a media list object.
@@ -185,6 +196,32 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSProgress *)downloadFileWithURL:(NSURL * _Nullable)url
                          completion:(void(^)(NSURLResponse * _Nullable response, NSURL * _Nullable filePath, NSError * _Nullable error))completion;
+
+/**
+ *  Like published Media.
+ *
+ *  @param mediaId  Id of a Media object.
+ *  @param tag      Tag of a Media object.
+ *  @param success  Provides a dictionary server response if any.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)likeMedia:(NSString *)mediaId
+           forTag:(nullable NSString *)tag
+      withSuccess:(GfycatResponseBlock)success
+          failure:(nullable GfycatFailureBlock)failure;
+
+/**
+ *  Dislike published Media.
+ *
+ *  @param mediaId  Id of a Media object.
+ *  @param tag      Tag of a Media object.
+ *  @param success  Provides a dictionary server response if any.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)dislikeMedia:(NSString *)mediaId
+              forTag:(nullable NSString *)tag
+         withSuccess:(GfycatResponseBlock)success
+             failure:(nullable GfycatFailureBlock)failure;
 
 #pragma mark - Common Pagination Request -
 

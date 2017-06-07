@@ -67,6 +67,10 @@ extern NSString *const kWebmUrl;
 extern NSString *const kWebpUrl;
 extern NSString *const kWidth;
 
+// GfycatExtendedMedia
+extern NSString *const kLikeState;
+extern NSString *const kBookmarkState;
+
 // GfycatCategory
 extern NSString *const kGfycats;
 extern NSString *const kTag;

@@ -76,7 +76,7 @@
         self.averageColor = GfyNotNull(gfyItem[kAverageColor]) ? [[NSString alloc] initWithString:gfyItem[kAverageColor]] : nil;
         self.createDate = [[NSDate alloc] initWithTimeIntervalSince1970:[gfyItem[kCreateDate] doubleValue]];
         self.caption = GfyNotNull(gfyItem[kCaption]) ? [[NSString alloc] initWithString:gfyItem[kCaption]] : nil;
-        NSNumber *number = gfyItem[kDislikes]; self.dislikes = number.integerValue;
+        NSNumber *number = GfyNotNull(gfyItem[kDislikes]) ? gfyItem[kDislikes] : nil; self.dislikes = number.integerValue;        
         number = gfyItem[kFrameRate]; self.frameRate = number.integerValue;
         self.gfyName = GfyNotNull(gfyItem[kGfyName]) ? [[NSString alloc] initWithString:gfyItem[kGfyName]] : nil;
         number = gfyItem[kGfyNumber]; self.gfyNumber = number.integerValue;
@@ -98,9 +98,9 @@
         self.nsfw = [gfyItem[kNsfw] boolValue];
         number = gfyItem[kNumberOfFrames]; self.numberOfFrames = number.integerValue;
         self.posterUrl = [NSURL URLWithString:gfyItem[kPosterUrl]];
-        self.published = [gfyItem[kPublished] boolValue];
+        self.published = GfyNotNull(gfyItem[kPublished]) ? [gfyItem[kPublished] boolValue] : NO;
         number = gfyItem[kSourceType]; self.sourceType = number.integerValue;
-        self.sourceUrl = [NSURL URLWithString:gfyItem[kSourceUrl]];
+        self.sourceUrl = GfyNotNull(gfyItem[kSourceUrl]) ? [NSURL URLWithString:gfyItem[kSourceUrl]] : nil;
         self.tags = gfyItem[kTags] == [NSNull null] ? [NSArray new] : gfyItem[kTags];
         self.thumbnail100Url = [NSURL URLWithString:gfyItem[kThumbnail100Url]];
         self.thumbnail320Url = [NSURL URLWithString:gfyItem[kThumbnail320Url]];

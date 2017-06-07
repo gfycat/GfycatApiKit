@@ -22,6 +22,7 @@
 #import "GfycatApi.h"
 #import "GfycatCategory.h"
 #import "GfycatMedia.h"
+#import "GfycatExtendedMedia.h"
 #import "GfycatModel.h"
 #import "GfycatPaginationInfo.h"
 #import "GfycatUploadKey.h"

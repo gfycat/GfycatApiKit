@@ -115,6 +115,7 @@ typedef NS_ENUM(NSInteger, GfycatApiKitErrorCode)
 
 @class GfycatUser;
 @class GfycatMedia;
+@class GfycatExtendedMedia;
 @class GfycatPaginationInfo;
 @class GfycatModel;
 @class GfycatCategories;
@@ -173,6 +174,13 @@ typedef void (^GfycatUserBlock)(GfycatUser *user);
  *  @param media    An GfycatMedia object.
  */
 typedef void (^GfycatMediaObjectBlock)(GfycatMedia *media);
+
+/**
+ *  A callback block providing a extended Media object.
+ *
+ *  @param media    An GfycatExtendedMedia object.
+ */
+typedef void (^GfycatExtendedMediaObjectBlock)(GfycatExtendedMedia *media);
 
 /**
  *  A callback block providing a GfycatUploadKey object.

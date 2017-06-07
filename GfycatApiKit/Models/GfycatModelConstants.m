@@ -69,6 +69,10 @@ NSString *const kWidth =            @"width";
 NSString *const kGfycatMediaCollection =
                                     @"gfycatMediaCollection";
 
+// GfycatExtendedMedia
+NSString *const kLikeState =        @"likeState";
+NSString *const kBookmarkState =    @"bookmarkState";
+
 // GfycatCategory
 NSString *const kGfycats =          @"gfycats";
 NSString *const kTag =              @"tag";
