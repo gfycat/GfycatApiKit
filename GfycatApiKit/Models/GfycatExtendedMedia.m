@@ -8,6 +8,7 @@
 
 #import "GfycatExtendedMedia.h"
 #import "GfycatModelConstants.h"
+#import "NSDictionary+Gfycat.h"
 
 @interface GfycatExtendedMedia ()
 
@@ -22,9 +23,9 @@
     self = [super initWithInfo:info];
     if (self && GfyNotNull(info)) {
         NSMutableDictionary *gfyItem = GfyNotNull(info[kGfyItem]) ? info[kGfyItem] : info;
-        
-        NSNumber *number = GfyNotNull(gfyItem[kLikeState]) ? gfyItem[kLikeState] : nil; self.likeState = number.integerValue;
-        number = gfyItem[kBookmarkState]; self.bookmarkState = number.integerValue;
+                
+        self.likeState = [gfyItem gfy_integerValueForKey:kLikeState];
+        self.bookmarkState = [gfyItem gfy_integerValueForKey:kBookmarkState];
     }
     return self;
 }

@@ -13,7 +13,7 @@
 - (nullable NSNumber *)gfy_numberValueForKey:(NSString *)key
 {
     id value = self[key];
-    if (!value || [value isEqual:[NSNull null]] || [value isEqual:@"<null>"]) {
+    if (!value || value == [NSNull null] || [value isEqual:@"<null>"]) {
         return nil;
     }
     
@@ -27,7 +27,7 @@
 - (nullable NSString *)gfy_stringValueForKey:(NSString *)key
 {
     id value = self[key];
-    if (!value || [value isEqual:[NSNull null]] || [value isEqual:@"<null>"]) {
+    if (!value || value == [NSNull null] || [value isEqual:@"<null>"]) {
         return nil;
     }
     
@@ -41,7 +41,7 @@
 - (nullable NSURL *)gfy_urlValueForKey:(NSString *)key
 {
     id value = self[key];
-    if (!value || [value isEqual:[NSNull null]] || [value isEqual:@"<null>"]) {
+    if (!value || value == [NSNull null] || [value isEqual:@"<null>"]) {
         return nil;
     }
     
@@ -55,7 +55,7 @@
 - (nullable NSDate *)gfy_dateValueForKey:(NSString *)key
 {
     id value = self[key];
-    if (!value || [value isEqual:[NSNull null]] || [value isEqual:@"<null>"]) {
+    if (!value || value == [NSNull null] || [value isEqual:@"<null>"]) {
         return nil;
     }
     
@@ -69,7 +69,7 @@
 - (nullable NSArray *)gfy_arrayValueForKey:(NSString *)key
 {
     id value = self[key];
-    if (!value || [value isEqual:[NSNull null]] || [value isEqual:@"<null>"]) {
+    if (!value || value == [NSNull null] || [value isEqual:@"<null>"]) {
         return nil;
     }
     
@@ -83,7 +83,7 @@
 - (nullable NSDictionary *)gfy_dictionaryValueForKey:(NSString *)key
 {
     id value = self[key];
-    if (!value || [value isEqual:[NSNull null]] || [value isEqual:@"<null>"]) {
+    if (!value || value == [NSNull null] || [value isEqual:@"<null>"]) {
         return nil;
     }
     
@@ -97,29 +97,29 @@
 - (NSInteger)gfy_integerValueForKey:(NSString *)key
 {
     id value = self[key];
-    if (!value || [value isEqual:[NSNull null]] || [value isEqual:@"<null>"]) {
+    if (!value || value == [NSNull null] || [value isEqual:@"<null>"]) {
         return 0;
     }
     
-    if (![value isKindOfClass:[NSNumber class]]) {
-        return 0;
+    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]]) {
+        return [value integerValue];
     }
     
-    return [value integerValue];
+    return 0;
 }
 
 - (BOOL)gfy_boolValueForKey:(NSString *)key
 {
     id value = self[key];
-    if (!value || [value isEqual:[NSNull null]] || [value isEqual:@"<null>"]) {
+    if (!value || value == [NSNull null] || [value isEqual:@"<null>"]) {
         return NO;
     }
     
-    if (![value isKindOfClass:[NSNumber class]]) {
-        return NO;
+    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]]) {
+        return [value boolValue];
     }
     
-    return [value boolValue];
+    return NO;
 }
 
 @end

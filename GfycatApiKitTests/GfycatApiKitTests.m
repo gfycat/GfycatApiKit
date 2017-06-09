@@ -67,6 +67,13 @@
     XCTAssertEqual([dict gfy_integerValueForKey:@"str"], 0);
     XCTAssertNotEqual([dict gfy_integerValueForKey:@"numb"], 0);
     
+    XCTAssertNotEqual([dict gfy_integerValueForKey:@"boolT"], 0);
+    XCTAssertEqual([dict gfy_integerValueForKey:@"boolF"], 0);
+    XCTAssertEqual([dict gfy_integerValueForKey:@"url"], 0);
+    XCTAssertNotEqual([dict gfy_integerValueForKey:@"date"], 0);
+    XCTAssertEqual([dict gfy_integerValueForKey:@"array"], 0);
+    XCTAssertEqual([dict gfy_integerValueForKey:@"dict"], 0);
+    
     XCTAssertFalse([dict gfy_boolValueForKey:@"nullStr"]);
     XCTAssertFalse([dict gfy_boolValueForKey:@"null"]);
     XCTAssertFalse([dict gfy_boolValueForKey:@"str"]);

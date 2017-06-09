@@ -21,6 +21,7 @@
 #import "GfycatMedia.h"
 #import "GfycatModelConstants.h"
 #import "GfycatApiConstants.h"
+#import "NSDictionary+Gfycat.h"
 
 @interface GfycatMedia ()
 
@@ -73,45 +74,45 @@
     if (self && GfyNotNull(info)) {
         NSMutableDictionary *gfyItem = GfyNotNull(info[kGfyItem]) ? info[kGfyItem] : info;
         
-        self.averageColor = GfyNotNull(gfyItem[kAverageColor]) ? [[NSString alloc] initWithString:gfyItem[kAverageColor]] : nil;
-        self.createDate = [[NSDate alloc] initWithTimeIntervalSince1970:[gfyItem[kCreateDate] doubleValue]];
-        self.caption = GfyNotNull(gfyItem[kCaption]) ? [[NSString alloc] initWithString:gfyItem[kCaption]] : nil;
-        NSNumber *number = GfyNotNull(gfyItem[kDislikes]) ? gfyItem[kDislikes] : nil; self.dislikes = number.integerValue;        
-        number = gfyItem[kFrameRate]; self.frameRate = number.integerValue;
-        self.gfyName = GfyNotNull(gfyItem[kGfyName]) ? [[NSString alloc] initWithString:gfyItem[kGfyName]] : nil;
-        number = gfyItem[kGfyNumber]; self.gfyNumber = number.integerValue;
-        number = gfyItem[kGifSize]; self.gifSize = number.integerValue;
-        self.gifUrl = [NSURL URLWithString:gfyItem[kGifUrl]];
-        self.gif100Url = [NSURL URLWithString:gfyItem[kGif100Url]];
-        self.gif1MbUrl = [NSURL URLWithString:gfyItem[kGif1MbUrl]];
-        self.gif2MbUrl = [NSURL URLWithString:gfyItem[kGif2MbUrl]];
-        self.gif5MbUrl = [NSURL URLWithString:gfyItem[kGif5MbUrl]];
-        number = gfyItem[kHeight]; self.height = number.integerValue;
-        self.categories = gfyItem[kCategories];
-        number = GfyNotNull(gfyItem[kLikes]) ? gfyItem[kLikes] : nil ; self.likes = number.integerValue;
-        self.md5 = GfyNotNull(gfyItem[kMd5]) ? [[NSString alloc] initWithString:gfyItem[kMd5]] : nil;
-        number = gfyItem[kMpgSize]; self.mpgSize = number.integerValue;
-        self.mpgUrl = [NSURL URLWithString:gfyItem[kMpgUrl]];
-        self.mpg320Url = [NSURL URLWithString:gfyItem[kMpg320Url]];
-        self.mpg640Url = [NSURL URLWithString:gfyItem[kMpg640Url]];
-        self.mjpgUrl = [NSURL URLWithString:gfyItem[kMjpgUrl]];
-        self.nsfw = [gfyItem[kNsfw] boolValue];
-        number = gfyItem[kNumberOfFrames]; self.numberOfFrames = number.integerValue;
-        self.posterUrl = [NSURL URLWithString:gfyItem[kPosterUrl]];
-        self.published = GfyNotNull(gfyItem[kPublished]) ? [gfyItem[kPublished] boolValue] : NO;
-        number = gfyItem[kSourceType]; self.sourceType = number.integerValue;
-        self.sourceUrl = GfyNotNull(gfyItem[kSourceUrl]) ? [NSURL URLWithString:gfyItem[kSourceUrl]] : nil;
-        self.tags = gfyItem[kTags] == [NSNull null] ? [NSArray new] : gfyItem[kTags];
-        self.thumbnail100Url = [NSURL URLWithString:gfyItem[kThumbnail100Url]];
-        self.thumbnail320Url = [NSURL URLWithString:gfyItem[kThumbnail320Url]];
-        self.thumbnail640Url = [NSURL URLWithString:gfyItem[kThumbnail640Url]];
-        self.title = GfyNotNull(gfyItem[kTitle]) ? [[NSString alloc] initWithString:gfyItem[kTitle]] : nil;
-        self.userName = GfyNotNull(gfyItem[kUserName]) ? [[NSString alloc] initWithString:gfyItem[kUserName]] : nil;
-        number = gfyItem[kViews]; self.views = number.integerValue;
-        number = gfyItem[kWebmSize]; self.webmSize = number.integerValue;
-        self.webmUrl = [NSURL URLWithString:gfyItem[kWebmUrl]];
-        self.webpUrl = [NSURL URLWithString:gfyItem[kWebpUrl]];
-        number = GfyNotNull(gfyItem[kWidth]) ? gfyItem[kWidth] : nil; self.width = number.integerValue;
+        self.averageColor = [gfyItem gfy_stringValueForKey:kAverageColor];
+        self.createDate = [gfyItem gfy_dateValueForKey:kCreateDate];
+        self.caption = [gfyItem gfy_stringValueForKey:kCaption];
+        self.dislikes = [gfyItem gfy_integerValueForKey:kDislikes];
+        self.frameRate = [gfyItem gfy_integerValueForKey:kFrameRate];
+        self.gfyName = [gfyItem gfy_stringValueForKey:kGfyName];
+        self.gfyNumber = [gfyItem gfy_integerValueForKey:kGfyNumber];
+        self.gifSize = [gfyItem gfy_integerValueForKey:kGifSize];
+        self.gifUrl = [gfyItem gfy_urlValueForKey:kGifUrl];
+        self.gif100Url = [gfyItem gfy_urlValueForKey:kGif100Url];
+        self.gif1MbUrl = [gfyItem gfy_urlValueForKey:kGif1MbUrl];
+        self.gif2MbUrl = [gfyItem gfy_urlValueForKey:kGif2MbUrl];
+        self.gif5MbUrl = [gfyItem gfy_urlValueForKey:kGif5MbUrl];
+        self.height = [gfyItem gfy_integerValueForKey:kHeight];
+        self.categories = [gfyItem gfy_arrayValueForKey:kCategories];
+        self.likes = [gfyItem gfy_integerValueForKey:kLikes];
+        self.md5 = [gfyItem gfy_stringValueForKey:kMd5];
+        self.mpgSize = [gfyItem gfy_integerValueForKey:kMpgSize];
+        self.mpgUrl = [gfyItem gfy_urlValueForKey:kMpgUrl];
+        self.mpg320Url = [gfyItem gfy_urlValueForKey:kMpg320Url];
+        self.mpg640Url = [gfyItem gfy_urlValueForKey:kMpg640Url];
+        self.mjpgUrl = [gfyItem gfy_urlValueForKey:kMjpgUrl];
+        self.nsfw = [gfyItem gfy_boolValueForKey:kNsfw];
+        self.numberOfFrames = [gfyItem gfy_integerValueForKey:kNumberOfFrames];
+        self.posterUrl = [gfyItem gfy_urlValueForKey:kPosterUrl];
+        self.published = [gfyItem gfy_boolValueForKey:kPublished];
+        self.sourceType = [gfyItem gfy_integerValueForKey:kSourceType];
+        self.sourceUrl = [gfyItem gfy_urlValueForKey:kSourceUrl];
+        self.tags = [gfyItem gfy_arrayValueForKey:kTags] ?: [NSArray new];
+        self.thumbnail100Url = [gfyItem gfy_urlValueForKey:kThumbnail100Url];
+        self.thumbnail320Url = [gfyItem gfy_urlValueForKey:kThumbnail320Url];
+        self.thumbnail640Url = [gfyItem gfy_urlValueForKey:kThumbnail640Url];
+        self.title = [gfyItem gfy_stringValueForKey:kTitle];
+        self.userName = [gfyItem gfy_stringValueForKey:kUserName];
+        self.views = [gfyItem gfy_integerValueForKey:kViews];
+        self.webmSize = [gfyItem gfy_integerValueForKey:kWebmSize];
+        self.webmUrl = [gfyItem gfy_urlValueForKey:kWebmUrl];
+        self.webpUrl = [gfyItem gfy_urlValueForKey:kWebpUrl];
+        self.width = [gfyItem gfy_integerValueForKey:kWidth];
     }
     return self;
 }
