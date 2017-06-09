@@ -69,6 +69,8 @@
 
 @implementation GfycatMedia
 
+@synthesize size = _size;
+
 - (instancetype)initWithInfo:(NSDictionary *)info {
     self = [super initWithInfo:info];
     if (self && GfyNotNull(info)) {
@@ -217,60 +219,47 @@
 - (id)copyWithZone:(NSZone *)zone {
     GfycatMedia *copy = [super copyWithZone:zone];
     
-    copy->_averageColor = [self.averageColor copy];
-    copy->_createDate = [self.createDate copy];
-    copy->_caption = [self.caption copy];
-    copy->_dislikes = self.dislikes;
-    copy->_frameRate = self.frameRate;
-    copy->_gfyName = [self.gfyName copy];
-    copy->_gfyNumber = self.gfyNumber;
-    copy->_gifSize = self.gifSize;
-    copy->_gifUrl = [self.gifUrl copy];
-    copy->_gif100Url = [self.gif100Url copy];
-    copy->_gif1MbUrl = [self.gif1MbUrl copy];
-    copy->_gif2MbUrl = [self.gif2MbUrl copy];
-    copy->_gif5MbUrl = [self.gif5MbUrl copy];
-    copy->_height = self.height;
-    copy->_categories = [self.categories copy];
-    copy->_likes = self.likes;
-    copy->_md5 = [self.md5 copy];
-    copy->_mpgSize = self.mpgSize;
-    copy->_mpgUrl = [self.mpgUrl copy];
-    copy->_mpg320Url = [self.mpg320Url copy];
-    copy->_mpg640Url = [self.mpg640Url copy];
-    copy->_mjpgUrl = [self.mjpgUrl copy];
-    copy->_nsfw = self.nsfw;
-    copy->_numberOfFrames = self.numberOfFrames;
-    copy->_posterUrl = [self.posterUrl copy];
-    copy->_published = self.published;
-    copy->_sourceType = self.sourceType;
-    copy->_sourceUrl = [self.sourceUrl copy];
-    copy->_tags = [self.tags copy];
-    copy->_thumbnail100Url = [self.thumbnail100Url copy];
-    copy->_thumbnail320Url = [self.thumbnail320Url copy];
-    copy->_thumbnail640Url = [self.thumbnail640Url copy];
-    copy->_title = [self.title copy];
-    copy->_userName = [self.userName copy];
-    copy->_views = self.views;
-    copy->_webmSize = self.webmSize;
-    copy->_webmUrl = [self.webmUrl copy];
-    copy->_webpUrl = [self.webpUrl copy];
-    copy->_width = self.width;
+    copy.averageColor = [self.averageColor copy];
+    copy.createDate = [self.createDate copy];
+    copy.caption = [self.caption copy];
+    copy.dislikes = self.dislikes;
+    copy.frameRate = self.frameRate;
+    copy.gfyName = [self.gfyName copy];
+    copy.gfyNumber = self.gfyNumber;
+    copy.gifSize = self.gifSize;
+    copy.gifUrl = [self.gifUrl copy];
+    copy.gif100Url = [self.gif100Url copy];
+    copy.gif1MbUrl = [self.gif1MbUrl copy];
+    copy.gif2MbUrl = [self.gif2MbUrl copy];
+    copy.gif5MbUrl = [self.gif5MbUrl copy];
+    copy.height = self.height;
+    copy.categories = [self.categories copy];
+    copy.likes = self.likes;
+    copy.md5 = [self.md5 copy];
+    copy.mpgSize = self.mpgSize;
+    copy.mpgUrl = [self.mpgUrl copy];
+    copy.mpg320Url = [self.mpg320Url copy];
+    copy.mpg640Url = [self.mpg640Url copy];
+    copy.mjpgUrl = [self.mjpgUrl copy];
+    copy.nsfw = self.nsfw;
+    copy.numberOfFrames = self.numberOfFrames;
+    copy.posterUrl = [self.posterUrl copy];
+    copy.published = self.published;
+    copy.sourceType = self.sourceType;
+    copy.sourceUrl = [self.sourceUrl copy];
+    copy.tags = [self.tags copy];
+    copy.thumbnail100Url = [self.thumbnail100Url copy];
+    copy.thumbnail320Url = [self.thumbnail320Url copy];
+    copy.thumbnail640Url = [self.thumbnail640Url copy];
+    copy.title = [self.title copy];
+    copy.userName = [self.userName copy];
+    copy.views = self.views;
+    copy.webmSize = self.webmSize;
+    copy.webmUrl = [self.webmUrl copy];
+    copy.webpUrl = [self.webpUrl copy];
+    copy.width = self.width;
 
     return copy;
-}
-
-- (NSURL *)webpUrl {
-    if (_webpUrl != nil) {
-        return _webpUrl;
-    } else {
-        //NSLog(@"WARNING: WebP URL Missing!"); // TODO - Remove once assured every API endpoint returns the webp url
-        return self.gfyName.length ? [NSURL URLWithString:[NSString stringWithFormat:@"http://thumbs.gfycat.com/%@.webp", self.gfyName]] : nil;
-    }
-}
-
-- (NSURL *)gfyUrl {
-    return self.gfyName.length ? [NSURL URLWithString:[NSString stringWithFormat:@"https://gfycat.com/gifs/detail/%@", self.gfyName]] : nil;
 }
 
 - (CGSize)size {

@@ -73,6 +73,9 @@ NSString *const kGfycatMediaCollection =
 NSString *const kLikeState =        @"likeState";
 NSString *const kBookmarkState =    @"bookmarkState";
 
+// GfycatReferencedMedia
+NSString *const kColor =            @"color";
+
 // GfycatCategory
 NSString *const kGfycats =          @"gfycats";
 NSString *const kTag =              @"tag";

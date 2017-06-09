@@ -27,3 +27,4 @@
 #import "GfycatPaginationInfo.h"
 #import "GfycatUploadKey.h"
 #import "GfycatEventTracker.h"
+#import "GfycatReferencedMedia.h"

@@ -71,6 +71,9 @@ extern NSString *const kWidth;
 extern NSString *const kLikeState;
 extern NSString *const kBookmarkState;
 
+// GfycatReferencedMedia
+extern NSString *const kColor;
+
 // GfycatCategory
 extern NSString *const kGfycats;
 extern NSString *const kTag;
