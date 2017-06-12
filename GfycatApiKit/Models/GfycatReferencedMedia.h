@@ -11,11 +11,6 @@
 
 @interface GfycatReferencedMedia : GfycatModel <NSCopying, NSSecureCoding, NSObject>
 
-//@property (strong, nonatomic) NSString *gfyName;
-//@property (strong, nonatomic) NSString *color;
-//@property (nonatomic) CGFloat width;
-//@property (nonatomic) CGFloat height;
-
 /**
  *  The average color value of the Media in HEX format.  e.g. "#010202"
  */
