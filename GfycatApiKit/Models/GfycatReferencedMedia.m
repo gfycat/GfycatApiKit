@@ -49,6 +49,8 @@
 @property (nonatomic, assign) NSInteger webmSize;
 @property (nonatomic, strong) NSURL *webmUrl;
 @property (nonatomic, strong) NSURL *webpUrl;
+@property (nonatomic, assign) NSInteger width;
+@property (nonatomic, assign) NSInteger height;
 
 @end
 
@@ -171,9 +173,45 @@
 
 - (id)initWithCoder:(NSCoder *)decoder {
     if ((self = [super initWithCoder:decoder])) {
-        self.averageColor = [decoder decodeObjectForKey:kColor];
-        self.gfyName = [decoder decodeObjectForKey:kGfyName];
-        self.size = CGSizeMake([decoder decodeIntegerForKey:kWidth], [decoder decodeIntegerForKey:kHeight]);
+        self.averageColor = [decoder decodeObjectOfClass:[NSString class] forKey:kAverageColor];
+        self.createDate = [decoder decodeObjectOfClass:[NSString class] forKey:kCreateDate];
+        self.caption = [decoder decodeObjectOfClass:[NSString class] forKey:kCaption];
+        self.dislikes = [decoder decodeIntegerForKey:kDislikes];
+        self.frameRate = [decoder decodeIntegerForKey:kFrameRate];
+        self.gfyName = [decoder decodeObjectOfClass:[NSString class] forKey:kGfyName];
+        self.gfyNumber = [decoder decodeIntegerForKey:kGfyNumber];
+        self.gifSize =  [decoder decodeIntegerForKey:kGifSize];
+        self.gifUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kGifUrl];
+        self.gif100Url = [decoder decodeObjectOfClass:[NSURL class] forKey:kGif100Url];
+        self.gif1MbUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kGif1MbUrl];
+        self.gif2MbUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kGif2MbUrl];
+        self.gif5MbUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kGif5MbUrl];
+        self.height = [decoder decodeIntegerForKey:kHeight];
+        self.categories = [[decoder decodeObjectOfClass:[NSArray class] forKey:kCategories] copy];
+        self.likes = [decoder decodeIntegerForKey:kFrameRate];
+        self.md5 = [decoder decodeObjectOfClass:[NSString class] forKey:kMd5];
+        self.mpgSize = [decoder decodeIntegerForKey:kFrameRate];
+        self.mpgUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kMpgUrl];
+        self.mpg320Url = [decoder decodeObjectOfClass:[NSURL class] forKey:kMpg320Url];
+        self.mpg640Url = [decoder decodeObjectOfClass:[NSURL class] forKey:kMpg640Url];
+        self.mjpgUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kMjpgUrl];
+        self.nsfw = [decoder decodeBoolForKey:kNsfw];
+        self.numberOfFrames = [decoder decodeIntegerForKey:kNumberOfFrames];
+        self.posterUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kPosterUrl];
+        self.published = [decoder decodeBoolForKey:kPublished];
+        self.sourceType = [decoder decodeIntegerForKey:kSourceType];
+        self.sourceUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kSourceUrl];
+        self.tags = [[decoder decodeObjectOfClass:[NSArray class] forKey:kTags] copy];
+        self.thumbnail100Url = [decoder decodeObjectOfClass:[NSURL class] forKey:kThumbnail100Url];
+        self.thumbnail320Url = [decoder decodeObjectOfClass:[NSURL class] forKey:kThumbnail320Url];
+        self.thumbnail640Url = [decoder decodeObjectOfClass:[NSURL class] forKey:kThumbnail640Url];
+        self.title = [decoder decodeObjectOfClass:[NSString class] forKey:kTitle];
+        self.userName = [decoder decodeObjectOfClass:[NSString class] forKey:kUserName];
+        self.views = [decoder decodeIntegerForKey:kViews];
+        self.webmSize = [decoder decodeIntegerForKey:kWebmSize];
+        self.webmUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kWebmUrl];
+        self.webpUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kWebpUrl];
+        self.width = [decoder decodeIntegerForKey:kWidth];
     }
     return self;
 }
@@ -181,10 +219,45 @@
 - (void)encodeWithCoder:(NSCoder *)encoder {
     [super encodeWithCoder:encoder];
     
-    [encoder encodeInteger:self.size.width forKey:kWidth];
-    [encoder encodeInteger:self.size.height forKey:kHeight];
-    [encoder encodeObject:self.averageColor forKey:kColor];
+    [encoder encodeObject:self.averageColor forKey:kAverageColor];
+    [encoder encodeObject:self.createDate forKey:kCreateDate];
+    [encoder encodeObject:self.caption forKey:kCaption];
+    [encoder encodeInteger:self.dislikes forKey:kDislikes];
+    [encoder encodeInteger:self.frameRate forKey:kFrameRate];
     [encoder encodeObject:self.gfyName forKey:kGfyName];
+    [encoder encodeInteger:self.gfyNumber forKey:kGfyNumber];
+    [encoder encodeInteger:self.gifSize forKey:kGifSize];
+    [encoder encodeObject:self.gifUrl forKey:kGifUrl];
+    [encoder encodeObject:self.gif100Url forKey:kGif100Url];
+    [encoder encodeObject:self.gif1MbUrl forKey:kGif1MbUrl];
+    [encoder encodeObject:self.gif2MbUrl forKey:kGif2MbUrl];
+    [encoder encodeObject:self.gif5MbUrl forKey:kGif5MbUrl];
+    [encoder encodeInteger:self.height forKey:kHeight];
+    [encoder encodeObject:self.categories forKey:kCategories];
+    [encoder encodeInteger:self.likes forKey:kLikes];
+    [encoder encodeObject:self.md5 forKey:kMd5];
+    [encoder encodeInteger:self.mpgSize forKey:kMpgSize];
+    [encoder encodeObject:self.mpgUrl forKey:kMpgUrl];
+    [encoder encodeObject:self.mpg320Url forKey:kMpg320Url];
+    [encoder encodeObject:self.mpg640Url forKey:kMpg640Url];
+    [encoder encodeObject:self.mjpgUrl forKey:kMjpgUrl];
+    [encoder encodeBool:self.nsfw forKey:kNsfw];
+    [encoder encodeInteger:self.numberOfFrames forKey:kNumberOfFrames];
+    [encoder encodeObject:self.posterUrl forKey:kPosterUrl];
+    [encoder encodeBool:self.published forKey:kPublished];
+    [encoder encodeInteger:self.sourceType forKey:kSourceType];
+    [encoder encodeObject:self.sourceUrl forKey:kSourceUrl];
+    [encoder encodeObject:self.tags forKey:kTags];
+    [encoder encodeObject:self.thumbnail100Url forKey:kThumbnail100Url];
+    [encoder encodeObject:self.thumbnail320Url forKey:kThumbnail320Url];
+    [encoder encodeObject:self.thumbnail640Url forKey:kThumbnail640Url];
+    [encoder encodeObject:self.title forKey:kTitle];
+    [encoder encodeObject:self.userName forKey:kUserName];
+    [encoder encodeInteger:self.views forKey:kViews];
+    [encoder encodeInteger:self.webmSize forKey:kWebmSize];
+    [encoder encodeObject:self.webmUrl forKey:kWebmUrl];
+    [encoder encodeObject:self.webpUrl forKey:kWebpUrl];
+    [encoder encodeInteger:self.width forKey:kWidth];
 }
 
 #pragma mark - NSCopying
@@ -192,9 +265,45 @@
 - (id)copyWithZone:(NSZone *)zone {
     GfycatReferencedMedia *copy = [super copyWithZone:zone];
     
-    copy->_averageColor = self.averageColor;
-    copy->_gfyName = self.gfyName;
-    copy->_size = self.size;
+    copy.averageColor = [self.averageColor copy];
+    copy.createDate = [self.createDate copy];
+    copy.caption = [self.caption copy];
+    copy.dislikes = self.dislikes;
+    copy.frameRate = self.frameRate;
+    copy.gfyName = [self.gfyName copy];
+    copy.gfyNumber = self.gfyNumber;
+    copy.gifSize = self.gifSize;
+    copy.gifUrl = [self.gifUrl copy];
+    copy.gif100Url = [self.gif100Url copy];
+    copy.gif1MbUrl = [self.gif1MbUrl copy];
+    copy.gif2MbUrl = [self.gif2MbUrl copy];
+    copy.gif5MbUrl = [self.gif5MbUrl copy];
+    copy.height = self.height;
+    copy.categories = [self.categories copy];
+    copy.likes = self.likes;
+    copy.md5 = [self.md5 copy];
+    copy.mpgSize = self.mpgSize;
+    copy.mpgUrl = [self.mpgUrl copy];
+    copy.mpg320Url = [self.mpg320Url copy];
+    copy.mpg640Url = [self.mpg640Url copy];
+    copy.mjpgUrl = [self.mjpgUrl copy];
+    copy.nsfw = self.nsfw;
+    copy.numberOfFrames = self.numberOfFrames;
+    copy.posterUrl = [self.posterUrl copy];
+    copy.published = self.published;
+    copy.sourceType = self.sourceType;
+    copy.sourceUrl = [self.sourceUrl copy];
+    copy.tags = [self.tags copy];
+    copy.thumbnail100Url = [self.thumbnail100Url copy];
+    copy.thumbnail320Url = [self.thumbnail320Url copy];
+    copy.thumbnail640Url = [self.thumbnail640Url copy];
+    copy.title = [self.title copy];
+    copy.userName = [self.userName copy];
+    copy.views = self.views;
+    copy.webmSize = self.webmSize;
+    copy.webmUrl = [self.webmUrl copy];
+    copy.webpUrl = [self.webpUrl copy];
+    copy.width = self.width;
     
     return copy;
 }
