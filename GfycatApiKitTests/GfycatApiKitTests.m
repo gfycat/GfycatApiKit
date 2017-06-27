@@ -20,6 +20,8 @@
 
 #import <XCTest/XCTest.h>
 #import "NSDictionary+Gfycat.h"
+#import "GfycatApi.h"
+#import "GfycatMedia.h"
 
 @interface GfycatApiKitTests : XCTestCase
 
@@ -106,6 +108,218 @@
     XCTAssertNil([dict gfy_dictionaryValueForKey:@"numb"]);
     XCTAssertNil([dict gfy_dictionaryValueForKey:@"array"]);
     XCTAssertNotNil([dict gfy_dictionaryValueForKey:@"dict"]);
+}
+
+- (void)testCreateAccount {
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    expectation.expectedFulfillmentCount = 2;
+    
+    NSUUID *userUUID = [NSUUID UUID];
+    
+    uuid_t uuidBytes;
+    [userUUID getUUIDBytes:uuidBytes];
+    // time-low(4bytes)"-"time-mid(2bytes)"-"time-high-and-version(2bytes, version - last 4 bits)"-"clock-seq-and-reserved(1byte, first 6 bits are less significant) clock-seq-low(1byte)"-"node(6bytes)
+    // merge 8th and 9th bytes info 8th and remove 9th
+    uuidBytes[8] = (uuidBytes[8] & 0xf0) | (uuidBytes[9] & 0x0f);
+    unsigned char loginUUID[15];
+    memcpy(loginUUID, &(uuidBytes[1]), sizeof(unsigned char) * 15);
+    memcpy(loginUUID, uuidBytes, sizeof(unsigned char) * 9);
+    
+    // now should be 20 chars length long
+    NSString *userName = [[NSData dataWithBytes:loginUUID length:sizeof(loginUUID)] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    userName = [userName stringByReplacingOccurrencesOfString:@"/" withString:@"0"];
+    userName = [userName stringByReplacingOccurrencesOfString:@"+" withString:@"0"];
+    userName = [userName stringByReplacingOccurrencesOfString:@"=" withString:@"0"];
+    
+    NSString *userPassword = userUUID.UUIDString;
+    
+    [GfycatApi.shared createAccountWithUsername:userName password:userPassword email:nil success:^(NSDictionary * _Nonnull serverResponse) {
+        NSString *accessToken = [serverResponse gfy_stringValueForKey:@"access_token"];
+        XCTAssertNotNil(accessToken);
+        
+        [GfycatApi.shared validateSession:^(NSDictionary * _Nonnull serverResponse) {
+            XCTAssertNotNil(accessToken);
+            [expectation fulfill];
+        } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+            XCTAssertNil(error);
+        }];
+        
+        [GfycatApi.shared refreshSession:^(NSDictionary * _Nonnull serverResponse) {
+            XCTAssertNotNil(accessToken);
+            [expectation fulfill];
+        } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+            XCTAssertNil(error);
+        }];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testGetMedia {
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    [GfycatApi.shared getMedia:@"ActualSlimyGilamonster" withSuccess:^(GfycatMedia * _Nonnull media) {
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testGetExtendedMedia {
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    [GfycatApi.shared getExtendedMedia:@"ActualSlimyGilamonster" withSuccess:^(GfycatExtendedMedia * _Nonnull media) {
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testGetCategories {
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    [GfycatApi.shared getCategoriesWithSuccess:^(GfycatCategories * _Nonnull categories, GfycatPaginationInfo * _Nullable paginationInfo) {
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testGetCategoryMedia {
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    NSInteger count = 5;
+    
+    [GfycatApi.shared getCategoryMedia:@"trending" count:count WithSuccess:^(GfycatMediaCollection * _Nonnull mediaCollection, GfycatPaginationInfo * _Nullable paginationInfo) {
+        XCTAssertTrue(mediaCollection.array.count <= count);
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testGetSearchMedia {
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    NSInteger count = 5;
+    
+    [GfycatApi.shared searchMediaWithString:@"hello" count:count withSuccess:^(GfycatMediaCollection * _Nonnull mediaCollection, GfycatPaginationInfo * _Nullable paginationInfo) {
+        XCTAssertTrue(mediaCollection.array.count <= count);
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testDownloadFile {
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    [GfycatApi.shared getMedia:@"ActualSlimyGilamonster" withSuccess:^(GfycatMedia * _Nonnull media) {
+        [GfycatApi.shared downloadFileWithURL:media.gfyUrl completion:^(NSURLResponse * _Nullable response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+            NSLog(@"");
+            XCTAssertNotNil(response);
+            XCTAssertNotNil(filePath);
+            XCTAssertNil(error);
+            [expectation fulfill];
+        }];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testLikeMedia {
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    [GfycatApi.shared likeMedia:@"ActualSlimyGilamonster" forTag:nil withSuccess:^(NSDictionary * _Nonnull serverResponse) {
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testDislikeMedia {
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    [GfycatApi.shared dislikeMedia:@"ActualSlimyGilamonster" forTag:nil withSuccess:^(NSDictionary * _Nonnull serverResponse) {
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
 }
 
 @end
