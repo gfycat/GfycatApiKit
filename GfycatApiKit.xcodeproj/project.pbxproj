@@ -15,8 +15,8 @@
 		576DD1E91E92AB5500CAA1C9 /* UICKeyChainStore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 576DD1DF1E92AA4200CAA1C9 /* UICKeyChainStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D52979E1EB38F8C002C885D /* GfycatEventTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D52979C1EB38F8C002C885D /* GfycatEventTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D52979F1EB38F8C002C885D /* GfycatEventTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D52979D1EB38F8C002C885D /* GfycatEventTracker.m */; };
-		C60FDF651EEA9ACD0099F935 /* NSDictionary+Gfycat.h in Headers */ = {isa = PBXBuildFile; fileRef = C60FDF631EEA9ACD0099F935 /* NSDictionary+Gfycat.h */; };
-		C60FDF661EEA9ACD0099F935 /* NSDictionary+Gfycat.m in Sources */ = {isa = PBXBuildFile; fileRef = C60FDF641EEA9ACD0099F935 /* NSDictionary+Gfycat.m */; };
+		C60FDF651EEA9ACD0099F935 /* NSDictionary+GfycatApiKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C60FDF631EEA9ACD0099F935 /* NSDictionary+GfycatApiKit.h */; };
+		C60FDF661EEA9ACD0099F935 /* NSDictionary+GfycatApiKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C60FDF641EEA9ACD0099F935 /* NSDictionary+GfycatApiKit.m */; };
 		C6379DBF1EE8380F00D607BC /* GfycatExtendedMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = C6379DBD1EE8380F00D607BC /* GfycatExtendedMedia.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C6379DC01EE8380F00D607BC /* GfycatExtendedMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = C6379DBE1EE8380F00D607BC /* GfycatExtendedMedia.m */; };
 		D85A41D41EE99E9B00854D9D /* GfycatReferencedMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = D85A41D21EE99E9B00854D9D /* GfycatReferencedMedia.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -78,8 +78,8 @@
 		576DD1DF1E92AA4200CAA1C9 /* UICKeyChainStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UICKeyChainStore.framework; path = Carthage/Build/iOS/UICKeyChainStore.framework; sourceTree = "<group>"; };
 		9D52979C1EB38F8C002C885D /* GfycatEventTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatEventTracker.h; sourceTree = "<group>"; };
 		9D52979D1EB38F8C002C885D /* GfycatEventTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfycatEventTracker.m; sourceTree = "<group>"; };
-		C60FDF631EEA9ACD0099F935 /* NSDictionary+Gfycat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Gfycat.h"; sourceTree = "<group>"; };
-		C60FDF641EEA9ACD0099F935 /* NSDictionary+Gfycat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Gfycat.m"; sourceTree = "<group>"; };
+		C60FDF631EEA9ACD0099F935 /* NSDictionary+GfycatApiKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+GfycatApiKit.h"; sourceTree = "<group>"; };
+		C60FDF641EEA9ACD0099F935 /* NSDictionary+GfycatApiKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+GfycatApiKit.m"; sourceTree = "<group>"; };
 		C6379DBD1EE8380F00D607BC /* GfycatExtendedMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatExtendedMedia.h; sourceTree = "<group>"; };
 		C6379DBE1EE8380F00D607BC /* GfycatExtendedMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfycatExtendedMedia.m; sourceTree = "<group>"; };
 		D85A41D21EE99E9B00854D9D /* GfycatReferencedMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatReferencedMedia.h; sourceTree = "<group>"; };
@@ -159,8 +159,8 @@
 		C60FDF621EEA9AB20099F935 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				C60FDF631EEA9ACD0099F935 /* NSDictionary+Gfycat.h */,
-				C60FDF641EEA9ACD0099F935 /* NSDictionary+Gfycat.m */,
+				C60FDF631EEA9ACD0099F935 /* NSDictionary+GfycatApiKit.h */,
+				C60FDF641EEA9ACD0099F935 /* NSDictionary+GfycatApiKit.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -248,7 +248,7 @@
 				E17738091E3AC01100276E0E /* GfycatApi.h in Headers */,
 				9D52979E1EB38F8C002C885D /* GfycatEventTracker.h in Headers */,
 				E13B7F091E78B59D00D0D43F /* GfycatUploadKey.h in Headers */,
-				C60FDF651EEA9ACD0099F935 /* NSDictionary+Gfycat.h in Headers */,
+				C60FDF651EEA9ACD0099F935 /* NSDictionary+GfycatApiKit.h in Headers */,
 				E19BB0FC1E3BF6C1007E1933 /* GfycatPaginationInfo.h in Headers */,
 				E12AC99B1E4D0BBC00F76BE2 /* GfycatCategory.h in Headers */,
 				D85A41D41EE99E9B00854D9D /* GfycatReferencedMedia.h in Headers */,
@@ -374,7 +374,7 @@
 				E19BB0FD1E3BF6C1007E1933 /* GfycatPaginationInfo.m in Sources */,
 				C6379DC01EE8380F00D607BC /* GfycatExtendedMedia.m in Sources */,
 				E177380A1E3AC01100276E0E /* GfycatApi.m in Sources */,
-				C60FDF661EEA9ACD0099F935 /* NSDictionary+Gfycat.m in Sources */,
+				C60FDF661EEA9ACD0099F935 /* NSDictionary+GfycatApiKit.m in Sources */,
 				E12AC99C1E4D0BBC00F76BE2 /* GfycatCategory.m in Sources */,
 				E10B7E6A1E4BFDE4004DD902 /* GfycatModelConstants.m in Sources */,
 				E177380E1E3AC01100276E0E /* GfycatModel.m in Sources */,

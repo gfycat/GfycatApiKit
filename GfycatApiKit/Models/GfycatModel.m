@@ -39,6 +39,13 @@
     return self;
 }
 
+- (instancetype)initWithGfyId:(NSString *)gfyId {
+    if (self = [super init]) {
+        self.gfyId = gfyId;
+    }
+    return self;
+}
+
 #pragma mark - Equality
 
 - (NSUInteger)hash {

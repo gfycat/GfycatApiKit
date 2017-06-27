@@ -102,19 +102,25 @@ typedef NS_ENUM(NSInteger, GfycatApiKitErrorCode)
     GfycatApiKitAuthenticationFailedError,
     
     /*!
-     @abstract The error code for errors when user cancels authentication.
-     */
-    GfycatApiKitAuthenticationCancelledError = NSUserCancelledError,
-    
-    /*!
      @abstract The error code for invalid JSON response.
      */
     GfycatApiKitJSONResponseError,
+    
+    /*!
+     @abstract The error code for invalid Media reference URL.
+     */
+    GfycatApiKitInvalidMediaReferenceURL,
+    
+    /*!
+     @abstract The error code for errors when user cancels authentication.
+     */
+    GfycatApiKitAuthenticationCancelledError = NSUserCancelledError,
 };
 
 
 @class GfycatUser;
 @class GfycatMedia;
+@class GfycatReferencedMedia;
 @class GfycatExtendedMedia;
 @class GfycatPaginationInfo;
 @class GfycatModel;
@@ -174,6 +180,13 @@ typedef void (^GfycatUserBlock)(GfycatUser *user);
  *  @param media    An GfycatMedia object.
  */
 typedef void (^GfycatMediaObjectBlock)(GfycatMedia *media);
+
+/**
+ *  A callback block providing a Media object given arbitrary HTTP URL.
+ *
+ *  @param media    An GfycatReferencedMedia object.
+ */
+typedef void (^GfycatReferencedMediaObjectBlock)(GfycatReferencedMedia *media);
 
 /**
  *  A callback block providing a extended Media object.

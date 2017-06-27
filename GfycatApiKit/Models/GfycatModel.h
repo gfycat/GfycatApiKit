@@ -36,6 +36,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithInfo:(NSDictionary *)info;
 
 /**
+ *  Initializes a new instance.
+ *  @param gfyId unique identifier for model object
+ */
+- (instancetype)initWithGfyId:(NSString *)gfyId;
+
+/**
  *  Comparing Gfycat model objects.
  *  @param model A model object.
  *  @return YES is Ids match. Else NO.

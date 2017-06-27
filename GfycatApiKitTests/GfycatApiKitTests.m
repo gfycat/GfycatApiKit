@@ -19,7 +19,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "NSDictionary+Gfycat.h"
+#import "NSDictionary+GfycatApiKit.h"
 #import "GfycatApi.h"
 #import "GfycatMedia.h"
 

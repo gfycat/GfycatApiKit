@@ -42,6 +42,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 @property (nonatomic, copy, nonnull) NSString *appClientID;
 @property (nonatomic, copy, nonnull) NSString *appClientSecret;
 @property (nonatomic, strong, nonnull) AFHTTPSessionManager *httpManager;
+@property (nonatomic, strong, nonnull) AFHTTPSessionManager *httpRedirectManager;
 @property (nonatomic, strong, nonnull) AFHTTPSessionManager *httpUploadManager;
 
 @property (nonatomic, strong, nonnull) UICKeyChainStore *keychainStore;
@@ -106,6 +107,10 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     self.httpManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     self.httpManager.responseSerializer = [AFJSONResponseSerializer new];
     self.httpManager.requestSerializer = [AFJSONRequestSerializer new];
+    
+    self.httpRedirectManager = [[AFHTTPSessionManager alloc] initWithBaseURL:nil];
+    self.httpRedirectManager.responseSerializer = [AFHTTPResponseSerializer new];
+    self.httpRedirectManager.requestSerializer = [AFHTTPRequestSerializer new];
     
     self.httpUploadManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     self.httpUploadManager.responseSerializer = [AFHTTPResponseSerializer new];
@@ -484,6 +489,31 @@ NSInteger const kTokenExpirationThreshold = 30;
                   failure:failure];
     } failure:^(NSError *error, NSInteger serverStatusCode) {
         GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
+
+- (void)_parseReferencedMedia:(NSURL *)mediaURL withSuccess:(GfycatMediaObjectBlock)success failure:(nullable GfycatFailureBlock)failure {
+    GfycatReferencedMedia *media = [[GfycatReferencedMedia alloc] initWithMessageURL:mediaURL];
+    if (media) {
+        GfySafeExecute(success, media);
+    } else {
+        NSError *error = [[NSError alloc] initWithDomain:GfycatApiKitErrorDomain code:GfycatApiKitInvalidMediaReferenceURL userInfo:@{
+            NSURLErrorFailingURLErrorKey: mediaURL,
+            NSURLErrorFailingURLStringErrorKey: mediaURL.absoluteString,
+        }];
+        GfySafeExecute(failure, error, 0);
+    }
+}
+
+- (void)getReferencedMedia:(NSURL *)mediaURL withSuccess:(GfycatMediaObjectBlock)success failure:(nullable GfycatFailureBlock)failure {
+    if ([mediaURL.host hasSuffix:@"gfycat.com"]) {
+        [self _parseReferencedMedia:mediaURL withSuccess:success failure:failure];
+        return;
+    }
+    [self.httpRedirectManager GET:mediaURL.absoluteString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self _parseReferencedMedia:task.currentRequest.URL withSuccess:success failure:failure];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        GfySafeExecute(failure, error, 0);
     }];
 }
 

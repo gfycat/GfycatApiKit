@@ -22,6 +22,106 @@
 
 @interface GfycatMedia : GfycatReferencedMedia <NSCopying, NSSecureCoding, NSObject>
 
+/**
+ *  Date of creation of the Media.
+ */
+@property (nonatomic, readonly) NSDate *createDate;
+
+/**
+ *  Caption written by creator of the Media
+ */
+@property (nonatomic, copy, readonly) NSString *caption;
+
+/**
+ *  Number of dislikes on the Media
+ */
+@property (nonatomic, readonly) NSInteger dislikes;
+
+/**
+ *  Original framerate of the Media
+ */
+@property (nonatomic, readonly) NSInteger frameRate;
+
+/**
+ *  Serial number of the Media
+ */
+@property (nonatomic, readonly) NSInteger gfyNumber;
+
+/**
+ *  Categories of the Media
+ */
+@property (nonatomic, readonly) NSArray<NSString *> *categories;
+
+/**
+ *  Number of likes on the Media
+ */
+@property (nonatomic, readonly) NSInteger likes;
+
+/**
+ *  MD5 checksum of the Media
+ */
+@property (nonatomic, copy, readonly) NSString *md5;
+
+/**
+ *  If the Media is NSFW
+ */
+@property (nonatomic, readonly, getter=isNsfw) BOOL nsfw;
+
+/**
+ *  Original total number of frames of the Media
+ */
+@property (nonatomic, readonly) NSInteger numberOfFrames;
+
+/**
+ *  If the Media is published
+ */
+@property (nonatomic, readonly, getter=isPublished) BOOL published;
+
+/**
+ *  Tags on the Media
+ */
+@property (nonatomic, readonly) NSArray<NSString *> *tags;
+
+/**
+ *  Title of the Media
+ */
+@property (nonatomic, copy, readonly) NSString *title;
+
+/**
+ *  Username of the creator of the Media
+ */
+@property (nonatomic, copy, readonly) NSString *userName;
+
+/**
+ *  Number of views of the Media
+ */
+@property (nonatomic, readonly) NSInteger views;
+
+/**
+ *  Media was sourced from GIF or Video  // TODO - make enum.  1 = video 8 = GIF
+ */
+@property (nonatomic, readonly) NSInteger sourceType;
+
+/**
+ *  Source URL of the Media
+ */
+@property (nonatomic, copy, readonly) NSURL *sourceUrl;
+
+/**
+ *  Size in bytes of the original GIF representation of the Media
+ */
+@property (nonatomic, readonly) NSInteger gifSize;
+
+/**
+ *  Size in bytes of the original MP4 representation of the Media
+ */
+@property (nonatomic, readonly) NSInteger mpgSize;
+
+/**
+ *  Size in bytes of the original WEBM representation of the Media
+ */
+@property (nonatomic, readonly) NSInteger webmSize;
+
 @end
 
 @interface GfycatMediaCollection : NSObject <NSCopying, NSSecureCoding>
