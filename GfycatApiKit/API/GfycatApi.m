@@ -536,10 +536,14 @@ NSInteger const kTokenExpirationThreshold = 30;
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
         [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/reactions/populated"]
-                    parameters:@{kLocale : [self currentLanguageCode]}
-                 responseModel:[GfycatCategories class]
-                       success:success
-                       failure:failure];
+                        parameters:@{kLocale : [self currentLanguageCode]}
+                     responseModel:[GfycatCategories class]
+                           success:^(id paginatedObjects, GfycatPaginationInfo * _Nullable paginationInfo) {
+                               if (success != nil) {
+                                   success(paginatedObjects, paginationInfo, NO);
+                               }
+                           }
+                           failure:failure];
     } failure:^(NSError *error, NSInteger serverStatusCode) {
         GfySafeExecute(failure, error, serverStatusCode);
     }];

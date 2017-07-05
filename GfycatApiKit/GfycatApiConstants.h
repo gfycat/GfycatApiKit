@@ -157,7 +157,7 @@ typedef void (^GfycatMediaBlock)(GfycatMediaCollection *mediaCollection, GfycatP
  *  @param categories       A GfycatCategories object.
  *  @param paginationInfo   A PaginationInfo object.
  */
-typedef void (^GfycatCategoryArrayBlock)(GfycatCategories *categories, GfycatPaginationInfo * _Nullable paginationInfo);
+typedef void (^GfycatCategoryArrayBlock)(GfycatCategories *categories, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache);
 
 /**
  *  A callback block providing a collection of User objects.
