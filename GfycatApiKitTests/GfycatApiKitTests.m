@@ -205,7 +205,7 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
     
-    [GfycatApi.shared getCategoriesWithSuccess:^(GfycatCategories * _Nonnull categories, GfycatPaginationInfo * _Nullable paginationInfo) {
+    [GfycatApi.shared getCategoriesWithSuccess:^(GfycatCategories *categories, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache) {
         [expectation fulfill];
     } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
         XCTAssertNil(error);
