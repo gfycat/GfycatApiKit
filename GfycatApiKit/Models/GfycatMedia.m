@@ -26,7 +26,6 @@
 @interface GfycatMedia ()
 
 @property (nonatomic, readwrite) NSDate *createDate;
-@property (nonatomic, copy, readwrite) NSString *caption;
 @property (nonatomic, assign, readwrite) NSInteger dislikes;
 @property (nonatomic, assign, readwrite) NSInteger frameRate;
 @property (nonatomic, assign, readwrite) NSInteger gfyNumber;
@@ -36,8 +35,6 @@
 @property (nonatomic, assign, getter=isNsfw, readwrite) BOOL nsfw;
 @property (nonatomic, assign, readwrite) NSInteger numberOfFrames;
 @property (nonatomic, assign, getter=isPublished, readwrite) BOOL published;
-@property (nonatomic, readwrite) NSArray<NSString *> *tags;
-@property (nonatomic, copy, readwrite) NSString *title;
 @property (nonatomic, copy, readwrite) NSString *userName;
 @property (nonatomic, assign, readwrite) NSInteger views;
 

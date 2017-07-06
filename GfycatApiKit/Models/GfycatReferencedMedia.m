@@ -166,6 +166,21 @@
     return self.gfyName.length ? [NSURL URLWithString:[NSString stringWithFormat:@"http://thumbs.gfycat.com/%@.webp", self.gfyName]] : nil;
 }
 
+- (NSString *)title
+{
+    return @"";
+}
+
+- (NSString *)caption
+{
+    return @"";
+}
+
+- (NSArray<NSString *> *)tags
+{
+    return @[];
+}
+
 #pragma mark - NSCoding
 
 + (BOOL)supportsSecureCoding {

@@ -120,6 +120,21 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy, readonly) NSURL *webpUrl;
 
+/**
+ *  Title of the Media
+ */
+@property (nonatomic, copy) NSString *title;
+
+/**
+ *  Caption written by creator of the Media
+ */
+@property (nonatomic, copy) NSString *caption;
+
+/**
+ *  Tags on the Media
+ */
+@property (nonatomic, strong) NSArray<NSString *> *tags;
+
 - (nullable instancetype)initWithMessageURL:(NSURL *)messageURL;
 
 @end

@@ -30,11 +30,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSDate *createDate;
 
 /**
- *  Caption written by creator of the Media
- */
-@property (nonatomic, copy, readonly) NSString *caption;
-
-/**
  *  Number of dislikes on the Media
  */
 @property (nonatomic, readonly) NSInteger dislikes;
@@ -78,16 +73,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  If the Media is published
  */
 @property (nonatomic, readonly, getter=isPublished) BOOL published;
-
-/**
- *  Tags on the Media
- */
-@property (nonatomic, readonly) NSArray<NSString *> *tags;
-
-/**
- *  Title of the Media
- */
-@property (nonatomic, copy, readonly) NSString *title;
 
 /**
  *  Username of the creator of the Media
