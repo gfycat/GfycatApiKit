@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  The average color value of the Media in HEX format.  e.g. "#010202"
  */
-@property (nonatomic, copy, readonly) NSString *averageColor;
+@property (nonatomic, copy, readonly, nullable) NSString *averageColor;
 
 /**
  *  Size, in pixels of the original media
