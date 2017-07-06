@@ -31,6 +31,9 @@
 
 - (void)setUp {
     [super setUp];
+
+    [GfycatApi.shared setAppClientID:[[[NSProcessInfo processInfo] environment] objectForKey:@"Test_GfycatApiClientId"]
+                          withSecret:[[[NSProcessInfo processInfo] environment] objectForKey:@"Test_GfycatApiClientSecret"]];
 }
 
 - (void)tearDown {
