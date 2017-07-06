@@ -492,10 +492,10 @@ NSInteger const kTokenExpirationThreshold = 30;
     }];
 }
 
-- (void)_parseReferencedMedia:(NSURL *)mediaURL withSuccess:(GfycatMediaObjectBlock)success failure:(nullable GfycatFailureBlock)failure {
+- (void)_parseReferencedMedia:(NSURL *)mediaURL withSuccess:(GfycatReferencedMediaObjectBlock)success failure:(nullable GfycatFailureBlock)failure {
     GfycatReferencedMedia *media = [[GfycatReferencedMedia alloc] initWithMessageURL:mediaURL];
     if (media) {
-        GfySafeExecute(success, media);
+        GfySafeExecute(success, (GfycatReferencedMedia * _Nonnull)media);
     } else {
         NSError *error = [[NSError alloc] initWithDomain:GfycatApiKitErrorDomain code:GfycatApiKitInvalidMediaReferenceURL userInfo:@{
             NSURLErrorFailingURLErrorKey: mediaURL,
@@ -505,7 +505,7 @@ NSInteger const kTokenExpirationThreshold = 30;
     }
 }
 
-- (void)getReferencedMedia:(NSURL *)mediaURL withSuccess:(GfycatMediaObjectBlock)success failure:(nullable GfycatFailureBlock)failure {
+- (void)getReferencedMedia:(NSURL *)mediaURL withSuccess:(GfycatReferencedMediaObjectBlock)success failure:(nullable GfycatFailureBlock)failure {
     if ([mediaURL.host hasSuffix:@"gfycat.com"]) {
         [self _parseReferencedMedia:mediaURL withSuccess:success failure:failure];
         return;

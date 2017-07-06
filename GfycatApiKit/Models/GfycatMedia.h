@@ -20,6 +20,8 @@
 #import <UIKit/UIKit.h>
 #import "GfycatReferencedMedia.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface GfycatMedia : GfycatReferencedMedia <NSCopying, NSSecureCoding, NSObject>
 
 /**
@@ -144,3 +146,5 @@
 - (instancetype)initWithInfo:(NSDictionary *)info;
 
 @end
+
+NS_ASSUME_NONNULL_END

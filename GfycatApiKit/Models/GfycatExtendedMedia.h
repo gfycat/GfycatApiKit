@@ -20,6 +20,8 @@
 
 #import <GfycatApiKit/GfycatApiKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface GfycatExtendedMedia : GfycatMedia <NSCopying, NSSecureCoding, NSObject>
 
 /**
@@ -33,3 +35,5 @@
 @property (nonatomic, readonly) NSInteger bookmarkState;
 
 @end
+
+NS_ASSUME_NONNULL_END

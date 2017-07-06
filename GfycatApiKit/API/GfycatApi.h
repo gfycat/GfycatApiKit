@@ -143,12 +143,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Get information about a Media object given an HTTP URL.
  *
- *  @param mediaId  URL referencing a Media object.
- *  @param success  Provides a shallow Media reference object.
- *  @param failure  Provides an error and a server status code.
+ *  @param mediaURL  URL referencing a Media object.
+ *  @param success   Provides a shallow Media reference object.
+ *  @param failure   Provides an error and a server status code.
  */
 - (void)getReferencedMedia:(NSURL *)mediaURL
-               withSuccess:(GfycatMediaObjectBlock)success
+               withSuccess:(GfycatReferencedMediaObjectBlock)success
                    failure:(nullable GfycatFailureBlock)failure;
 
 /**
