@@ -21,6 +21,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
+ *  Enables config file usage.
+ */
+extern BOOL const kGfycatApiKitEnableCategoriesManagement;
+
+/**
  *  Configuration Key for the Gfycat API's Base URL.
  */
 extern NSString *const kGfycatApiKitBaseURLConfigurationKey;

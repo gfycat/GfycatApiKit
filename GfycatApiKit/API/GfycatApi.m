@@ -537,11 +537,15 @@ NSInteger const kTokenExpirationThreshold = 30;
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
         GfycatCategoryArrayBlock wrappedSuccess = ^(GfycatCategories *categories, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache) {
-            [weakSelf getConfigurationObjectsSuccess:^(NSArray<GfycatConfigurationObject *> * _Nonnull configurationObjects) {
-                success([weakSelf categoriesByApplyingConfigurations:configurationObjects toCategories:categories], paginationInfo, isFromCache);
-            } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+            if (kGfycatApiKitEnableCategoriesManagement) {
+                [weakSelf getConfigurationObjectsSuccess:^(NSArray<GfycatConfigurationObject *> * _Nonnull configurationObjects) {
+                    success([weakSelf categoriesByApplyingConfigurations:configurationObjects toCategories:categories], paginationInfo, isFromCache);
+                } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+                    success(categories, paginationInfo, isFromCache);
+                }];
+            } else {
                 success(categories, paginationInfo, isFromCache);
-            }];
+            }
         };
         
         [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/reactions/populated"]

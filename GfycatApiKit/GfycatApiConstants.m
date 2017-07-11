@@ -20,6 +20,8 @@
 
 #import "GfycatApiConstants.h"
 
+BOOL const kGfycatApiKitEnableCategoriesManagement = NO;
+
 NSString *const kGfycatApiKitBaseURLConfigurationKey = @"GfycatApiKitBaseUrl";
 NSString *const kGfycatApiKitAuthorizationURLConfigurationKey = @"GfycatApiKitAuthorizationUrl";
 NSString *const kGfycatApiKitBaseURL = @"https://api.gfycat.com/v1";
