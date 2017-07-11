@@ -36,6 +36,16 @@ extern NSString *const kGfycatApiKitAuthorizationURLConfigurationKey;
 extern NSString *const kGfycatApiKitBaseURL;
 
 /**
+ *  Gfycat configuration file's URL for release configuration.
+ */
+extern NSString *const kGfycatConfigurationReleaseFileURL;
+
+/**
+ *  Gfycat configuration file's URL for debug and TestFlight configurations.
+ */
+extern NSString *const kGfycatConfigurationDebugFileURL;
+
+/**
  *  Gfycat API's Authorization URL.
  */
 extern NSString *const kGfycatApiKitAuthorizationURL;
@@ -127,6 +137,7 @@ typedef NS_ENUM(NSInteger, GfycatApiKitErrorCode)
 @class GfycatCategories;
 @class GfycatMediaCollection;
 @class GfycatUploadKey;
+@class GfycatConfigurationObject;
 
 /**
  *  A generic block used as a callback for receiving a collection of objects.
@@ -158,6 +169,13 @@ typedef void (^GfycatMediaBlock)(GfycatMediaCollection *mediaCollection, GfycatP
  *  @param paginationInfo   A PaginationInfo object.
  */
 typedef void (^GfycatCategoryArrayBlock)(GfycatCategories *categories, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache);
+
+/**
+ *  A callback block providing a collection of GfycatConfigurationObject objects.
+ *
+ *  @param configurationObjects       An array of GfycatConfigurationObject objects.
+ */
+typedef void (^GfycatConfigurationsArrayBlock)(NSArray<GfycatConfigurationObject *> *configurationObjects);
 
 /**
  *  A callback block providing a collection of User objects.

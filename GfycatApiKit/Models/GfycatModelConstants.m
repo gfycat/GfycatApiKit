@@ -86,3 +86,7 @@ NSString *const kGfycatCategories = @"gfycatCategories";
 // GfycatUploadKey
 NSString *const kGfycatUploadName =   @"gfyname";
 NSString *const kGfycatUploadSecret = @"secret";
+
+// GfycatConfigurationObject
+NSString *const kPriority = @"priority";
+NSString *const kHidden = @"hidden";

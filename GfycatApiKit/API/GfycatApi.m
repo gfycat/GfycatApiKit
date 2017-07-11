@@ -24,6 +24,7 @@
 #import "GfycatCategory.h"
 #import "GfycatPaginationInfo.h"
 #import "GfycatUploadKey.h"
+#import "GfycatConfigurationObject.h"
 #import <AFNetworking/AFNetworking.h>
 #import <UICKeyChainStore/UICKeyChainStore.h>
 
@@ -535,18 +536,78 @@ NSInteger const kTokenExpirationThreshold = 30;
     
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
+        GfycatCategoryArrayBlock wrappedSuccess = ^(GfycatCategories *categories, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache) {
+            [weakSelf getConfigurationObjectsSuccess:^(NSArray<GfycatConfigurationObject *> * _Nonnull configurationObjects) {
+                success([weakSelf categoriesByApplyingConfigurations:configurationObjects toCategories:categories], paginationInfo, isFromCache);
+            } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+                success(categories, paginationInfo, isFromCache);
+            }];
+        };
+        
         [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/reactions/populated"]
                         parameters:@{kLocale : [self currentLanguageCode]}
                      responseModel:[GfycatCategories class]
                            success:^(id paginatedObjects, GfycatPaginationInfo * _Nullable paginationInfo) {
                                if (success != nil) {
-                                   success(paginatedObjects, paginationInfo, NO);
+                                   wrappedSuccess(paginatedObjects, paginationInfo, NO);
                                }
                            }
                            failure:failure];
     } failure:^(NSError *error, NSInteger serverStatusCode) {
         GfySafeExecute(failure, error, serverStatusCode);
     }];
+}
+
+- (BOOL)isAppStoreBuild
+{
+#ifdef DEBUG
+    return NO;
+#else
+    return ([self isTestFlightBuild] == NO);
+#endif
+}
+
+- (BOOL)isTestFlightBuild
+{
+#ifdef DEBUG
+    return NO;
+#else
+    NSURL *appStoreReceiptURL = NSBundle.mainBundle.appStoreReceiptURL;
+    NSString *appStoreReceiptLastComponent = appStoreReceiptURL.lastPathComponent;
+    BOOL isSandboxReceipt = [appStoreReceiptLastComponent isEqualToString:@"sandboxReceipt"];
+    
+    return isSandboxReceipt;
+#endif
+}
+
+- (void)getConfigurationObjectsSuccess:(GfycatConfigurationsArrayBlock)success failure:(nullable GfycatFailureBlock)failure {
+    NSURL *urlToUse = nil;
+    
+    if ([self isAppStoreBuild]) {
+        urlToUse = [NSURL URLWithString:kGfycatConfigurationReleaseFileURL];
+    } else {
+        urlToUse = [NSURL URLWithString:kGfycatConfigurationDebugFileURL];
+    }
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:urlToUse];
+    NSURLSessionDataTask *dataTask = [self.httpManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if (error != nil) {
+            GfySafeExecute(failure, error, 0);
+        } else {
+            if (!success || ![responseObject isKindOfClass:[NSArray class]]) return;
+            NSArray *responseArray = (NSArray *)responseObject;
+            
+            NSMutableArray<GfycatConfigurationObject *> *retValue = [@[] mutableCopy];
+            
+            for (NSDictionary *dict in responseArray) {
+                GfycatConfigurationObject *configObject = [[GfycatConfigurationObject alloc] initWithDictionary:dict];
+                [retValue addObject:configObject];
+            }
+            
+            success(retValue);
+        }
+    }];
+    [dataTask resume];
 }
 
 - (void)getCategoryMedia:(NSString *)categoryTitle
@@ -731,6 +792,47 @@ NSInteger const kTokenExpirationThreshold = 30;
 
 // TODO - determine if this should go into a utility class
 #pragma mark - Utilities -
+
+- (GfycatCategories *)categoriesByApplyingConfigurations:(NSArray<GfycatConfigurationObject *> *)configurationsArray toCategories:(GfycatCategories *)categories {
+    NSMutableArray<GfycatCategory *> *retCetegories = [@[] mutableCopy];
+    NSMutableDictionary<NSString *, GfycatConfigurationObject *> *configIndex = [@{} mutableCopy];
+    
+    for (GfycatConfigurationObject *configObject in configurationsArray) {
+        configIndex[configObject.title.lowercaseString] = configObject;
+    }
+    
+    NSMutableDictionary<NSNumber *, NSMutableArray<GfycatCategory *> *> *categoriesPriorityIndex = [@{} mutableCopy];
+    
+    for (GfycatCategory *category in categories.array) {
+        GfycatConfigurationObject *indexedConfig = configIndex[category.title.lowercaseString];
+        
+        if (indexedConfig.hidden.boolValue) {
+            continue;
+        }
+        
+        NSNumber *priority = indexedConfig ? indexedConfig.priority : @(0);
+        NSMutableArray *categoriesForCurrentPriority = categoriesPriorityIndex[priority];
+        
+        if (categoriesForCurrentPriority != nil) {
+            [categoriesForCurrentPriority addObject:category];
+        } else {
+            categoriesPriorityIndex[priority] = [@[category] mutableCopy];
+        }
+    }
+    
+    NSArray<NSNumber *> *sortedPriorities = [categoriesPriorityIndex.allKeys sortedArrayUsingComparator:^NSComparisonResult(NSNumber *obj1, NSNumber *obj2) {
+        return obj1.longValue < obj2.longValue;
+    }];
+    
+    for (NSNumber *priority in sortedPriorities) {
+        NSArray<GfycatCategory *> *categories = categoriesPriorityIndex[priority];
+        [retCetegories addObjectsFromArray:[categories sortedArrayUsingComparator:^NSComparisonResult(GfycatCategory *obj1, GfycatCategory *obj2) {
+            return [obj1.title compare:obj2.title] == NSOrderedAscending;
+        }]];
+    }
+    
+    return [[GfycatCategories alloc] initWithArray:retCetegories];
+}
 
 - (NSString *)currentLanguageCode {
     

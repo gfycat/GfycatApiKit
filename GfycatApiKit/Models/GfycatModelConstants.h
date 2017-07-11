@@ -85,3 +85,7 @@ extern NSString *const kGfycatMediaCollection;
 // GfycatUploadKey
 extern NSString *const kGfycatUploadName;
 extern NSString *const kGfycatUploadSecret;
+
+// GfycatConfigurationObject
+extern NSString *const kPriority;
+extern NSString *const kHidden;

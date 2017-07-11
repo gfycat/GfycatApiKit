@@ -23,6 +23,8 @@
 NSString *const kGfycatApiKitBaseURLConfigurationKey = @"GfycatApiKitBaseUrl";
 NSString *const kGfycatApiKitAuthorizationURLConfigurationKey = @"GfycatApiKitAuthorizationUrl";
 NSString *const kGfycatApiKitBaseURL = @"https://api.gfycat.com/v1";
+NSString *const kGfycatConfigurationReleaseFileURL = @"https://goo.gl/GE4qrj";
+NSString *const kGfycatConfigurationDebugFileURL = @"https://mobileconfiguration.blob.core.windows.net/category/category-debug.json";
 NSString *const kGfycatApiKitAuthorizationURL = @"/oauth/token";
 // TODO - Add the other paths
 
