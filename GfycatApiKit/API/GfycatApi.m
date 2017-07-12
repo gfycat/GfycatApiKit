@@ -654,6 +654,24 @@ NSInteger const kTokenExpirationThreshold = 30;
     }];
 }
 
+- (void)getLikedMediasCount:(NSInteger)count
+                withSuccess:(GfycatMediaBlock)success
+                    failure:(nullable GfycatFailureBlock)failure {
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/gfycats/search"]
+                        parameters:@{
+                                     @"search_text" : @"test",
+                                     @"count" : @(count)
+                                     }
+                     responseModel:[GfycatMediaCollection class]
+                           success:success
+                           failure:failure];
+    } failure:^(NSError *error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
+
 - (void)reportMedia:(NSString *)mediaId
         withSuccess:(GfycatResponseBlock)success
             failure:(nullable GfycatFailureBlock)failure {

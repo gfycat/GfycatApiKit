@@ -206,6 +206,17 @@ NS_ASSUME_NONNULL_BEGIN
                       failure:(nullable GfycatFailureBlock)failure;
 
 /**
+ *  Get liked Media.
+ *
+ *  @param count    Count of objects to fetch.
+ *  @param success  Provides a media list object.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)getLikedMediasCount:(NSInteger)count
+                withSuccess:(GfycatMediaBlock)success
+                    failure:(nullable GfycatFailureBlock)failure;
+
+/**
  * Download media content with URL
  *
  * @param url           The url to download
