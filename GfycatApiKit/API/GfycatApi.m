@@ -42,6 +42,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 
 @property (nonatomic, copy, nonnull) NSString *appClientID;
 @property (nonatomic, copy, nonnull) NSString *appClientSecret;
+@property (nonatomic, assign) BOOL gfycatCategoryManagementEnabled;
 @property (nonatomic, strong, nonnull) AFHTTPSessionManager *httpManager;
 @property (nonatomic, strong, nonnull) AFHTTPSessionManager *httpRedirectManager;
 @property (nonatomic, strong, nonnull) AFHTTPSessionManager *httpUploadManager;
@@ -127,6 +128,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     self.keychainStore = [UICKeyChainStore keyChainStoreWithService:GfycatApiKitKeychainStore];
     self.accessToken = self.keychainStore[kKeychainAccessTokenKey];
     self.sharedContainerIdentifier = info[kGfycatApiKitSharedContainerIdentifierConfigurationKey];
+    self.gfycatCategoryManagementEnabled = info[kGfycatCategoryManagementEnabled] != nil ? ((NSNumber *)info[kGfycatCategoryManagementEnabled]).boolValue : YES;
     _username = self.keychainStore[kKeychainUsernameKey];
     _password = self.keychainStore[kKeychainPasswordKey];
     _refreshToken = self.keychainStore[kKeychainRefreshTokenKey];
@@ -537,7 +539,7 @@ NSInteger const kTokenExpirationThreshold = 30;
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
         GfycatCategoryArrayBlock wrappedSuccess = ^(GfycatCategories *categories, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache) {
-            if (kGfycatApiKitEnableCategoriesManagement) {
+            if (self.gfycatCategoryManagementEnabled) {
                 [weakSelf getConfigurationObjectsSuccess:^(NSArray<GfycatConfigurationObject *> * _Nonnull configurationObjects) {
                     success([weakSelf categoriesByApplyingConfigurations:configurationObjects toCategories:categories], paginationInfo, isFromCache);
                 } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {

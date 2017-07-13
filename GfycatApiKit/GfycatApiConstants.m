@@ -20,8 +20,6 @@
 
 #import "GfycatApiConstants.h"
 
-BOOL const kGfycatApiKitEnableCategoriesManagement = YES;
-
 NSString *const kGfycatApiKitBaseURLConfigurationKey = @"GfycatApiKitBaseUrl";
 NSString *const kGfycatApiKitAuthorizationURLConfigurationKey = @"GfycatApiKitAuthorizationUrl";
 NSString *const kGfycatApiKitBaseURL = @"https://api.gfycat.com/v1";
@@ -33,6 +31,7 @@ NSString *const kGfycatApiKitAuthorizationURL = @"/oauth/token";
 NSString *const kGfycatAppClientIdConfigurationKey = @"GfycatApiClientId";
 NSString *const kGfycatAppClientSecretConfigurationKey = @"GfycatApiClientSecret";
 
+NSString *const kGfycatCategoryManagementEnabled = @"GfycatCategoryManagementEnabled";
 NSString *const kGfycatApiKitSharedContainerIdentifierConfigurationKey = @"GfycatApiKitSharedContainerIdentifier";
 
 NSString *const GfycatApiKitUserAuthenticationChangedNotification = @"com.gfycatkit.token.change";
