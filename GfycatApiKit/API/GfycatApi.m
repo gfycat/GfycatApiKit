@@ -816,6 +816,10 @@ NSInteger const kTokenExpirationThreshold = 30;
 #pragma mark - Utilities -
 
 - (GfycatCategories *)categoriesByApplyingConfigurations:(NSArray<GfycatConfigurationObject *> *)configurationsArray toCategories:(GfycatCategories *)categories {
+    if (configurationsArray.count == 0) {
+        return categories;
+    }
+    
     NSMutableArray<GfycatCategory *> *retCetegories = [@[] mutableCopy];
     NSMutableDictionary<NSString *, GfycatConfigurationObject *> *configIndex = [@{} mutableCopy];
     
