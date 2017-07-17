@@ -854,9 +854,7 @@ NSInteger const kTokenExpirationThreshold = 30;
     
     for (NSNumber *priority in sortedPriorities) {
         NSArray<GfycatCategory *> *categories = categoriesPriorityIndex[priority];
-        [retCetegories addObjectsFromArray:[categories sortedArrayUsingComparator:^NSComparisonResult(GfycatCategory *obj1, GfycatCategory *obj2) {
-            return [obj1.title compare:obj2.title] == NSOrderedAscending;
-        }]];
+        [retCetegories addObjectsFromArray:categories];
     }
     
     return [[GfycatCategories alloc] initWithArray:retCetegories];
