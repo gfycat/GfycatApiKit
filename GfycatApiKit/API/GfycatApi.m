@@ -661,9 +661,8 @@ NSInteger const kTokenExpirationThreshold = 30;
                     failure:(nullable GfycatFailureBlock)failure {
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
-        [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/gfycats/search"]
+        [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/me/likes/populated"]
                         parameters:@{
-                                     @"search_text" : @"test",
                                      @"count" : @(count)
                                      }
                      responseModel:[GfycatMediaCollection class]
