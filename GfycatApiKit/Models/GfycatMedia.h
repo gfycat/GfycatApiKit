@@ -114,6 +114,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GfycatMediaCollection : NSObject <NSCopying, NSSecureCoding>
 
 /**
+ *  Cursor id to get next portion.
+ */
+@property (nonatomic, readonly) NSString *cursor;
+
+/**
  *  An array of GfycatMedia objects.
  */
 @property (nonatomic, readonly) NSArray<GfycatMedia *> *array;

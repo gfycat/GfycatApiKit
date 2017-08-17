@@ -657,17 +657,24 @@ NSInteger const kTokenExpirationThreshold = 30;
 }
 
 - (void)getLikedMediasCount:(NSInteger)count
+                     cursor:(NSString *)cursor
                 withSuccess:(GfycatMediaBlock)success
                     failure:(nullable GfycatFailureBlock)failure {
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
-        [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/me/likes/populated"]
-                        parameters:@{
-                                     @"count" : @(count)
-                                     }
-                     responseModel:[GfycatMediaCollection class]
-                           success:success
-                           failure:failure];
+        if ([weakSelf isSessionValid]) {
+            NSMutableDictionary *parameters = [@{@"count" : @(count)} mutableCopy];
+            
+            if (cursor != nil) {
+                parameters[kCursor] = cursor;
+            }
+            
+            [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/me/likes/populated"]
+                            parameters:parameters
+                         responseModel:[GfycatMediaCollection class]
+                               success:success
+                               failure:failure];
+        }
     } failure:^(NSError *error, NSInteger serverStatusCode) {
         GfySafeExecute(failure, error, serverStatusCode);
     }];

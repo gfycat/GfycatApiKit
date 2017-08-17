@@ -291,6 +291,7 @@
 
 @interface GfycatMediaCollection()
 
+@property (nonatomic) NSString *cursor;
 @property (nonatomic) NSArray<GfycatMedia *> *array;
 
 @end
@@ -322,6 +323,8 @@
             }
             self.array = [array copy];
         }
+        
+        self.cursor = info[kCursor];
     }
     return self;
 }
