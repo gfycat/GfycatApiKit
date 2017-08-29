@@ -213,7 +213,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param failure  Provides an error and a server status code.
  */
 - (void)getLikedMediasCount:(NSInteger)count
-                     cursor:(NSString *)cursor
+                     cursor:(nullable NSString *)cursor
                 withSuccess:(GfycatMediaBlock)success
                     failure:(nullable GfycatFailureBlock)failure;
 

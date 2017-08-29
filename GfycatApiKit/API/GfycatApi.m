@@ -657,7 +657,7 @@ NSInteger const kTokenExpirationThreshold = 30;
 }
 
 - (void)getLikedMediasCount:(NSInteger)count
-                     cursor:(NSString *)cursor
+                     cursor:(nullable NSString *)cursor
                 withSuccess:(GfycatMediaBlock)success
                     failure:(nullable GfycatFailureBlock)failure {
     __weak __typeof(self) weakSelf = self;
