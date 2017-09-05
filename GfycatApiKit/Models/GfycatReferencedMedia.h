@@ -137,6 +137,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable instancetype)initWithMessageURL:(NSURL *)messageURL;
 
+- (instancetype)initWithName:(NSString *)gfyName size:(CGSize)size;
+
+- (instancetype)initWithName:(NSString *)gfyName size:(CGSize)size averageColor:(NSString *)averageColor;
+
 @end
 
 NS_ASSUME_NONNULL_END

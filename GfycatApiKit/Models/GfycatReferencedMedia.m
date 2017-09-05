@@ -65,6 +65,29 @@
     return self;
 }
 
+- (instancetype)initWithName:(NSString *)gfyName size:(CGSize)size
+{
+    if (self = [super initWithGfyId:gfyName.lowercaseString]) {
+        _gfyName = [gfyName copy];
+        _width = size.width;
+        _height = size.height;
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithName:(NSString *)gfyName size:(CGSize)size averageColor:(NSString *)averageColor
+{
+    if (self = [super initWithGfyId:gfyName.lowercaseString]) {
+        _gfyName = [gfyName copy];
+        _averageColor = [averageColor copy];
+        _width = size.width;
+        _height = size.height;
+    }
+    
+    return self;
+}
+
 - (instancetype)initWithInfo:(NSDictionary *)info {
     self = [super initWithInfo:info];
     if (self && GfyNotNull(info)) {
