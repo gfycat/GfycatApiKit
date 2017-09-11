@@ -39,7 +39,13 @@
         self.localizedTitle = GfyNotNull(info[kTagText]) ? [[NSString alloc] initWithString:info[kTagText]] : nil;
         
         NSArray *gfyItem = info[kGfycats];
-        self.media = [[GfycatMedia alloc] initWithInfo:gfyItem.firstObject];
+
+        GfycatMedia *media = [[GfycatMedia alloc] initWithInfo:gfyItem.firstObject];
+        if (media.gfyId.length && media.gfyName.length && media.size.width && media.size.height) {
+            self.media = media;
+        } else {
+            NSLog(@"GFYCAT: Skipping invalid media: '%@', gfyName = '%@', size = %@ x %@.", media.gfyId, media.gfyName, @(media.size.width), @(media.size.height));
+        }
     }
     return self;
 }
