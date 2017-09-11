@@ -319,7 +319,12 @@
         if (GfyNotNull(gfycats)) {
             NSMutableArray *array = [NSMutableArray new];
             for (NSDictionary *gfycat in gfycats) {
-                [array addObject:[[GfycatMedia alloc] initWithInfo:gfycat]];
+                GfycatMedia *media = [[GfycatMedia alloc] initWithInfo:gfycat];
+                if (media.gfyId.length && media.gfyName.length && media.size.width && media.size.height) {
+                    [array addObject:media];
+                } else {
+                    NSLog(@"GFYCAT: Skipping invalid media: '%@', gfyName = '%@', size = %@ x %@.", media.gfyId, media.gfyName, @(media.size.width), @(media.size.height));
+                }
             }
             self.array = [array copy];
         }
