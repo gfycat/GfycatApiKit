@@ -662,19 +662,15 @@ NSInteger const kTokenExpirationThreshold = 30;
                     failure:(nullable GfycatFailureBlock)failure {
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
-        if ([weakSelf isSessionValid]) {
-            NSMutableDictionary *parameters = [@{@"count" : @(count)} mutableCopy];
-            
-            if (cursor != nil) {
-                parameters[kCursor] = cursor;
-            }
-            
-            [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/me/likes/populated"]
-                            parameters:parameters
-                         responseModel:[GfycatMediaCollection class]
-                               success:success
-                               failure:failure];
+        NSMutableDictionary *parameters = [@{@"count" : @(count)} mutableCopy];
+        if (cursor != nil) {
+            parameters[kCursor] = cursor;
         }
+        [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/me/likes/populated"]
+                        parameters:parameters
+                     responseModel:[GfycatMediaCollection class]
+                           success:success
+                           failure:failure];
     } failure:^(NSError *error, NSInteger serverStatusCode) {
         GfySafeExecute(failure, error, serverStatusCode);
     }];
@@ -687,19 +683,15 @@ NSInteger const kTokenExpirationThreshold = 30;
 {
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
-        if ([weakSelf isSessionValid]) {
-            NSMutableDictionary *parameters = [@{@"count" : @(count)} mutableCopy];
-            
-            if (cursor != nil) {
-                parameters[kCursor] = cursor;
-            }
-            
-            [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/me/gfycats"]
-                            parameters:parameters
-                         responseModel:[GfycatMediaCollection class]
-                               success:success
-                               failure:failure];
+        NSMutableDictionary *parameters = [@{@"count" : @(count)} mutableCopy];
+        if (cursor != nil) {
+            parameters[kCursor] = cursor;
         }
+        [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/me/gfycats"]
+                        parameters:parameters
+                     responseModel:[GfycatMediaCollection class]
+                           success:success
+                           failure:failure];
     } failure:^(NSError *error, NSInteger serverStatusCode) {
         GfySafeExecute(failure, error, serverStatusCode);
     }];
