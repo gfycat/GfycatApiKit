@@ -538,9 +538,13 @@ NSInteger const kTokenExpirationThreshold = 30;
     
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        
         GfycatCategoryArrayBlock wrappedSuccess = ^(GfycatCategories *categories, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache) {
-            if (self.gfycatCategoryManagementEnabled) {
-                [weakSelf getConfigurationObjectsSuccess:^(NSArray<GfycatConfigurationObject *> * _Nonnull configurationObjects) {
+            __strong __typeof(weakSelf) strongSelf = weakSelf;
+            
+            if (strongSelf.gfycatCategoryManagementEnabled) {
+                [strongSelf getConfigurationObjectsSuccess:^(NSArray<GfycatConfigurationObject *> * _Nonnull configurationObjects) {
                     success([weakSelf categoriesByApplyingConfigurations:configurationObjects toCategories:categories], paginationInfo, isFromCache);
                 } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
                     success(categories, paginationInfo, isFromCache);
@@ -550,15 +554,15 @@ NSInteger const kTokenExpirationThreshold = 30;
             }
         };
         
-        [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/reactions/populated"]
-                        parameters:@{kLocale : [self currentLanguageCode]}
-                     responseModel:[GfycatCategories class]
-                           success:^(id paginatedObjects, GfycatPaginationInfo * _Nullable paginationInfo) {
-                               if (success != nil) {
-                                   wrappedSuccess(paginatedObjects, paginationInfo, NO);
-                               }
-                           }
-                           failure:failure];
+        [strongSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/reactions/populated"]
+                          parameters:@{kLocale : [self currentLanguageCode]}
+                       responseModel:[GfycatCategories class]
+                             success:^(id paginatedObjects, GfycatPaginationInfo * _Nullable paginationInfo) {
+                                 if (success != nil) {
+                                     wrappedSuccess(paginatedObjects, paginationInfo, NO);
+                                 }
+                             }
+                             failure:failure];
     } failure:^(NSError *error, NSInteger serverStatusCode) {
         GfySafeExecute(failure, error, serverStatusCode);
     }];
@@ -662,19 +666,15 @@ NSInteger const kTokenExpirationThreshold = 30;
                     failure:(nullable GfycatFailureBlock)failure {
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
-        if ([weakSelf isSessionValid]) {
-            NSMutableDictionary *parameters = [@{@"count" : @(count)} mutableCopy];
-            
-            if (cursor != nil) {
-                parameters[kCursor] = cursor;
-            }
-            
-            [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/me/likes/populated"]
-                            parameters:parameters
-                         responseModel:[GfycatMediaCollection class]
-                               success:success
-                               failure:failure];
+        NSMutableDictionary *parameters = [@{@"count" : @(count)} mutableCopy];
+        if (cursor != nil) {
+            parameters[kCursor] = cursor;
         }
+        [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/me/likes/populated"]
+                        parameters:parameters
+                     responseModel:[GfycatMediaCollection class]
+                           success:success
+                           failure:failure];
     } failure:^(NSError *error, NSInteger serverStatusCode) {
         GfySafeExecute(failure, error, serverStatusCode);
     }];
@@ -687,19 +687,15 @@ NSInteger const kTokenExpirationThreshold = 30;
 {
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
-        if ([weakSelf isSessionValid]) {
-            NSMutableDictionary *parameters = [@{@"count" : @(count)} mutableCopy];
-            
-            if (cursor != nil) {
-                parameters[kCursor] = cursor;
-            }
-            
-            [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/me/gfycats"]
-                            parameters:parameters
-                         responseModel:[GfycatMediaCollection class]
-                               success:success
-                               failure:failure];
+        NSMutableDictionary *parameters = [@{@"count" : @(count)} mutableCopy];
+        if (cursor != nil) {
+            parameters[kCursor] = cursor;
         }
+        [weakSelf getPaginatedPath:[kGfycatApiKitBaseURL stringByAppendingString:@"/me/gfycats"]
+                        parameters:parameters
+                     responseModel:[GfycatMediaCollection class]
+                           success:success
+                           failure:failure];
     } failure:^(NSError *error, NSInteger serverStatusCode) {
         GfySafeExecute(failure, error, serverStatusCode);
     }];
@@ -741,7 +737,6 @@ NSInteger const kTokenExpirationThreshold = 30;
 
 - (void)likeMedia:(NSString *)mediaId forTag:(nullable NSString *)tag withSuccess:(GfycatResponseBlock)success failure:(nullable GfycatFailureBlock)failure
 {
-    __weak __typeof(self) weakSelf = self;
     NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:@{
                                                                                     @"value" : @"1",
                                                                                     }];
@@ -749,7 +744,7 @@ NSInteger const kTokenExpirationThreshold = 30;
         params[@"tag"] = tag;
     }
     
-    [weakSelf putPath:[kGfycatApiKitBaseURL stringByAppendingFormat:@"/me/gfycats/%@/like", mediaId] parameters:params success:^(NSDictionary * _Nonnull serverResponse) {
+    [self putPath:[kGfycatApiKitBaseURL stringByAppendingFormat:@"/me/gfycats/%@/like", mediaId] parameters:params success:^(NSDictionary * _Nonnull serverResponse) {
         GfySafeExecute(success, serverResponse);
     } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
         GfySafeExecute(failure, error, serverStatusCode);
@@ -757,7 +752,6 @@ NSInteger const kTokenExpirationThreshold = 30;
 }
 
 - (void)dislikeMedia:(NSString *)mediaId forTag:(nullable NSString *)tag withSuccess:(GfycatResponseBlock)success failure:(nullable GfycatFailureBlock)failure {
-    __weak __typeof(self) weakSelf = self;
     NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:@{
                                                                                     @"value" : @"1",
                                                                                     }];
@@ -765,7 +759,7 @@ NSInteger const kTokenExpirationThreshold = 30;
         params[@"tag"] = tag;
     }
     
-    [weakSelf putPath:[kGfycatApiKitBaseURL stringByAppendingFormat:@"/me/gfycats/%@/dislike", mediaId] parameters:params success:^(NSDictionary * _Nonnull serverResponse) {
+    [self putPath:[kGfycatApiKitBaseURL stringByAppendingFormat:@"/me/gfycats/%@/dislike", mediaId] parameters:params success:^(NSDictionary * _Nonnull serverResponse) {
         GfySafeExecute(success, serverResponse);
     } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
         GfySafeExecute(failure, error, serverStatusCode);

@@ -250,7 +250,7 @@ typedef void (^GfycatResponseBlock)(NSDictionary *serverResponse);
 /**
  *  A generic success block.
  */
-typedef void (^GfycatSuccessBlock)();
+typedef void (^GfycatSuccessBlock)(void);
 
 /**
  *  A progress block providing the upload progress.
