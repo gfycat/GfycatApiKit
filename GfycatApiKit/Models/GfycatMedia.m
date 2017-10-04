@@ -65,24 +65,25 @@
 
 @implementation GfycatMedia
 
-@synthesize gifUrl;
-@synthesize gif100Url;
-@synthesize gif1MbUrl;
-@synthesize gif2MbUrl;
-@synthesize gif5MbUrl;
+@synthesize gfyUrl = _gfyUrl;
+@synthesize gifUrl = _gifUrl;
+@synthesize gif100Url = _gif100Url;
+@synthesize gif1MbUrl = _gif1MbUrl;
+@synthesize gif2MbUrl = _gif2MbUrl;
+@synthesize gif5MbUrl = _gif5MbUrl;
 
-@synthesize mpgUrl;
-@synthesize mpg320Url;
-@synthesize mpg640Url;
-@synthesize mjpgUrl;
+@synthesize mpgUrl = _mpgUrl;
+@synthesize mpg320Url = _mpg320Url;
+@synthesize mpg640Url = _mpg640Url;
+@synthesize mjpgUrl = _mjpgUrl;
 
-@synthesize posterUrl;
-@synthesize thumbnail100Url;
-@synthesize thumbnail320Url;
-@synthesize thumbnail640Url;
+@synthesize posterUrl = _posterUrl;
+@synthesize thumbnail100Url = _thumbnail100Url;
+@synthesize thumbnail320Url = _thumbnail320Url;
+@synthesize thumbnail640Url = _thumbnail640Url;
 
-@synthesize webmUrl;
-@synthesize webpUrl;
+@synthesize webmUrl = _webmUrl;
+@synthesize webpUrl = _webpUrl;
 
 - (instancetype)initWithInfo:(NSDictionary *)info {
     self = [super initWithInfo:info];
@@ -233,6 +234,88 @@
     [encoder encodeObject:self.webmUrl forKey:kWebmUrl];
     [encoder encodeObject:self.webpUrl forKey:kWebpUrl];
 
+}
+
+#pragma mark - Getters
+
+- (NSURL *)gfyUrl
+{
+    return _gfyUrl ?: super.gfyUrl;
+}
+
+- (NSURL *)gifUrl
+{
+    return _gifUrl ?: super.gifUrl;
+}
+
+- (NSURL *)gif100Url
+{
+    return _gif100Url ?: super.gif100Url;
+}
+
+- (NSURL *)gif1MbUrl
+{
+    return _gif1MbUrl ?: super.gif1MbUrl;
+}
+
+- (NSURL *)gif2MbUrl
+{
+    return _gif2MbUrl ?: super.gif2MbUrl;
+}
+
+- (NSURL *)gif5MbUrl
+{
+    return _gif5MbUrl ?: super.gif5MbUrl;
+}
+
+- (NSURL *)mpgUrl
+{
+    return _mpgUrl ?: super.mpgUrl;
+}
+
+- (NSURL *)mpg320Url
+{
+    return _mpg320Url ?: super.mpg320Url;
+}
+
+- (NSURL *)mpg640Url
+{
+    return _mpg640Url ?: super.mpg640Url;
+}
+
+- (NSURL *)mjpgUrl
+{
+    return _mjpgUrl ?: super.mjpgUrl;
+}
+
+- (NSURL *)posterUrl
+{
+    return _posterUrl ?: super.posterUrl;
+}
+
+- (NSURL *)thumbnail100Url
+{
+    return _thumbnail100Url ?: super.thumbnail100Url;
+}
+
+- (NSURL *)thumbnail320Url
+{
+    return _thumbnail320Url ?: super.thumbnail320Url;
+}
+
+- (NSURL *)thumbnail640Url
+{
+    return _thumbnail640Url ?: super.thumbnail640Url;
+}
+
+- (NSURL *)webmUrl
+{
+    return _webmUrl ?: super.webmUrl;
+}
+
+- (NSURL *)webpUrl
+{
+    return _webpUrl ?: super.webpUrl;
 }
 
 #pragma mark - NSCopying
