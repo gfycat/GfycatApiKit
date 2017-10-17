@@ -66,6 +66,11 @@ extern NSString *const kGfycatAppClientIdConfigurationKey;
 extern NSString *const kGfycatAppClientSecretConfigurationKey;
 
 /**
+ *  Configuration Key for the Gfycat API's keychain access group
+ */
+extern NSString *const kGfycatApiKitKeychainAccessGroupConfigurationKey;
+
+/**
  *  Configuration Key for the Gfycat API's sharedContainerIdentifier
  */
 extern NSString *const kGfycatApiKitSharedContainerIdentifierConfigurationKey;

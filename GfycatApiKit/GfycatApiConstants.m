@@ -32,6 +32,7 @@ NSString *const kGfycatAppClientIdConfigurationKey = @"GfycatApiClientId";
 NSString *const kGfycatAppClientSecretConfigurationKey = @"GfycatApiClientSecret";
 
 NSString *const kGfycatCategoryManagementEnabled = @"GfycatCategoryManagementEnabled";
+NSString *const kGfycatApiKitKeychainAccessGroupConfigurationKey = @"GfycatApiKitKeychainAccessGroup";
 NSString *const kGfycatApiKitSharedContainerIdentifierConfigurationKey = @"GfycatApiKitSharedContainerIdentifier";
 
 NSString *const GfycatApiKitUserAuthenticationChangedNotification = @"com.gfycatkit.token.change";

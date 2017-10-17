@@ -125,7 +125,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     
     self.appClientID = info[kGfycatAppClientIdConfigurationKey];
     self.appClientSecret = info[kGfycatAppClientSecretConfigurationKey];
-    self.keychainStore = [UICKeyChainStore keyChainStoreWithService:GfycatApiKitKeychainStore];
+    self.keychainStore = [UICKeyChainStore keyChainStoreWithService:GfycatApiKitKeychainStore accessGroup:info[kGfycatApiKitKeychainAccessGroupConfigurationKey]];
     self.accessToken = self.keychainStore[kKeychainAccessTokenKey];
     self.sharedContainerIdentifier = info[kGfycatApiKitSharedContainerIdentifierConfigurationKey];
     self.gfycatCategoryManagementEnabled = info[kGfycatCategoryManagementEnabled] != nil ? ((NSNumber *)info[kGfycatCategoryManagementEnabled]).boolValue : YES;
