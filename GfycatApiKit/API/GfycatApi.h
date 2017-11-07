@@ -242,6 +242,19 @@ NS_ASSUME_NONNULL_BEGIN
                          completion:(void(^)(NSURLResponse * _Nullable response, NSURL * _Nullable filePath, NSError * _Nullable error))completion;
 
 /**
+ * Download media content with URL
+ *
+ * @param url           The url to download
+ * @param ignoreCache   The params to force download file ignoring local cache
+ * @param completion    The callback with the response, downloaded file path, error
+ *
+ * @return              The progress instance to track downloading progress, cancellable
+ */
+
+- (NSProgress *)downloadFileWithURL:(NSURL * _Nullable)url ignoreCache:(BOOL)ignoreCache
+                         completion:(void(^)(NSURLResponse * _Nullable response, NSURL * _Nullable filePath, NSError * _Nullable error))completion;
+
+/**
  *  Like published Media.
  *
  *  @param mediaId  Id of a Media object.

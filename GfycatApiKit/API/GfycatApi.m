@@ -719,12 +719,22 @@ NSInteger const kTokenExpirationThreshold = 30;
 - (NSProgress *)downloadFileWithURL:(NSURL * _Nullable)url
                          completion:(void(^)(NSURLResponse * _Nullable response, NSURL * _Nullable filePath, NSError * _Nullable error))completion {
     
+    return [self downloadFileWithURL:url ignoreCache:NO completion:completion];
+}
+    
+- (NSProgress *)downloadFileWithURL:(NSURL * _Nullable)url ignoreCache:(BOOL)ignoreCache
+                         completion:(void(^)(NSURLResponse * _Nullable response, NSURL * _Nullable filePath, NSError * _Nullable error))completion {
+
     NSString *uniqueComponent = [[NSProcessInfo processInfo] globallyUniqueString];
     NSString *fileExt = (url.pathExtension.length > 0) ? url.pathExtension : @"tmp";
     NSURL *tempFileContentURL = [[[NSURL fileURLWithPath:NSTemporaryDirectory()] URLByAppendingPathComponent:uniqueComponent] URLByAppendingPathExtension:fileExt];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    NSURLSessionDownloadTask *downloadTask = [self.httpManager downloadTaskWithRequest:request
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    if (ignoreCache) {
+        request.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    }
+    
+    NSURLSessionDownloadTask *downloadTask = [self.httpManager downloadTaskWithRequest:[request copy]
                                                                               progress:nil
                                                                            destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
                                                                                return tempFileContentURL;
