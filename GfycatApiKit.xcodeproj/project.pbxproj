@@ -19,7 +19,7 @@
 		C60FDF661EEA9ACD0099F935 /* NSDictionary+GfycatApiKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C60FDF641EEA9ACD0099F935 /* NSDictionary+GfycatApiKit.m */; };
 		C6379DBF1EE8380F00D607BC /* GfycatExtendedMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = C6379DBD1EE8380F00D607BC /* GfycatExtendedMedia.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C6379DC01EE8380F00D607BC /* GfycatExtendedMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = C6379DBE1EE8380F00D607BC /* GfycatExtendedMedia.m */; };
-		D83789921EFA647C003BE0B3 /* GfycatConfigurationObject.h in Headers */ = {isa = PBXBuildFile; fileRef = D83789901EFA647C003BE0B3 /* GfycatConfigurationObject.h */; };
+		D83789921EFA647C003BE0B3 /* GfycatConfigurationObject.h in Headers */ = {isa = PBXBuildFile; fileRef = D83789901EFA647C003BE0B3 /* GfycatConfigurationObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D83789931EFA647C003BE0B3 /* GfycatConfigurationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D83789911EFA647C003BE0B3 /* GfycatConfigurationObject.m */; };
 		D85A41D41EE99E9B00854D9D /* GfycatReferencedMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = D85A41D21EE99E9B00854D9D /* GfycatReferencedMedia.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D85A41D51EE99E9B00854D9D /* GfycatReferencedMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = D85A41D31EE99E9B00854D9D /* GfycatReferencedMedia.m */; };
