@@ -681,7 +681,7 @@ NSInteger const kTokenExpirationThreshold = 30;
 }
 
 - (void)getCreatedMediasCount:(NSInteger)count
-                       cursor:(NSString *)cursor
+                       cursor:(nullable NSString *)cursor
                   withSuccess:(GfycatMediaBlock)success
                       failure:(nullable GfycatFailureBlock)failure
 {

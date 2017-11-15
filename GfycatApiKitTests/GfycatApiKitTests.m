@@ -325,4 +325,76 @@
     }];
 }
 
+- (void)testGetReferencedMedia {
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    [GfycatApi.shared getReferencedMedia:[NSURL URLWithString:@"https://gfycat.com/gifs/detail/PerfumedLateGermanshorthairedpointer"] withSuccess:^(GfycatReferencedMedia * _Nonnull media) {
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testGetConfigurationObjects {
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    [GfycatApi.shared getConfigurationObjectsSuccess:^(NSArray<GfycatConfigurationObject *> * _Nonnull configurationObjects) {
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testGetLikedMediasCount {
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    [GfycatApi.shared getLikedMediasCount:1 cursor:nil withSuccess:^(GfycatMediaCollection * _Nonnull mediaCollection, GfycatPaginationInfo * _Nullable paginationInfo) {
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testGetCreatedMediasCount {
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    [GfycatApi.shared getCreatedMediasCount:1 cursor:nil withSuccess:^(GfycatMediaCollection * _Nonnull mediaCollection, GfycatPaginationInfo * _Nullable paginationInfo) {
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
 @end
