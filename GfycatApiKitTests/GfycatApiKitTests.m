@@ -397,4 +397,22 @@
     }];
 }
 
+- (void)testReportMedia {
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    [GfycatApi.shared reportMedia:@"ActualSlimyGilamonster" withSuccess:^(NSDictionary * _Nonnull serverResponse) {
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
 @end
