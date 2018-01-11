@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                = 'GfycatApiKit'
-  s.version             = '0.0.7'
+  s.version             = '0.0.9'
   s.summary             = 'GfycatApiKit for iOS'
   s.description         = 'GfycatApiKit provides building blocks to integrate apps with the Gfycat API.'
   s.homepage            = 'https://developers.gfycat.com/api/'
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.source_files        = 'GfycatApiKit/**/*'
   s.public_header_files = 'GfycatApiKit/**/*.h'
 
-  s.dependency 'AFNetworking', '~> 3.0'
+  s.dependency 'AFNetworking', '3.1.0'
   s.dependency 'UICKeyChainStore', '2.1.1'
 
 end
