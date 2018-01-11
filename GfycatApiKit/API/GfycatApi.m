@@ -897,20 +897,25 @@ NSInteger const kTokenExpirationThreshold = 30;
 
 - (NSString *)currentLanguageCode {
     
-    if ([[NSLocale currentLocale] respondsToSelector:@selector(languageCode)]) {
-        if ([NSLocale currentLocale].languageCode.length && [NSLocale currentLocale].scriptCode.length) {
-            return [NSString stringWithFormat:@"%@-%@", [NSLocale currentLocale].languageCode, [NSLocale currentLocale].scriptCode];
+    if ([NSLocale preferredLanguages].count) {
+        NSString *lang = [[NSLocale preferredLanguages] firstObject];
+        NSMutableArray<NSString *> *components = [[lang componentsSeparatedByString:@"-"] mutableCopy];
+        if (components.count > 1) {
+            [components removeLastObject];
         }
-        
-        if ([NSLocale currentLocale].languageCode.length) {
-            return [NSLocale currentLocale].languageCode;
+        NSString *resultLang = [components componentsJoinedByString:@"-"];
+        if ([resultLang isEqualToString:@"zh-Hant"]) {
+            resultLang = @"zh-TW";
+        } else if ([resultLang isEqualToString:@"zh-Hans"]) {
+            resultLang = @"zh-CN";
         }
-    } else {
-        if ([NSLocale preferredLanguages].count) {
-            return [[NSLocale preferredLanguages] firstObject];
-        }
+        return resultLang;
     }
-    
+
+    if ([NSLocale currentLocale].languageCode.length) {
+        return [NSLocale currentLocale].languageCode;
+    }
+
     return @"en";
 }
 
