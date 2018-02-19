@@ -66,6 +66,7 @@ extern NSString *const kWebmSize;
 extern NSString *const kWebmUrl;
 extern NSString *const kWebpUrl;
 extern NSString *const kWidth;
+extern NSString *const kHasTransparency;
 
 // GfycatExtendedMedia
 extern NSString *const kLikeState;

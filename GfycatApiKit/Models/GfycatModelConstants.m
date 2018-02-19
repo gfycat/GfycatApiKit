@@ -66,6 +66,7 @@ NSString *const kWebmSize =         @"webmSize";
 NSString *const kWebmUrl =          @"webmUrl";
 NSString *const kWebpUrl =          @"webpUrl";
 NSString *const kWidth =            @"width";
+NSString *const kHasTransparency =  @"hasTransparency";
 NSString *const kGfycatMediaCollection =
                                     @"gfycatMediaCollection";
 

@@ -204,6 +204,11 @@
     return @[];
 }
 
+- (BOOL)hasTransparency
+{
+    return true;
+}
+
 #pragma mark - NSCoding
 
 + (BOOL)supportsSecureCoding {

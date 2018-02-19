@@ -123,12 +123,17 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Title of the Media
  */
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy, readonly) NSString *title;
 
 /**
  *  Caption written by creator of the Media
  */
-@property (nonatomic, copy) NSString *caption;
+@property (nonatomic, copy, readonly) NSString *caption;
+
+/**
+ *  If this media has transparent pixels
+ */
+@property (nonatomic, assign, readonly) BOOL hasTransparency;
 
 /**
  *  Tags on the Media

@@ -60,6 +60,9 @@
 @property (nonatomic, copy, readwrite) NSURL *thumbnail640Url;
 @property (nonatomic, copy, readwrite) NSURL *webmUrl;
 @property (nonatomic, copy, readwrite) NSURL *webpUrl;
+@property (nonatomic, copy, readwrite) NSString *title;
+@property (nonatomic, copy, readwrite) NSString *caption;
+@property (nonatomic, assign, readwrite) BOOL hasTransparency;
 
 @end
 
@@ -84,6 +87,11 @@
 
 @synthesize webmUrl = _webmUrl;
 @synthesize webpUrl = _webpUrl;
+
+@synthesize title = _title;
+@synthesize caption = _caption;
+
+@synthesize hasTransparency = _hasTransparency;
 
 - (instancetype)initWithInfo:(NSDictionary *)info {
     self = [super initWithInfo:info];
@@ -131,6 +139,8 @@
 
         self.webmUrl = [gfyItem gfy_urlValueForKey:kWebmUrl];
         self.webpUrl = [gfyItem gfy_urlValueForKey:kWebpUrl];
+
+        self.hasTransparency = [gfyItem gfy_boolValueForKey:kHasTransparency];
     }
     return self;
 }
@@ -185,6 +195,8 @@
         
         self.webmUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kWebmUrl];
         self.webpUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kWebpUrl];
+
+        self.hasTransparency = [decoder decodeBoolForKey:kHasTransparency];
     }
     return self;
 }
@@ -234,6 +246,7 @@
     [encoder encodeObject:self.webmUrl forKey:kWebmUrl];
     [encoder encodeObject:self.webpUrl forKey:kWebpUrl];
 
+    [encoder encodeBool:self.hasTransparency forKey:kHasTransparency];
 }
 
 #pragma mark - Getters
@@ -364,6 +377,8 @@
 
     copy.webmUrl = self.webmUrl;
     copy.webpUrl = self.webpUrl;
+    
+    copy.hasTransparency = self.hasTransparency;
 
     return copy;
 }
