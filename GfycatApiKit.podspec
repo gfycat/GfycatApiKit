@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                = 'GfycatApiKit'
-  s.version             = '0.0.13'
+  s.version             = '0.0.14'
   s.summary             = 'GfycatApiKit for iOS'
   s.description         = 'GfycatApiKit provides building blocks to integrate apps with the Gfycat API.'
   s.homepage            = 'https://developers.gfycat.com/api/'
