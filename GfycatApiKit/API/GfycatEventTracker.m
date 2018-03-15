@@ -21,6 +21,7 @@
 #import "GfycatEventTracker.h"
 #import <UIKit/UIKit.h>
 #import <AFNetworking/AFNetworking.h>
+#import "GfycatApi.h"
 
 @interface GfycatEventTracker () {
     NSURL *_baseURL;
@@ -49,7 +50,7 @@ static NSString *stringValueForObject(id object) {
     static GfycatEventTracker *impressionsTracker = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        impressionsTracker = [self trackerWithBaseURL:[NSURL URLWithString:@"https://px.gfycat.com/pix.gif"]];
+        impressionsTracker = [self trackerWithBaseURL:[GfycatApi.shared URLByApplyingOverrideDomain:[NSURL URLWithString:@"https://px.gfycat.com/pix.gif"]]];
     });
     return impressionsTracker;
 }
@@ -58,7 +59,7 @@ static NSString *stringValueForObject(id object) {
     static GfycatEventTracker *analyticsTracker = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        analyticsTracker = [self trackerWithBaseURL:[NSURL URLWithString:@"https://metrics.gfycat.com/pix.gif"]];
+        analyticsTracker = [self trackerWithBaseURL:[GfycatApi.shared URLByApplyingOverrideDomain:[NSURL URLWithString:@"https://metrics.gfycat.com/pix.gif"]]];
     });
     return analyticsTracker;
 }

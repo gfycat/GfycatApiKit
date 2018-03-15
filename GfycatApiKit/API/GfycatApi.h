@@ -64,6 +64,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setBaseURL:(NSURL *)baseURL;
 
 /**
+ * Setting custom domain to override default gfycat.com in all URLs
+ */
+- (void)setOverrideDomain:(NSString *)overrideDomain;
+
+/**
  *  The identifier of the shared data container into which files in background sessions should be downloaded.
  *  App extensions wishing to use background sessions *must* set this property to a valid container identifier, or
  *  all transfers in that session will fail with NSURLErrorBackgroundSessionRequiresSharedContainer.
@@ -105,7 +110,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param failure  Provides an error and a server status code.
  */
 - (void)refreshSession:(GfycatResponseBlock)success
-                failure:(nullable GfycatFailureBlock)failure;
+               failure:(nullable GfycatFailureBlock)failure;
 
 /**
  *  Validate if authorization is done.
@@ -355,6 +360,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)reportMedia:(NSString *)mediaId
         withSuccess:(GfycatResponseBlock)success
             failure:(nullable GfycatFailureBlock)failure;
+
+@end
+
+@interface GfycatApi(NSURLExtensions)
+
+@property (nonatomic, readonly) NSURL *gfycatApiKitBaseURL;
+- (NSURL *)URLByApplyingOverrideDomain:(NSURL *)url;
 
 @end
 

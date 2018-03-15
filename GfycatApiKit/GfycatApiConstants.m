@@ -21,8 +21,10 @@
 #import "GfycatApiConstants.h"
 
 NSString *const kGfycatApiKitBaseURLConfigurationKey = @"GfycatApiKitBaseUrl";
+NSString *const kGfycatApiKitOverrideDomainConfigurationKey = @"GfycatApiKitOverrideDomain";
 NSString *const kGfycatApiKitAuthorizationURLConfigurationKey = @"GfycatApiKitAuthorizationUrl";
 NSString *const kGfycatApiKitBaseURL = @"https://api.gfycat.com/v1";
+NSString *const kGfycatApiKitDefaultDomain = @"gfycat.com";
 NSString *const kGfycatConfigurationReleaseFileURL = @"https://goo.gl/GE4qrj";
 NSString *const kGfycatConfigurationDebugFileURL = @"https://goo.gl/VGFVDX";
 NSString *const kGfycatApiKitAuthorizationURL = @"/oauth/token";

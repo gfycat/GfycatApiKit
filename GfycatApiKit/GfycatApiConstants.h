@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 extern NSString *const kGfycatApiKitBaseURLConfigurationKey;
 
+extern NSString *const kGfycatApiKitOverrideDomainConfigurationKey;
+
 /**
  *  Configuration Key for the Gfycat API's Authorization URL.
  */
@@ -39,6 +41,11 @@ extern NSString *const kGfycatCategoryManagementEnabled;
  *  Gfycat API's Base URL.
  */
 extern NSString *const kGfycatApiKitBaseURL;
+
+/**
+ * Gfycat's default domain
+ */
+extern NSString *const kGfycatApiKitDefaultDomain;
 
 /**
  *  Gfycat configuration file's URL for release configuration.
