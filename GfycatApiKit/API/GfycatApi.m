@@ -851,7 +851,7 @@ NSString *const kFileDropEndpointPath = @"https://filedrop.gfycat.com/";
               failure:(nullable GfycatFailureBlock)failure {
     
     NSError *error;
-    NSString *urlString = [GfycatApi.shared URLByApplyingOverrideDomain:[NSURL URLWithString:uploadKey.gfyId relativeToURL:kFileDropEndpointPath]].absoluteString;
+    NSString *urlString = [GfycatApi.shared URLByApplyingOverrideDomain:[NSURL URLWithString:uploadKey.gfyId relativeToURL:[NSURL URLWithString:kFileDropEndpointPath]]].absoluteString;
     NSURLRequest *request = [self.httpUploadManager.requestSerializer multipartFormRequestWithMethod:@"PUT" URLString:urlString parameters:nil
                              constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                  [formData appendPartWithFileURL:fileUrl name:uploadKey.gfyId error:nil];
