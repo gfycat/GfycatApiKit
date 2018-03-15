@@ -40,7 +40,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 
 @interface GfycatApi() {
 @private
-    NSString *_baseURL;
+    NSURL *_baseURL;
     NSString * _Nullable _overrideDomain;
 }
 
@@ -100,7 +100,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 - (instancetype)init
 {
     if (self = [super init]) {
-        [self setBaseURL:nil];
+        [self setBaseURL:[NSURL URLWithString:kGfycatApiKitBaseURL]];
         [self configureCredentials];
     }
     
@@ -157,7 +157,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 
 - (void)setOverrideDomain:(NSString *)overrideDomain
 {
-    if (_overrideDomain == overrideDomain || _overrideDomain && [_overrideDomain isEqualToString:overrideDomain]) {
+    if (_overrideDomain == overrideDomain || (_overrideDomain && [_overrideDomain isEqualToString:overrideDomain])) {
         return;
     }
     _overrideDomain = [overrideDomain copy];
@@ -504,8 +504,9 @@ NSInteger const kTokenExpirationThreshold = 30;
     
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
-        NSString *getPath = [weakSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:[NSString stringWithFormat:@"gfycats/%@", mediaId]].absoluteString;
-        [weakSelf getPath:getPath
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *getPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:[NSString stringWithFormat:@"gfycats/%@", mediaId]].absoluteString;
+        [strongSelf getPath:getPath
                parameters:@{}
             responseModel:[GfycatMedia class]
                   success:success
@@ -543,8 +544,9 @@ NSInteger const kTokenExpirationThreshold = 30;
 - (void)getExtendedMedia:(NSString *)mediaId withSuccess:(GfycatExtendedMediaObjectBlock)success failure:(nullable GfycatFailureBlock)failure {
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
-        NSString *getPath = [weakSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:[NSString stringWithFormat:@"me/gfycats/%@/full", mediaId]].absoluteString;
-        [weakSelf getPath:getPath
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *getPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:[NSString stringWithFormat:@"me/gfycats/%@/full", mediaId]].absoluteString;
+        [strongSelf getPath:getPath
                parameters:@{}
             responseModel:[GfycatExtendedMedia class]
                   success:success
@@ -649,8 +651,9 @@ NSInteger const kTokenExpirationThreshold = 30;
     
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
-        NSString *paginatedPath = [weakSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"reactions/populated"].absoluteString;
-        [weakSelf getPaginatedPath:paginatedPath
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *paginatedPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"reactions/populated"].absoluteString;
+        [strongSelf getPaginatedPath:paginatedPath
                     parameters:@{
                                  kTagName : categoryTitle,
                                  @"gfyCount" : @(count)
@@ -670,8 +673,9 @@ NSInteger const kTokenExpirationThreshold = 30;
     
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
-        NSString *paginatedPath = [weakSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"gfycats/search"].absoluteString;
-        [weakSelf getPaginatedPath:paginatedPath
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *paginatedPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"gfycats/search"].absoluteString;
+        [strongSelf getPaginatedPath:paginatedPath
                     parameters:@{
                                  @"search_text" : searchString,
                                  @"count" : @(count)
@@ -690,12 +694,13 @@ NSInteger const kTokenExpirationThreshold = 30;
                     failure:(nullable GfycatFailureBlock)failure {
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
         NSMutableDictionary *parameters = [@{@"count" : @(count)} mutableCopy];
         if (cursor != nil) {
             parameters[kCursor] = cursor;
         }
-        NSString *paginatedPath = [weakSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"me/likes/populated"].absoluteString;
-        [weakSelf getPaginatedPath:paginatedPath
+        NSString *paginatedPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"me/likes/populated"].absoluteString;
+        [strongSelf getPaginatedPath:paginatedPath
                         parameters:parameters
                      responseModel:[GfycatMediaCollection class]
                            success:success
@@ -712,12 +717,13 @@ NSInteger const kTokenExpirationThreshold = 30;
 {
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
         NSMutableDictionary *parameters = [@{@"count" : @(count)} mutableCopy];
         if (cursor != nil) {
             parameters[kCursor] = cursor;
         }
-        NSString *paginatedPath = [weakSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"me/gfycats"].absoluteString;
-        [weakSelf getPaginatedPath:paginatedPath
+        NSString *paginatedPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"me/gfycats"].absoluteString;
+        [strongSelf getPaginatedPath:paginatedPath
                         parameters:parameters
                      responseModel:[GfycatMediaCollection class]
                            success:success
@@ -733,8 +739,9 @@ NSInteger const kTokenExpirationThreshold = 30;
     
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
-        NSString *postPath = [weakSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:[NSString stringWithFormat:@"gfycats/%@/report-content", mediaId]].absoluteString;
-        [weakSelf postPath:postPath
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *postPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:[NSString stringWithFormat:@"gfycats/%@/report-content", mediaId]].absoluteString;
+        [strongSelf postPath:postPath
                 parameters:@{}
                    success:success
                    failure:failure];
@@ -829,8 +836,9 @@ NSInteger const kTokenExpirationThreshold = 30;
     
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
-        NSString *postPath = [weakSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"gfycats"].absoluteString;
-        [weakSelf postPath:postPath
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *postPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"gfycats"].absoluteString;
+        [strongSelf postPath:postPath
             parameters:parameters
                success:^(NSDictionary *response) {
                    GfycatUploadKey *uploadKey = GfyNotNull(response) ? [[GfycatUploadKey alloc] initWithInfo:response] : nil;
