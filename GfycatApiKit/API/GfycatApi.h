@@ -66,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Setting custom domain to override default gfycat.com in all URLs
  */
-- (void)setOverrideDomain:(NSString *)overrideDomain;
+- (void)setOverrideDomain:(NSString *)overrideDomain port:(nullable NSNumber *)port;
 
 /**
  *  The identifier of the shared data container into which files in background sessions should be downloaded.

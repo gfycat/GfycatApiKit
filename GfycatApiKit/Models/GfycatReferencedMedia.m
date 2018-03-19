@@ -186,7 +186,7 @@
 
 - (NSURL *)webpUrl
 {
-    return self.gfyName.length ? [NSURL URLWithString:[NSString stringWithFormat:@"http://thumbs.gfycat.com/%@.webp", self.gfyName]] : nil;
+    return self.gfyName.length ? [NSURL URLWithString:[NSString stringWithFormat:@"https://thumbs.gfycat.com/%@.webp", self.gfyName]] : nil;
 }
 
 - (NSString *)title

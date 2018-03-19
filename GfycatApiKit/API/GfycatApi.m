@@ -42,6 +42,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 @private
     NSURL *_baseURL;
     NSString * _Nullable _overrideDomain;
+    NSNumber * _Nullable _overridePort;
 }
 
 @property (nonatomic, copy, nonnull) NSString *appClientID;
@@ -155,12 +156,15 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     [self configureHTTPManagersWithBaseURL:[self URLByApplyingOverrideDomain:baseURL]];
 }
 
-- (void)setOverrideDomain:(NSString *)overrideDomain
+- (void)setOverrideDomain:(NSString *)overrideDomain port:(nullable NSNumber *)port
 {
-    if (_overrideDomain == overrideDomain || (_overrideDomain && [_overrideDomain isEqualToString:overrideDomain])) {
+    BOOL isSameDomain   = (_overrideDomain == overrideDomain) || (_overrideDomain && [_overrideDomain isEqualToString:overrideDomain]);
+    BOOL isSamePort     = (_overridePort == port) || (_overridePort && [_overridePort isEqualToNumber:port]);
+    if (isSameDomain && isSamePort) {
         return;
     }
     _overrideDomain = [overrideDomain copy];
+    _overridePort = port;
     
     NSURL *baseURL = _baseURL ?: [NSURL URLWithString:kGfycatApiKitBaseURL];
     [self configureHTTPManagersWithBaseURL:[self URLByApplyingOverrideDomain:baseURL]];
@@ -981,6 +985,7 @@ NSString *const kFileDropEndpointPath = @"https://filedrop.gfycat.com/";
     
     NSURLComponents *components = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:YES];
     components.host = [components.host.lowercaseString stringByReplacingOccurrencesOfString:kGfycatApiKitDefaultDomain withString:self->_overrideDomain];
+    components.port = self->_overridePort;
     return components.URL;
 }
 
