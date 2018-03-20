@@ -14,8 +14,9 @@ Pod::Spec.new do |s|
   s.requires_arc        = true
   s.source_files        = 'GfycatApiKit/**/*'
   s.public_header_files = 'GfycatApiKit/**/*.h'
+  s.static_framework = true
 
-  s.dependency 'AFNetworking', '3.1.0'
-  s.dependency 'UICKeyChainStore', '2.1.1'
+  s.dependency 'AFNetworking'
+  s.dependency 'UICKeyChainStore'
 
 end
