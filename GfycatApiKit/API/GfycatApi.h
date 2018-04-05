@@ -211,6 +211,18 @@ NS_ASSUME_NONNULL_BEGIN
                       failure:(nullable GfycatFailureBlock)failure;
 
 /**
+ *  Search stickers Media with string.
+ *
+ *  @param count    Count of objects to fetch.
+ *  @param success  Provides a media list object.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)searchStickersWithString:(nullable NSString *)searchString
+                           count:(NSInteger)count
+                     withSuccess:(GfycatMediaBlock)success
+                         failure:(nullable GfycatFailureBlock)failure;
+
+/**
  *  Get liked Medias.
  *
  *  @param count    Count of objects to fetch.

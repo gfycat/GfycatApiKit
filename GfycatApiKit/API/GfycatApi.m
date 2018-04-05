@@ -692,6 +692,30 @@ NSInteger const kTokenExpirationThreshold = 30;
     }];
 }
 
+- (void)searchStickersWithString:(nullable NSString *)searchString
+                           count:(NSInteger)count
+                     withSuccess:(GfycatMediaBlock)success
+                         failure:(nullable GfycatFailureBlock)failure {
+    
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *paginatedPath = searchString.length
+            ? [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"stickers/search"].absoluteString
+            : [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"stickers"].absoluteString;
+        NSDictionary *parameters = searchString.length
+            ? @{ @"search_text": searchString, @"count": @(count) }
+            : @{ @"count": @(count) };
+        [strongSelf getPaginatedPath:paginatedPath
+                          parameters:parameters
+                       responseModel:[GfycatMediaCollection class]
+                             success:success
+                             failure:failure];
+    } failure:^(NSError *error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
+
 - (void)getLikedMediasCount:(NSInteger)count
                      cursor:(nullable NSString *)cursor
                 withSuccess:(GfycatMediaBlock)success
