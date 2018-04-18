@@ -90,3 +90,7 @@ extern NSString *const kGfycatUploadSecret;
 // GfycatConfigurationObject
 extern NSString *const kPriority;
 extern NSString *const kHidden;
+
+// GfycatMediaCollectionWithPaginatedInfo
+extern NSString *const kPaginationInfo;
+

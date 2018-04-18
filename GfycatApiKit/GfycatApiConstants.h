@@ -180,10 +180,20 @@ typedef void (^GfycatObjectBlock)(id model);
 typedef void (^GfycatMediaBlock)(GfycatMediaCollection *mediaCollection, GfycatPaginationInfo * _Nullable paginationInfo);
 
 /**
+ *  A callback block providing a collection of Media objects.
+ *
+ *  @param mediaCollection  A GfycatMediaCollection object.
+ *  @param paginationInfo   A PaginationInfo object.
+ *  @param isFromCache      Returns YES if data retrieved from cache
+ */
+typedef void (^GfycatMediaCacheableBlock)(GfycatMediaCollection *mediaCollection, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache);
+
+/**
  *  A callback block providing a collection of Category objects.
  *
  *  @param categories       A GfycatCategories object.
  *  @param paginationInfo   A PaginationInfo object.
+ *  @param isFromCache      Returns YES if data retrieved from cache
  */
 typedef void (^GfycatCategoryArrayBlock)(GfycatCategories *categories, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache);
 

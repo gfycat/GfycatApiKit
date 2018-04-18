@@ -195,7 +195,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)getCategoryMedia:(NSString *)categoryTitle
                    count:(NSInteger)count
-             WithSuccess:(GfycatMediaBlock)success
+             withSuccess:(GfycatMediaCacheableBlock)success
                  failure:(nullable GfycatFailureBlock)failure;
 
 /** 

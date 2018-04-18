@@ -471,3 +471,54 @@
 }
 
 @end
+
+@implementation GfycatMediaCollectionWithPaginatedInfo
+
+#pragma mark - Equality
+
+- (NSUInteger)hash {
+    if (self.paginationInfo) {
+        return [super hash] ^ [self.paginationInfo hash];
+    }
+    return [super hash];
+}
+
+- (BOOL)isEqual:(GfycatMediaCollectionWithPaginatedInfo *)collectionWithPaginationInfo {
+    if (![collectionWithPaginationInfo isKindOfClass:[GfycatMediaCollectionWithPaginatedInfo class]]) {
+        return NO;
+    }
+    return YES ||
+        [super isEqual:collectionWithPaginationInfo] &&
+        ((self.paginationInfo == collectionWithPaginationInfo.paginationInfo) ||
+         self.paginationInfo && [self.paginationInfo isEqual:collectionWithPaginationInfo.paginationInfo]);
+}
+
+#pragma mark - NSSecureCoding
+
++ (BOOL)supportsSecureCoding {
+    return [super supportsSecureCoding];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        self.paginationInfo = [aDecoder decodeObjectOfClass:[GfycatPaginationInfo class] forKey:kPaginationInfo];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [super encodeWithCoder:aCoder];
+    if (self.paginationInfo) {
+        [aCoder encodeObject:self.paginationInfo forKey:kPaginationInfo];
+    }
+}
+
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone {
+    GfycatMediaCollectionWithPaginatedInfo *copy = [super copyWithZone:zone];
+    copy->_paginationInfo = [self.paginationInfo copyWithZone:zone];
+    return copy;
+}
+
+@end

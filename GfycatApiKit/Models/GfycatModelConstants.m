@@ -91,3 +91,6 @@ NSString *const kGfycatUploadSecret = @"secret";
 // GfycatConfigurationObject
 NSString *const kPriority = @"priority";
 NSString *const kHidden = @"hidden";
+
+// GfycatMediaCollectionWithPaginatedInfo
+NSString *const kPaginationInfo = @"paginationInfo";

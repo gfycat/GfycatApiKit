@@ -19,6 +19,7 @@
 //
 #import <UIKit/UIKit.h>
 #import "GfycatReferencedMedia.h"
+#import "GfycatPaginationInfo.h"s
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -134,6 +135,12 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param info JSON dictionary
  */
 - (instancetype)initWithInfo:(NSDictionary *)info;
+
+@end
+
+@interface GfycatMediaCollectionWithPaginatedInfo: GfycatMediaCollection <NSCopying, NSSecureCoding>
+
+@property (nonatomic, copy, nullable) GfycatPaginationInfo *paginationInfo;
 
 @end
 
