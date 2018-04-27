@@ -648,6 +648,27 @@ NSInteger const kTokenExpirationThreshold = 30;
     [dataTask resume];
 }
 
+- (void)getTrendingMediaCount:(NSInteger)count
+                  withSuccess:(GfycatMediaCacheableBlock)success
+                      failure:(nullable GfycatFailureBlock)failure {
+    
+    __weak __typeof(self) weakSelf = self;
+    GfycatMediaBlock successWrapper = ^(GfycatMediaCollection *mediaCollection, GfycatPaginationInfo * _Nullable paginationInfo) {
+        GfySafeExecute(success, mediaCollection, paginationInfo, NO);
+    };
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *paginatedPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"gfycats/trending"].absoluteString;
+        [strongSelf getPaginatedPath:paginatedPath
+                          parameters:@{ @"gfyCount" : @(count) }
+                       responseModel:[GfycatMediaCollection class]
+                             success:successWrapper
+                             failure:failure];
+    } failure:^(NSError *error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
+
 - (void)getCategoryMedia:(NSString *)categoryTitle
                    count:(NSInteger)count
              withSuccess:(GfycatMediaCacheableBlock)success
