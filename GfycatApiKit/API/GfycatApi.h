@@ -177,6 +177,15 @@ NS_ASSUME_NONNULL_BEGIN
                          failure:(nullable GfycatFailureBlock)failure;
 
 /**
+ *  Get list of all gaming categories.
+ *
+ *  @param success  Provides a media list object.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)getGamingCategoriesWithSuccess:(GfycatCategoryArrayBlock)success
+                               failure:(nullable GfycatFailureBlock)failure;
+
+/**
  *  Get list of all confugurations for current country.
  *
  *  @param success  Provides an array of configuration object.
