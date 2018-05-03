@@ -112,6 +112,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 {
     self.httpManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     self.httpManager.responseSerializer = [AFJSONResponseSerializer new];
+    self.httpManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", nil];
     self.httpManager.requestSerializer = [AFJSONRequestSerializer new];
     
     self.httpRedirectManager = [[AFHTTPSessionManager alloc] initWithBaseURL:nil];
