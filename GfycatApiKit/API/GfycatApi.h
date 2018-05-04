@@ -173,8 +173,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param success  Provides a media list object.
  *  @param failure  Provides an error and a server status code.
  */
-- (void)getCategoriesWithSuccess:(GfycatCategoryArrayBlock)success
-                         failure:(nullable GfycatFailureBlock)failure;
+- (void)getCategoriesCount:(NSInteger)count
+               withSuccess:(GfycatCategoryArrayBlock)success
+                   failure:(nullable GfycatFailureBlock)failure;
 
 /**
  *  Get list of all gaming categories.
@@ -182,8 +183,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param success  Provides a media list object.
  *  @param failure  Provides an error and a server status code.
  */
-- (void)getGamingCategoriesWithSuccess:(GfycatCategoryArrayBlock)success
-                               failure:(nullable GfycatFailureBlock)failure;
+- (void)getGamingCategoriesCount:(NSInteger)count
+                     withSuccess:(GfycatCategoryArrayBlock)success
+                         failure:(nullable GfycatFailureBlock)failure;
 
 /**
  *  Get list of all confugurations for current country.

@@ -440,6 +440,12 @@ NSInteger const kTokenExpirationThreshold = 30;
                       
                       id modelObject = [[modelClass alloc] initWithInfo:responseDictionary];
                       
+                      if ([path rangeOfString:@"reactions/populated"].location != NSNotFound && [modelObject isKindOfClass:[GfycatCategories class]]) {
+                          for (id item in [modelObject array]) {
+                              [item setLocalizedTitle:[[item localizedTitle] uppercaseString]];
+                          }
+                      }
+
                       GfySafeExecute(success, modelObject, paginationInfo);
                   }
                   failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -561,8 +567,9 @@ NSInteger const kTokenExpirationThreshold = 30;
     }];
 }
 
-- (void)getCategoriesWithSuccess:(GfycatCategoryArrayBlock)success
-                         failure:(nullable GfycatFailureBlock)failure {
+- (void)getCategoriesCount:(NSInteger)count
+               withSuccess:(GfycatCategoryArrayBlock)success
+                   failure:(nullable GfycatFailureBlock)failure {
     
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
@@ -570,9 +577,6 @@ NSInteger const kTokenExpirationThreshold = 30;
         
         GfycatCategoryArrayBlock wrappedSuccess = ^(GfycatCategories *categories, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache) {
             __strong __typeof(weakSelf) strongSelf = weakSelf;
-            for (id item in categories.array) {
-                [item setLocalizedTitle:[[item localizedTitle] uppercaseString]];
-            }
             if (strongSelf.gfycatCategoryManagementEnabled) {
                 [strongSelf getConfigurationObjectsSuccess:^(NSArray<GfycatConfigurationObject *> * _Nonnull configurationObjects) {
                     success([weakSelf categoriesByApplyingConfigurations:configurationObjects toCategories:categories], paginationInfo, isFromCache);
@@ -586,7 +590,7 @@ NSInteger const kTokenExpirationThreshold = 30;
         
         NSString *paginatedPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"reactions/populated"].absoluteString;
         [strongSelf getPaginatedPath:paginatedPath
-                          parameters:@{kLocale : [self currentLanguageCode]}
+                          parameters:@{ kLocale: [self currentLanguageCode],  @"count" : @(count),  @"gfyCount" : @(1) }
                        responseModel:[GfycatCategories class]
                              success:^(id paginatedObjects, GfycatPaginationInfo * _Nullable paginationInfo) {
                                  if (success != nil) {
@@ -599,8 +603,9 @@ NSInteger const kTokenExpirationThreshold = 30;
     }];
 }
 
-- (void)getGamingCategoriesWithSuccess:(GfycatCategoryArrayBlock)success
-                               failure:(nullable GfycatFailureBlock)failure {
+- (void)getGamingCategoriesCount:(NSInteger)count
+                     withSuccess:(GfycatCategoryArrayBlock)success
+                         failure:(nullable GfycatFailureBlock)failure {
     
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
@@ -622,7 +627,7 @@ NSInteger const kTokenExpirationThreshold = 30;
         
         NSString *paginatedPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"tags/gaming/populated"].absoluteString;
         [strongSelf getPaginatedPath:paginatedPath
-                          parameters:@{kLocale : [self currentLanguageCode]}
+                          parameters:@{ @"count" : @(count),  @"gfyCount" : @(1) }
                        responseModel:[GfycatCategories class]
                              success:^(id paginatedObjects, GfycatPaginationInfo * _Nullable paginationInfo) {
                                  if (success != nil) {
