@@ -220,6 +220,19 @@ NS_ASSUME_NONNULL_BEGIN
              withSuccess:(GfycatMediaCacheableBlock)success
                  failure:(nullable GfycatFailureBlock)failure;
 
+/**
+ *  Get a list of media objects from a category.
+ *
+ *  @param categoryTitle Title of category.
+ *  @param count    Count of objects to fetch.
+ *  @param success  Provides an array of Media objects and Pagination info.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)getGamingCategoryMedia:(NSString *)categoryTitle
+                         count:(NSInteger)count
+                   withSuccess:(GfycatMediaCacheableBlock)success
+                       failure:(nullable GfycatFailureBlock)failure;
+
 /** 
  *  Search published Media with string.
  *
