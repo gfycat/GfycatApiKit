@@ -81,6 +81,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *userName;
 
 /**
+ *  Display name of the creator of the Media
+ */
+@property (nonatomic, copy, readonly, nullable) NSString *userDisplayName;
+
+/**
+ *  Profile image of the creator of the Media
+ */
+@property (nonatomic, copy, readonly, nullable) NSURL *userProfileImageUrl;
+
+/**
  *  Number of views of the Media
  */
 @property (nonatomic, readonly) NSInteger views;

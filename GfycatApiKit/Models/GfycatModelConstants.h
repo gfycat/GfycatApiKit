@@ -61,6 +61,8 @@ extern NSString *const kThumbnail360Url;
 extern NSString *const kThumbnail640Url;
 extern NSString *const kTitle;
 extern NSString *const kUserName;
+extern NSString *const kUserDisplayName;
+extern NSString *const kUserProfileImageUrl;
 extern NSString *const kViews;
 extern NSString *const kWebmSize;
 extern NSString *const kWebmUrl;

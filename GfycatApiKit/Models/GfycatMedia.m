@@ -36,6 +36,8 @@
 @property (nonatomic, assign, readwrite) NSInteger numberOfFrames;
 @property (nonatomic, assign, getter=isPublished, readwrite) BOOL published;
 @property (nonatomic, copy, readwrite) NSString *userName;
+@property (nonatomic, copy, readwrite) NSString *userDisplayName;
+@property (nonatomic, copy, readwrite) NSURL *userProfileImageUrl;
 @property (nonatomic, assign, readwrite) NSInteger views;
 
 @property (nonatomic, assign, readwrite) NSInteger sourceType;
@@ -112,6 +114,8 @@
         self.tags = [gfyItem gfy_arrayValueForKey:kTags] ?: [NSArray new];
         self.title = [gfyItem gfy_stringValueForKey:kTitle];
         self.userName = [gfyItem gfy_stringValueForKey:kUserName];
+        self.userDisplayName = [gfyItem gfy_stringValueForKey:kUserDisplayName];
+        self.userProfileImageUrl = [gfyItem gfy_urlValueForKey:kUserProfileImageUrl];
         self.views = [gfyItem gfy_integerValueForKey:kViews];
 
         self.sourceType = [gfyItem gfy_integerValueForKey:kSourceType];
@@ -168,6 +172,8 @@
         self.tags = [[decoder decodeObjectOfClass:[NSArray class] forKey:kTags] copy];
         self.title = [decoder decodeObjectOfClass:[NSString class] forKey:kTitle];
         self.userName = [decoder decodeObjectOfClass:[NSString class] forKey:kUserName];
+        self.userDisplayName = [decoder decodeObjectOfClass:[NSString class] forKey:kUserDisplayName];
+        self.userProfileImageUrl = [decoder decodeObjectOfClass:[NSString class] forKey:kUserProfileImageUrl];
         self.views = [decoder decodeIntegerForKey:kViews];
         
         self.sourceType = [decoder decodeIntegerForKey:kSourceType];
@@ -218,6 +224,8 @@
     [encoder encodeObject:self.tags forKey:kTags];
     [encoder encodeObject:self.title forKey:kTitle];
     [encoder encodeObject:self.userName forKey:kUserName];
+    [encoder encodeObject:self.userDisplayName forKey:kUserDisplayName];
+    [encoder encodeObject:self.userProfileImageUrl forKey:kUserProfileImageUrl];
     [encoder encodeInteger:self.views forKey:kViews];
     
     [encoder encodeInteger:self.sourceType forKey:kSourceType];
@@ -350,6 +358,8 @@
     copy.tags = [self.tags copyWithZone:zone];
     copy.title = self.title;
     copy.userName = self.userName;
+    copy.userDisplayName = self.userDisplayName;
+    copy.userProfileImageUrl = self.userProfileImageUrl;
     copy.views = self.views;
 
     copy.sourceType = self.sourceType;
