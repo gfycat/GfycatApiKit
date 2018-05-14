@@ -95,6 +95,7 @@
 
 @synthesize hasTransparency = _hasTransparency;
 
+
 - (instancetype)initWithInfo:(NSDictionary *)info {
     self = [super initWithInfo:info];
     if (self && GfyNotNull(info)) {

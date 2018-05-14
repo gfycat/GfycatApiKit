@@ -34,6 +34,7 @@
 @implementation GfycatReferencedMedia
 
 @synthesize size = _size;
+@synthesize projectionType = _projectionType;
 
 - (nullable instancetype)initWithMessageURL:(NSURL *)messageURL
 {
@@ -60,6 +61,7 @@
         _averageColor = parameters[@"avg"] ?: @"000000";
         _width = [parameters[@"w"] floatValue] ?: 100;
         _height = [parameters[@"h"] floatValue] ?: 100;
+        _projectionType = [[self class] _projectionTypeFromString:parameters[kProjectionType]];
     }
     
     return self;
@@ -71,6 +73,7 @@
         _gfyName = [gfyName copy];
         _width = size.width;
         _height = size.height;
+        _projectionType = GfycatMediaProjectionTypeNone;
     }
     
     return self;
@@ -83,6 +86,7 @@
         _averageColor = [averageColor copy];
         _width = size.width;
         _height = size.height;
+        _projectionType = GfycatMediaProjectionTypeNone;
     }
     
     return self;
@@ -97,6 +101,7 @@
         _gfyName = [gfyItem gfy_stringValueForKey:kGfyName];
         _width = [gfyItem gfy_integerValueForKey:kWidth];
         _height = [gfyItem gfy_integerValueForKey:kHeight];
+        _projectionType = [[self class] _projectionTypeFromString:[gfyItem gfy_stringValueForKey:kProjectionType]];
     }
     return self;
 }
@@ -189,6 +194,11 @@
     return self.gfyName.length ? [NSURL URLWithString:[NSString stringWithFormat:@"https://thumbs.gfycat.com/%@.webp", self.gfyName]] : nil;
 }
 
+- (NSURL *)largeWebPUrl
+{
+    return self.gfyName.length ? [NSURL URLWithString:[NSString stringWithFormat:@"https://thumbs.gfycat.com/%@-large.webp", self.gfyName]] : nil;
+}
+
 - (NSString *)title
 {
     return @"";
@@ -209,6 +219,11 @@
     return true;
 }
 
+- (BOOL)hasSpatialContent
+{
+    return ![GfycatMediaProjectionTypeNone isEqualToString:_projectionType];
+}
+
 #pragma mark - NSCoding
 
 + (BOOL)supportsSecureCoding {
@@ -221,6 +236,7 @@
         _averageColor = [decoder decodeObjectOfClass:[NSString class] forKey:kAverageColor];
         _width = [decoder decodeIntegerForKey:kWidth];
         _height = [decoder decodeIntegerForKey:kHeight];
+        _projectionType = [[self class] _projectionTypeFromString:[decoder decodeObjectOfClass:[NSString class] forKey:kProjectionType]];
     }
     return self;
 }
@@ -232,6 +248,7 @@
     [encoder encodeObject:self.averageColor forKey:kAverageColor];
     [encoder encodeInteger:self.size.width forKey:kWidth];
     [encoder encodeInteger:self.size.height forKey:kHeight];
+    [encoder encodeObject:self.projectionType forKey:kProjectionType];
 }
 
 #pragma mark - NSCopying
@@ -243,9 +260,23 @@
     copy->_averageColor = [self.averageColor copyWithZone:zone];
     copy->_width = _width;
     copy->_height = _height;
+    copy->_projectionType = [_projectionType copyWithZone:zone];
     
     return copy;
 }
 
+#pragma mark - Utils
+
++ (GfycatMediaProjectionType)_projectionTypeFromString:(NSString * _Nullable)projectionTypeString
+{
+    projectionTypeString = [projectionTypeString lowercaseString];
+    if ([GfycatMediaProjectionTypeEquirectangular isEqualToString:projectionTypeString]) {
+        return GfycatMediaProjectionTypeEquirectangular;
+    }
+    if ([GfycatMediaProjectionTypeFacebookCube isEqualToString:projectionTypeString]) {
+        return GfycatMediaProjectionTypeFacebookCube;
+    }
+    return GfycatMediaProjectionTypeNone;
+}
 
 @end

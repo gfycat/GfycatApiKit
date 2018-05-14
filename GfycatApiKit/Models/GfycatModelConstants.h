@@ -69,6 +69,13 @@ extern NSString *const kWebmUrl;
 extern NSString *const kWebpUrl;
 extern NSString *const kWidth;
 extern NSString *const kHasTransparency;
+extern NSString *const kProjectionType;
+
+typedef NSString *GfycatMediaProjectionType NS_EXTENSIBLE_STRING_ENUM;
+
+extern const GfycatMediaProjectionType GfycatMediaProjectionTypeNone;
+extern const GfycatMediaProjectionType GfycatMediaProjectionTypeEquirectangular;
+extern const GfycatMediaProjectionType GfycatMediaProjectionTypeFacebookCube;
 
 // GfycatExtendedMedia
 extern NSString *const kLikeState;

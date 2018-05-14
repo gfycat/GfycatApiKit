@@ -19,6 +19,7 @@
 //
 
 #import "GfycatModel.h"
+#import "GfycatModelConstants.h"
 #import <CoreGraphics/CoreGraphics.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -120,6 +121,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy, readonly) NSURL *webpUrl;
 
+@property (nonatomic, copy, readonly) NSURL *largeWebPUrl;
+
 /**
  *  Title of the Media
  */
@@ -134,6 +137,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  If this media has transparent pixels
  */
 @property (nonatomic, assign, readonly) BOOL hasTransparency;
+
+@property (nonatomic, copy, readonly) GfycatMediaProjectionType projectionType;
+
+@property (nonatomic, assign, readonly) BOOL hasSpatialContent;
 
 /**
  *  Tags on the Media

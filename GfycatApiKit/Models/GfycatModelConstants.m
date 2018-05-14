@@ -69,8 +69,13 @@ NSString *const kWebmUrl =          @"webmUrl";
 NSString *const kWebpUrl =          @"webpUrl";
 NSString *const kWidth =            @"width";
 NSString *const kHasTransparency =  @"hasTransparency";
+NSString *const kProjectionType =   @"projectionType";
 NSString *const kGfycatMediaCollection =
                                     @"gfycatMediaCollection";
+
+const GfycatMediaProjectionType     GfycatMediaProjectionTypeNone               = @"none";
+const GfycatMediaProjectionType     GfycatMediaProjectionTypeEquirectangular    = @"equirectangular";
+const GfycatMediaProjectionType     GfycatMediaProjectionTypeFacebookCube       = @"facebook-cube";
 
 // GfycatExtendedMedia
 NSString *const kLikeState =        @"likeState";
