@@ -80,17 +80,30 @@
 }
 
 - (instancetype)initWithName:(NSString *)gfyName size:(CGSize)size averageColor:(NSString *)averageColor
-{
-    if (self = [super initWithGfyId:gfyName.lowercaseString]) {
-        _gfyName = [gfyName copy];
-        _averageColor = [averageColor copy];
-        _width = size.width;
-        _height = size.height;
-        _projectionType = GfycatMediaProjectionTypeNone;
+    {
+        if (self = [super initWithGfyId:gfyName.lowercaseString]) {
+            _gfyName = [gfyName copy];
+            _averageColor = [averageColor copy];
+            _width = size.width;
+            _height = size.height;
+            _projectionType = GfycatMediaProjectionTypeNone;
+        }
+        
+        return self;
     }
-    
-    return self;
-}
+
+- (instancetype)initWithName:(NSString *)gfyName size:(CGSize)size averageColor:(NSString *)averageColor projectionType:(NSString *)projectionType
+    {
+        if (self = [super initWithGfyId:gfyName.lowercaseString]) {
+            _gfyName = [gfyName copy];
+            _averageColor = [averageColor copy];
+            _width = size.width;
+            _height = size.height;
+            _projectionType = [[self class] _projectionTypeFromString:projectionType];
+        }
+        
+        return self;
+    }
 
 - (instancetype)initWithInfo:(NSDictionary *)info {
     self = [super initWithInfo:info];
@@ -216,7 +229,7 @@
 
 - (BOOL)hasTransparency
 {
-    return true;
+    return !_averageColor.length;
 }
 
 - (BOOL)hasSpatialContent

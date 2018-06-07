@@ -19,7 +19,7 @@
 //
 #import <UIKit/UIKit.h>
 #import "GfycatReferencedMedia.h"
-#import "GfycatPaginationInfo.h"s
+#import "GfycatPaginationInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

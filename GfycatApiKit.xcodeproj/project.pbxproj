@@ -23,7 +23,7 @@
 		D83789931EFA647C003BE0B3 /* GfycatConfigurationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D83789911EFA647C003BE0B3 /* GfycatConfigurationObject.m */; };
 		D85A41D41EE99E9B00854D9D /* GfycatReferencedMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = D85A41D21EE99E9B00854D9D /* GfycatReferencedMedia.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D85A41D51EE99E9B00854D9D /* GfycatReferencedMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = D85A41D31EE99E9B00854D9D /* GfycatReferencedMedia.m */; };
-		E10B7E691E4BFDE4004DD902 /* GfycatModelConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E10B7E671E4BFDE4004DD902 /* GfycatModelConstants.h */; };
+		E10B7E691E4BFDE4004DD902 /* GfycatModelConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E10B7E671E4BFDE4004DD902 /* GfycatModelConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E10B7E6A1E4BFDE4004DD902 /* GfycatModelConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B7E681E4BFDE4004DD902 /* GfycatModelConstants.m */; };
 		E12AC99B1E4D0BBC00F76BE2 /* GfycatCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = E12AC9991E4D0BBC00F76BE2 /* GfycatCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E12AC99C1E4D0BBC00F76BE2 /* GfycatCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = E12AC99A1E4D0BBC00F76BE2 /* GfycatCategory.m */; };

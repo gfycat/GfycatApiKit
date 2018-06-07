@@ -22,6 +22,7 @@
 #import "NSDictionary+GfycatApiKit.h"
 #import "GfycatApi.h"
 #import "GfycatMedia.h"
+#import "GfycatCategory.h"
 
 @interface GfycatApiKitTests : XCTestCase
 
@@ -207,8 +208,10 @@
 - (void)testGetCategories {
     
     XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    NSInteger count = 5;
     
-    [GfycatApi.shared getCategoriesWithSuccess:^(GfycatCategories *categories, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache) {
+    [GfycatApi.shared getCategoriesCount:count withSuccess:^(GfycatCategories * _Nonnull categories, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache) {
+        XCTAssertTrue(categories.array.count <= count);
         [expectation fulfill];
     } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
         XCTAssertNil(error);
@@ -229,7 +232,7 @@
     
     NSInteger count = 5;
     
-    [GfycatApi.shared getCategoryMedia:@"trending" count:count WithSuccess:^(GfycatMediaCollection * _Nonnull mediaCollection, GfycatPaginationInfo * _Nullable paginationInfo) {
+    [GfycatApi.shared getCategoryMedia:@"trending" count:count withSuccess:^(GfycatMediaCollection * _Nonnull mediaCollection, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache) {
         XCTAssertTrue(mediaCollection.array.count <= count);
         [expectation fulfill];
     } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
@@ -343,23 +346,23 @@
     }];
 }
 
-- (void)testGetConfigurationObjects {
-    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
-    
-    [GfycatApi.shared getConfigurationObjectsSuccess:^(NSArray<GfycatConfigurationObject *> * _Nonnull configurationObjects) {
-        [expectation fulfill];
-    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
-        XCTAssertNil(error);
-        [expectation fulfill];
-    }];
-    
-    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
-        if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
-        }
-        XCTAssertNil(error);
-    }];
-}
+//- (void)testGetConfigurationObjects {
+//    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+//
+//    [GfycatApi.shared getConfigurationObjectsSuccess:^(NSArray<GfycatConfigurationObject *> * _Nonnull configurationObjects) {
+//        [expectation fulfill];
+//    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+//        XCTAssertNil(error);
+//        [expectation fulfill];
+//    }];
+//
+//    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+//        if (error != nil) {
+//            NSLog(@"Error: %@", error.localizedDescription);
+//        }
+//        XCTAssertNil(error);
+//    }];
+//}
 
 - (void)testGetLikedMediasCount {
     XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];

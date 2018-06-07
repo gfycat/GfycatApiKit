@@ -241,6 +241,13 @@ typedef void (^GfycatReferencedMediaObjectBlock)(GfycatReferencedMedia *media);
 typedef void (^GfycatExtendedMediaObjectBlock)(GfycatExtendedMedia *media);
 
 /**
+ *  A callback block providing a extended Media object.
+ *
+ *  @param media    An GfycatExtendedMedia object.
+ */
+typedef void (^GfycatMediaLikeStateBlock)(GfycatMedia *media, BOOL likeState);
+
+/**
  *  A callback block providing a GfycatUploadKey object.
  *
  *  @param uploadKey An GfycatUploadKey object.

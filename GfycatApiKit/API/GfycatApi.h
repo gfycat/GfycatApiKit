@@ -168,6 +168,17 @@ NS_ASSUME_NONNULL_BEGIN
                  failure:(nullable GfycatFailureBlock)failure;
 
 /**
+ *  Get user-specific information about a Media object.
+ *
+ *  @param media    Media object.
+ *  @param success  Provides original media object and its like state.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)getLikeStateForMedia:(GfycatMedia *)media
+                 withSuccess:(GfycatMediaLikeStateBlock)success
+                     failure:(nullable GfycatFailureBlock)failure;
+
+/**
  *  Get list of all categories.
  *
  *  @param success  Provides a media list object.
@@ -206,6 +217,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getTrendingMediaCount:(NSInteger)count
                   withSuccess:(GfycatMediaCacheableBlock)success
                       failure:(nullable GfycatFailureBlock)failure;
+
+/**
+ *  Get a list of media objects from a user.
+ *
+ *  @param userName User name.
+ *  @param count    Count of objects to fetch.
+ *  @param success  Provides an array of Media objects and Pagination info.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)getUserMedia:(NSString *)userName
+               count:(NSInteger)count
+         withSuccess:(GfycatMediaCacheableBlock)success
+             failure:(nullable GfycatFailureBlock)failure;
 
 /**
  *  Get a list of media objects from a category.
@@ -394,6 +418,17 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)deleteGfycatWithParameters:(nullable NSDictionary *)parameters
                               success:(GfycatUploadKeyBlock)success
                               failure:(nullable GfycatFailureBlock)failure;
+
+/**
+ *  Deletes a Gfycat target
+ *
+ *  @param mediaId  Id of a Media object.
+ *  @param success  Provides a dictionary server response if any.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)deleteGfycatMedia:(NSString *)mediaId
+              withSuccess:(GfycatResponseBlock)success
+                  failure:(nullable GfycatFailureBlock)failure;
 
 #pragma mark - Report Gfycat Request -
 

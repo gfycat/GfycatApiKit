@@ -121,6 +121,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy, readonly) NSURL *webpUrl;
 
+/**
+ *  URL of the large WebP representaion of the Media
+ */
 @property (nonatomic, copy, readonly) NSURL *largeWebPUrl;
 
 /**
@@ -138,20 +141,27 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign, readonly) BOOL hasTransparency;
 
+/**
+ *  Returns projection type (see values of the GfycatMediaProjectionType enum) of the spatial content,
+ *  GfycatMediaProjectionTypeNone in case of planar content
+ */
 @property (nonatomic, copy, readonly) GfycatMediaProjectionType projectionType;
 
+/**
+ *  Returns YES if media has spatial content
+ */
 @property (nonatomic, assign, readonly) BOOL hasSpatialContent;
 
 /**
- *  Tags on the Media
+ *  Associated Tags list of the Media
  */
-@property (nonatomic, strong) NSArray<NSString *> *tags;
+@property (nonatomic, strong, readonly) NSArray<NSString *> *tags;
 
 - (nullable instancetype)initWithMessageURL:(NSURL *)messageURL;
 
 - (instancetype)initWithName:(NSString *)gfyName size:(CGSize)size;
 
-- (instancetype)initWithName:(NSString *)gfyName size:(CGSize)size averageColor:(NSString *)averageColor;
+- (instancetype)initWithName:(NSString *)gfyName size:(CGSize)size averageColor:(NSString *)averageColor projectionType:(nullable NSString *)projectionType;
 
 @end
 

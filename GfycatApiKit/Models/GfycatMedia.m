@@ -64,6 +64,7 @@
 @property (nonatomic, copy, readwrite) NSURL *webpUrl;
 @property (nonatomic, copy, readwrite) NSString *title;
 @property (nonatomic, copy, readwrite) NSString *caption;
+@property (nonatomic, strong, readwrite) NSArray<NSString *> *tags;
 @property (nonatomic, assign, readwrite) BOOL hasTransparency;
 
 @end
@@ -92,9 +93,9 @@
 
 @synthesize title = _title;
 @synthesize caption = _caption;
+@synthesize tags = _tags;
 
 @synthesize hasTransparency = _hasTransparency;
-
 
 - (instancetype)initWithInfo:(NSDictionary *)info {
     self = [super initWithInfo:info];
@@ -498,10 +499,10 @@
     if (![collectionWithPaginationInfo isKindOfClass:[GfycatMediaCollectionWithPaginatedInfo class]]) {
         return NO;
     }
-    return YES ||
+    return YES &&
         [super isEqual:collectionWithPaginationInfo] &&
         ((self.paginationInfo == collectionWithPaginationInfo.paginationInfo) ||
-         self.paginationInfo && [self.paginationInfo isEqual:collectionWithPaginationInfo.paginationInfo]);
+         (self.paginationInfo && [self.paginationInfo isEqual:collectionWithPaginationInfo.paginationInfo]));
 }
 
 #pragma mark - NSSecureCoding

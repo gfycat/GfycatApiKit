@@ -567,6 +567,44 @@ NSInteger const kTokenExpirationThreshold = 30;
     }];
 }
 
+- (void)getLikeStateForMedia:(GfycatMedia *)media withSuccess:(GfycatMediaLikeStateBlock)success failure:(nullable GfycatFailureBlock)failure; {
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        
+        NSString *getPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:[NSString stringWithFormat:@"me/gfycats/%@/like", media.gfyName]].absoluteString;
+        NSString *percentageEscapedPath = [getPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *params = [self dictionaryWithClientKeysAndParameters:@{}];
+
+        void(^responseProcessor)(NSInteger) = ^(NSInteger statusCode) {
+            BOOL isLiked = (statusCode >= 200 && statusCode < 300);
+            GfySafeExecute(success, media, isLiked);
+        };
+        
+        [self.httpManager GET:percentageEscapedPath
+                   parameters:params
+                     progress:nil
+                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                          if (!success) return;
+                          NSDictionary *responseDictionary = (NSDictionary *)responseObject;
+                          NSInteger statusCode = ((NSHTTPURLResponse *)[task response]).statusCode;
+                          
+                          if (responseDictionary[@"errorMessage"]) {
+                              NSError *error = [[NSError alloc] initWithDomain:GfycatApiKitErrorDomain code:GfycatApiKitJSONResponseError userInfo:responseObject];
+                              GfySafeExecute(failure, error, statusCode);
+                              return;
+                          }
+                          responseProcessor(statusCode);
+                      }
+                      failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          responseProcessor(((NSHTTPURLResponse *)[task response]).statusCode);
+                      }];
+        
+    } failure:^(NSError *error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
+
 - (void)getCategoriesCount:(NSInteger)count
                withSuccess:(GfycatCategoryArrayBlock)success
                    failure:(nullable GfycatFailureBlock)failure {
@@ -713,6 +751,30 @@ NSInteger const kTokenExpirationThreshold = 30;
     }];
 }
 
+- (void)getUserMedia:(NSString *)userName
+               count:(NSInteger)count
+         withSuccess:(GfycatMediaCacheableBlock)success
+             failure:(nullable GfycatFailureBlock)failure {
+    
+    __weak __typeof(self) weakSelf = self;
+    GfycatMediaBlock successWrapper = ^(GfycatMediaCollection *mediaCollection, GfycatPaginationInfo * _Nullable paginationInfo) {
+        GfySafeExecute(success, mediaCollection, paginationInfo, NO);
+    };
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *path = [NSString stringWithFormat:@"users/%@/gfycats", userName];
+        NSString *paginatedPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:path].absoluteString;
+        [strongSelf getPaginatedPath:paginatedPath
+                          parameters:@{
+                                       @"count":  @(count)
+                                       }
+                       responseModel:[GfycatMediaCollection class]
+                             success:successWrapper
+                             failure:failure];
+    } failure:^(NSError *error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
 - (void)getCategoryMedia:(NSString *)categoryTitle
                    count:(NSInteger)count
              withSuccess:(GfycatMediaCacheableBlock)success
@@ -1009,6 +1071,20 @@ NSString *const kFileDropEndpointPath = @"https://filedrop.gfycat.com/";
     
     // TODO: implement deletion
     NSAssert(NO, @"Not implemented");
+}
+         
+- (void)deleteGfycatMedia:(NSString *)mediaId withSuccess:(GfycatResponseBlock)success failure:(nullable GfycatFailureBlock)failure {
+    
+    NSParameterAssert(mediaId);
+    
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary * _Nonnull serverResponse) {
+         __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *deletePath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:[NSString stringWithFormat:@"me/gfycats/%@", mediaId]].absoluteString;
+        [strongSelf deletePath:deletePath parameters:@{} success:^(NSDictionary * _Nonnull serverResponse) {
+            GfySafeExecute(success, serverResponse);
+        } failure:failure];
+    } failure:failure];
 }
 
 // TODO - determine if this should go into a utility class
