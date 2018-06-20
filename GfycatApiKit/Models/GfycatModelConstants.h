@@ -51,6 +51,7 @@ extern NSString *const kMjpgUrl;
 extern NSString *const kNsfw;
 extern NSString *const kNumberOfFrames;
 extern NSString *const kPosterUrl;
+extern NSString *const kPngPosterUrl;
 extern NSString *const kPublished;
 extern NSString *const kSourceType;
 extern NSString *const kSourceUrl;

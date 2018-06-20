@@ -97,6 +97,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSURL *posterUrl;
 
 /**
+ *  URL of PNG representation of the Media
+ */
+@property (nonatomic, copy, readonly, nullable) NSURL *pngPosterUrl;
+
+/**
  *  URL of 100 max pixel wide JPG representation of the Media
  */
 @property (nonatomic, copy, readonly) NSURL *thumbnail100Url;

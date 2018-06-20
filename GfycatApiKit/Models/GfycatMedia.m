@@ -57,6 +57,7 @@
 @property (nonatomic, copy, readwrite) NSURL *mpg640Url;
 @property (nonatomic, copy, readwrite) NSURL *mjpgUrl;
 @property (nonatomic, copy, readwrite) NSURL *posterUrl;
+@property (nonatomic, copy, readwrite) NSURL *pngPosterUrl;
 @property (nonatomic, copy, readwrite) NSURL *thumbnail100Url;
 @property (nonatomic, copy, readwrite) NSURL *thumbnail320Url;
 @property (nonatomic, copy, readwrite) NSURL *thumbnail640Url;
@@ -84,6 +85,7 @@
 @synthesize mjpgUrl = _mjpgUrl;
 
 @synthesize posterUrl = _posterUrl;
+@synthesize pngPosterUrl = _pngPosterUrl;
 @synthesize thumbnail100Url = _thumbnail100Url;
 @synthesize thumbnail320Url = _thumbnail320Url;
 @synthesize thumbnail640Url = _thumbnail640Url;
@@ -139,6 +141,7 @@
         self.mjpgUrl = [gfyItem gfy_urlValueForKey:kMjpgUrl];
 
         self.posterUrl = [gfyItem gfy_urlValueForKey:kPosterUrl];
+        self.pngPosterUrl = [gfyItem gfy_urlValueForKey:kPngPosterUrl];
         self.thumbnail100Url = [gfyItem gfy_urlValueForKey:kThumbnail100Url];
         self.thumbnail320Url = [gfyItem gfy_urlValueForKey:kThumbnail320Url];
         self.thumbnail640Url = [gfyItem gfy_urlValueForKey:kThumbnail640Url];
@@ -197,6 +200,7 @@
         self.mjpgUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kMjpgUrl];
         
         self.posterUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kPosterUrl];
+        self.pngPosterUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kPngPosterUrl];
         self.thumbnail100Url = [decoder decodeObjectOfClass:[NSURL class] forKey:kThumbnail100Url];
         self.thumbnail320Url = [decoder decodeObjectOfClass:[NSURL class] forKey:kThumbnail320Url];
         self.thumbnail640Url = [decoder decodeObjectOfClass:[NSURL class] forKey:kThumbnail640Url];
@@ -249,6 +253,7 @@
     [encoder encodeObject:self.mjpgUrl forKey:kMjpgUrl];
 
     [encoder encodeObject:self.posterUrl forKey:kPosterUrl];
+    [encoder encodeObject:self.pngPosterUrl forKey:kPngPosterUrl];
     [encoder encodeObject:self.thumbnail100Url forKey:kThumbnail100Url];
     [encoder encodeObject:self.thumbnail320Url forKey:kThumbnail320Url];
     [encoder encodeObject:self.thumbnail640Url forKey:kThumbnail640Url];
@@ -314,6 +319,11 @@
 - (NSURL *)posterUrl
 {
     return _posterUrl ?: super.posterUrl;
+}
+
+- (NSURL *)pngPosterUrl
+{
+    return _pngPosterUrl ?: super.pngPosterUrl;
 }
 
 - (NSURL *)thumbnail100Url
@@ -383,6 +393,7 @@
     copy.mjpgUrl = self.mjpgUrl;
 
     copy.posterUrl = self.posterUrl;
+    copy.pngPosterUrl = self.pngPosterUrl;
     copy.thumbnail100Url = self.thumbnail100Url;
     copy.thumbnail320Url = self.thumbnail320Url;
     copy.thumbnail640Url = self.thumbnail640Url;

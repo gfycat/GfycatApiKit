@@ -51,6 +51,7 @@ NSString *const kMjpgUrl =          @"mjpgUrl";
 NSString *const kNsfw =             @"nsfw";
 NSString *const kNumberOfFrames =   @"numFrames";
 NSString *const kPosterUrl =        @"posterUrl";
+NSString *const kPngPosterUrl =     @"pngPosterUrl";
 NSString *const kPublished =        @"published";
 NSString *const kSourceType =       @"source";
 NSString *const kSourceUrl =        @"url";

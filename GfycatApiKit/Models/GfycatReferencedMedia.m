@@ -182,6 +182,11 @@
     return self.gfyName.length ? [NSURL URLWithString:[NSString stringWithFormat:@"https://thumbs.gfycat.com/%@-poster.jpg", self.gfyName]] : nil;
 }
 
+- (NSURL *)pngPosterUrl
+{
+    return nil;
+}
+
 - (NSURL *)thumbnail100Url
 {
     return self.gfyName.length ? [NSURL URLWithString:[NSString stringWithFormat:@"https://thumbs.gfycat.com/%@-thumb100.jpg", self.gfyName]] : nil;
