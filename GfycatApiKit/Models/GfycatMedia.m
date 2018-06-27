@@ -169,7 +169,7 @@
         self.frameRate = [decoder decodeIntegerForKey:kFrameRate];
         self.gfyNumber = [decoder decodeIntegerForKey:kGfyNumber];
         self.categories = [[decoder decodeObjectOfClass:[NSArray class] forKey:kCategories] copy];
-        self.likes = [decoder decodeIntegerForKey:kFrameRate];
+        self.likes = [decoder decodeIntegerForKey:kLikes];
         self.md5 = [decoder decodeObjectOfClass:[NSString class] forKey:kMd5];
         self.nsfw = [decoder decodeBoolForKey:kNsfw];
         self.numberOfFrames = [decoder decodeIntegerForKey:kNumberOfFrames];
@@ -184,7 +184,7 @@
         self.sourceType = [decoder decodeIntegerForKey:kSourceType];
         self.sourceUrl = [decoder decodeObjectOfClass:[NSURL class] forKey:kSourceUrl];
 
-        self.mpgSize = [decoder decodeIntegerForKey:kFrameRate];
+        self.mpgSize = [decoder decodeIntegerForKey:kMpgSize];
         self.webmSize = [decoder decodeIntegerForKey:kWebmSize];
         self.gifSize =  [decoder decodeIntegerForKey:kGifSize];
         
