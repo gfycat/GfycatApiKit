@@ -71,6 +71,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSInteger numberOfFrames;
 
 /**
+ *  Estimated media duration
+ */
+@property (nonatomic, assign, readonly) NSTimeInterval estimatedDuration;
+
+/**
  *  If the Media is published
  */
 @property (nonatomic, readonly, getter=isPublished) BOOL published;

@@ -351,6 +351,11 @@
     return _webpUrl ?: super.webpUrl;
 }
 
+- (NSTimeInterval)estimatedDuration
+{
+    return (self.frameRate > 0) ? self.numberOfFrames * (1.0 / self.frameRate) : 0;
+}
+
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
