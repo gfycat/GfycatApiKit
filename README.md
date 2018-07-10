@@ -62,4 +62,4 @@ Please refer to the [Gfycat Analytics documentation](https://developers.gfycat.c
 
 ## Contact Us
 
-Any questions or comments please send them to yin@gfycat.com
+Any questions or comments please send them to api@gfycat.com
