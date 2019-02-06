@@ -164,7 +164,7 @@
 
 - (NSURL *)mpg320Url
 {
-    return self.gfyName.length ? [NSURL URLWithString:[NSString stringWithFormat:@"https://thumbs.gfycat.com/%@-mini.mp4", self.gfyName]] : nil;
+    return self.gfyName.length ? [NSURL URLWithString:[NSString stringWithFormat:@"https://thumbs.gfycat.com/%@-mobile.mp4", self.gfyName]] : nil;
 }
 
 - (NSURL *)mpg640Url

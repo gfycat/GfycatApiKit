@@ -145,7 +145,7 @@ typedef NS_ENUM(NSInteger, GfycatApiKitErrorCode)
 };
 
 
-@class GfycatUser;
+@class GfycatUserProfile;
 @class GfycatMedia;
 @class GfycatReferencedMedia;
 @class GfycatExtendedMedia;
@@ -205,21 +205,6 @@ typedef void (^GfycatCategoryArrayBlock)(GfycatCategories *categories, GfycatPag
 typedef void (^GfycatConfigurationsArrayBlock)(NSArray<GfycatConfigurationObject *> *configurationObjects);
 
 /**
- *  A callback block providing a collection of User objects.
- *
- *  @param users            An array of User objects.
- *  @param paginationInfo   A PaginationInfo object.
- */
-typedef void (^GfycatUsersBlock)(NSArray<GfycatUser *> *users, GfycatPaginationInfo *paginationInfo);
-
-/**
- *  A callback block providing a User object.
- *
- *  @param user     An GfycatUser object.
- */
-typedef void (^GfycatUserBlock)(GfycatUser *user);
-
-/**
  *  A callback block providing a Media object.
  *
  *  @param media    An GfycatMedia object.
@@ -253,6 +238,13 @@ typedef void (^GfycatMediaLikeStateBlock)(GfycatMedia *media, BOOL likeState);
  *  @param uploadKey An GfycatUploadKey object.
  */
 typedef void (^GfycatUploadKeyBlock)(GfycatUploadKey *uploadKey);
+
+/**
+ *  A callback block providing a GfycatUserProfile object.
+ *
+ *  @param userProfile An GfycatUserProfile object.
+ */
+typedef void (^GfycatUserProfileBlock)(GfycatUserProfile *userProfile);
 
 /**
  *  A callback block providing a NSString object.
@@ -295,6 +287,8 @@ typedef void (^GfycatProgressBlock)(NSProgress *progress);
 extern NSString *const kKeyClientID;
 extern NSString *const kKeyClientSecret;
 extern NSString *const kKeyGrantType;
+extern NSString *const kKeyProvider;
+extern NSString *const kKeyToken;
 extern NSString *const kKeyAccessToken;
 extern NSString *const kKeyAccessTokenExpiration;
 extern NSString *const kKeyRefreshToken;

@@ -48,6 +48,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     NSURL *_baseURL;
     NSString * _Nullable _overrideDomain;
     NSNumber * _Nullable _overridePort;
+    dispatch_semaphore_t _authenticationSemaphore;
 }
 
 @property (nonatomic, copy, nonnull) NSString *appClientID;
@@ -109,6 +110,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 - (instancetype)init
 {
     if (self = [super init]) {
+        _authenticationSemaphore = dispatch_semaphore_create(1);
         [self setBaseURL:[NSURL URLWithString:kGfycatApiKitBaseURL]];
         [self configureCredentials];
     }
@@ -251,6 +253,140 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 
 #pragma mark - Authentication -
 
+- (void)loginWithUsername:(NSString *)username
+                 password:(NSString *)password
+                  success:(GfycatResponseBlock)success
+                  failure:(nullable GfycatFailureBlock)failure {
+
+    NSParameterAssert(username);
+    NSParameterAssert(password);
+    
+    dispatch_async(self.authenticationQueue, ^{
+        
+        dispatch_semaphore_wait(self->_authenticationSemaphore, DISPATCH_TIME_FOREVER);
+        self.accessToken = nil;
+        
+        NSDictionary *params = @{
+                                 kKeyUsername: username,
+                                 kKeyPassword: password,
+                                 kKeyGrantType: @"password"
+                                 };
+        
+        __weak __typeof(self) weakSelf = self;
+        [self postPath:self.authorizationEndpointURL.absoluteString
+            parameters:params
+               success:^(NSDictionary *response) {
+                   __strong __typeof(weakSelf) strongSelf = weakSelf;
+                   strongSelf.username = username;
+                   strongSelf.password = password;
+                   [strongSelf saveCredentialsForResponse:response];
+                   dispatch_semaphore_signal(self->_authenticationSemaphore);
+                   GfySafeExecute(success, response);
+               } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+                   dispatch_semaphore_signal(self->_authenticationSemaphore);
+                   GfySafeExecute(failure, error, serverStatusCode);
+               }];
+    });
+}
+
+- (void)loginWithFacebook:(NSString *)facebookToken
+                  success:(GfycatResponseBlock)success
+                  failure:(nullable GfycatFailureBlock)failure {
+    
+    NSParameterAssert(facebookToken);
+    
+    dispatch_async(self.authenticationQueue, ^{
+        
+        dispatch_semaphore_wait(self->_authenticationSemaphore, DISPATCH_TIME_FOREVER);
+        self.accessToken = nil;
+        
+        NSDictionary *params = @{
+            kKeyGrantType: @"convert_token",
+            kKeyProvider: @"facebook",
+            kKeyToken: facebookToken ?: @"",
+        };
+        
+        __weak __typeof(self) weakSelf = self;
+        [self postPath:self.authorizationEndpointURL.absoluteString
+            parameters:params
+               success:^(NSDictionary *response) {
+                   __strong __typeof(weakSelf) strongSelf = weakSelf;
+                   strongSelf.username = response[@"resource_owner"];
+                   [strongSelf saveCredentialsForResponse:response];
+                   dispatch_semaphore_signal(self->_authenticationSemaphore);
+                   GfySafeExecute(success, response);
+               } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+                   dispatch_semaphore_signal(self->_authenticationSemaphore);
+                   GfySafeExecute(failure, error, serverStatusCode);
+               }];
+    });
+}
+
+- (void)requestPasswordResetWithUsername:(NSString *)username
+                                 success:(GfycatSuccessBlock)success
+                                 failure:(nullable GfycatFailureBlock)failure {
+    
+    NSParameterAssert(username);
+    
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *path = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"me/send_verification_email"].absoluteString;
+        NSDictionary *params = [self dictionaryWithClientKeysAndParameters:@{}];
+        [self.httpManager POST:path parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSInteger serverStatusCode = ((NSHTTPURLResponse*)[task response]).statusCode;
+            if (serverStatusCode / 100 == 2) {
+                GfySafeExecute(success);
+            } else {
+                GfySafeExecute(failure, [NSError errorWithDomain:@"com.gfycat" code:0 userInfo:nil], serverStatusCode);
+            }
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSInteger serverStatusCode = ((NSHTTPURLResponse*)[task response]).statusCode;
+            if (serverStatusCode / 100 == 2) {
+                GfySafeExecute(success);
+            } else {
+                GfySafeExecute(failure, error, serverStatusCode);
+            }
+        }];
+    } failure:failure];
+}
+
+- (void)checkUsername:(NSString *)username
+              success:(void(^)(BOOL))success
+              failure:(nullable GfycatFailureBlock)failure {
+    
+    NSParameterAssert(username);
+
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *path = [[strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"users"] URLByAppendingPathComponent:username].absoluteString;
+        [self headPath:path parameters:@{} result:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+            if (serverStatusCode == 404) {
+                GfySafeExecute(success, YES);
+            } else if (serverStatusCode == 422 || serverStatusCode / 100 == 2) {
+                GfySafeExecute(success, NO);
+            } else {
+                GfySafeExecute(failure, error, serverStatusCode);
+            }
+        }];
+    } failure:failure];
+}
+
+- (void)getUserProfile:(NSString *)username
+               success:(GfycatUserProfileBlock)success
+               failure:(nullable GfycatFailureBlock)failure {
+    
+    NSParameterAssert(username);
+    
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *path = [[strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"users"] URLByAppendingPathComponent:username].absoluteString;
+        [self getPath:path parameters:@{} responseModel:[GfycatUserProfile class] success:success failure:failure];
+    } failure:failure];
+}
+
 - (void)createAccountWithUsername:(NSString *)username
                          password:(NSString *)password
                             email:(nullable NSString *)email
@@ -264,10 +400,13 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     [self refreshSession:^(NSDictionary *serverResponse) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         
-        NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:@{
-                                                                                        @"username" : username,
-                                                                                        @"password" : password
-                                                                                        }];
+        dispatch_semaphore_wait(strongSelf->_authenticationSemaphore, DISPATCH_TIME_FOREVER);
+
+        NSMutableDictionary *params = [@{
+            @"username": username,
+            @"password": password
+        } mutableCopy];
+
         if (email) {
             params[@"email"] = email;
         }
@@ -275,13 +414,51 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
         NSString *path = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"users"].absoluteString;
         [strongSelf postPath:path parameters:params success:^(NSDictionary *response) {
             __strong __typeof(weakSelf) strongSelf = weakSelf;
-            
-            [strongSelf saveCredentialsForResponse:response];
             strongSelf.username = username;
             strongSelf.password = password;
-            
+            [strongSelf saveCredentialsForResponse:response];
+            dispatch_semaphore_signal(strongSelf->_authenticationSemaphore);
             GfySafeExecute(success, response);
         } failure:^(NSError *error, NSInteger serverStatusCode) {
+            __strong __typeof(weakSelf) strongSelf = weakSelf;
+            dispatch_semaphore_signal(strongSelf->_authenticationSemaphore);
+            GfySafeExecute(failure, error, serverStatusCode);
+        }];
+    } failure:^(NSError *error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
+
+- (void)createAccountWithUsername:(NSString *)username
+                    facebookToken:(NSString *)facebookToken
+                          success:(GfycatResponseBlock)success
+                          failure:(nullable GfycatFailureBlock)failure
+{
+    
+    NSParameterAssert(username);
+    NSParameterAssert(facebookToken);
+    
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        
+        dispatch_semaphore_wait(strongSelf->_authenticationSemaphore, DISPATCH_TIME_FOREVER);
+
+        NSMutableDictionary *params = [@{
+            @"username": username,
+            @"provider": @"facebook",
+            @"access_token": facebookToken
+        } mutableCopy];
+        
+        NSString *path = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"users"].absoluteString;
+        [strongSelf postPath:path parameters:params success:^(NSDictionary *response) {
+            __strong __typeof(weakSelf) strongSelf = weakSelf;
+            strongSelf.username = username;
+            [strongSelf saveCredentialsForResponse:response];
+            dispatch_semaphore_signal(strongSelf->_authenticationSemaphore);
+            GfySafeExecute(success, response);
+        } failure:^(NSError *error, NSInteger serverStatusCode) {
+            dispatch_semaphore_signal(strongSelf->_authenticationSemaphore);
             GfySafeExecute(failure, error, serverStatusCode);
         }];
     } failure:^(NSError *error, NSInteger serverStatusCode) {
@@ -302,6 +479,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 - (void)validateSession:(GfycatResponseBlock)success
                 failure:(nullable GfycatFailureBlock)failure {
     
+    dispatch_semaphore_wait(self->_authenticationSemaphore, DISPATCH_TIME_FOREVER);
     self.accessToken = nil;
     
     NSDictionary *params = @{ kKeyGrantType: @"client_credentials"};
@@ -316,8 +494,12 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
                strongSelf.accessToken = modelDictionary[kKeyAccessToken];
                NSNumber *tokenExpirationInterval = modelDictionary[kKeyAccessTokenExpiration];
                strongSelf.accessTokenExpirationDate = GfyNotNull(tokenExpirationInterval) ? [NSDate dateWithTimeIntervalSinceNow:tokenExpirationInterval.integerValue] : [NSDate date];
+               
+               dispatch_semaphore_signal(strongSelf->_authenticationSemaphore);
                GfySafeExecute(success, response);
            } failure:^(NSError *error, NSInteger serverStatusCode) {
+               __strong __typeof(weakSelf) strongSelf = weakSelf;
+               dispatch_semaphore_signal(strongSelf->_authenticationSemaphore);
                GfySafeExecute(failure, error, serverStatusCode);
            }];
 }
@@ -330,15 +512,22 @@ NSInteger const kTokenExpirationThreshold = 30;
     dispatch_async(self.authenticationQueue, ^{
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         
+        dispatch_semaphore_wait(strongSelf->_authenticationSemaphore, DISPATCH_TIME_FOREVER);
+        
         if ([strongSelf isSessionValid]) {
             NSDictionary *modelDictionary = @{
                                               kKeyAccessToken : strongSelf.accessToken,
                                               kKeyAccessTokenExpiration : @([strongSelf.accessTokenExpirationDate timeIntervalSinceNow])
                                               };
-                GfySafeExecute(success, modelDictionary);
-        } else if (strongSelf.refreshToken && strongSelf.refreshTokenExpirationDate && [strongSelf.refreshTokenExpirationDate timeIntervalSinceNow] > kTokenExpirationThreshold) {
-            strongSelf.accessToken = nil;
+            dispatch_semaphore_signal(strongSelf->_authenticationSemaphore);
+            GfySafeExecute(success, modelDictionary);
+            return;
+        }
+        
+        if (strongSelf.refreshToken && strongSelf.refreshTokenExpirationDate &&
+            [strongSelf.refreshTokenExpirationDate timeIntervalSinceNow] > kTokenExpirationThreshold) {
             
+            strongSelf.accessToken = nil;
             NSDictionary *params = @{
                                      kKeyRefreshToken : strongSelf.refreshToken,
                                      kKeyGrantType : @"refresh"
@@ -354,13 +543,19 @@ NSInteger const kTokenExpirationThreshold = 30;
                            strongSelf.accessToken = modelDictionary[kKeyAccessToken];
                            NSNumber *tokenExpirationInterval = modelDictionary[kKeyAccessTokenExpiration];
                            strongSelf.accessTokenExpirationDate = GfyNotNull(tokenExpirationInterval) ? [NSDate dateWithTimeIntervalSinceNow:tokenExpirationInterval.integerValue] : [NSDate date];
+                           
+                           dispatch_semaphore_signal(strongSelf->_authenticationSemaphore);
                            GfySafeExecute(success, response);
                        } failure:^(NSError *error, NSInteger serverStatusCode) {
                            // The refresh token didn't work for some reason, we'll just try to refresh again
                            // with the other options.
+                           dispatch_semaphore_signal(strongSelf->_authenticationSemaphore);
                            [weakSelf refreshSession:success failure:failure];
                        }];
-        } else if (strongSelf.username && strongSelf.password) {
+            return;
+        }
+        
+        if (strongSelf.username && strongSelf.password) {
             strongSelf.accessToken = nil;
             
             NSDictionary *params = @{
@@ -372,13 +567,21 @@ NSInteger const kTokenExpirationThreshold = 30;
                     parameters:params
                        success:^(NSDictionary *response) {
                            [weakSelf saveCredentialsForResponse:response];
+                           
+                           dispatch_semaphore_signal(strongSelf->_authenticationSemaphore);
                            GfySafeExecute(success, response);
                        } failure:^(NSError *error, NSInteger serverStatusCode) {
+                           // Username/password didn't work for some reason, we'll just forget the password
+                           // to refresh again with the other options.
+                           strongSelf.password = nil;
+                           dispatch_semaphore_signal(strongSelf->_authenticationSemaphore);
                            GfySafeExecute(failure, error, serverStatusCode);
                        }];
-        } else {
-            [strongSelf validateSession:success failure:failure];
+            return;
         }
+        
+        dispatch_semaphore_signal(strongSelf->_authenticationSemaphore);
+        [strongSelf validateSession:success failure:failure];
     });
 }
 
@@ -396,10 +599,10 @@ NSInteger const kTokenExpirationThreshold = 30;
     [[storage cookies] enumerateObjectsUsingBlock:^(NSHTTPCookie *cookie, NSUInteger idx, BOOL *stop) {
         [storage deleteCookie:cookie];
     }];
-    
-    self.accessToken = nil;
+
     self.username = nil;
     self.password = nil;
+    self.accessToken = nil;
 }
 
 - (NSDictionary *)dictionaryWithClientKeysAndParameters:(NSDictionary *)params { // TODO - Rename
@@ -416,6 +619,27 @@ NSInteger const kTokenExpirationThreshold = 30;
 
 #pragma mark - Base Calls -
 
+
+- (void)headPath:(NSString *)path
+      parameters:(NSDictionary *)parameters
+          result:(nullable GfycatFailureBlock)result {
+    
+    NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
+    NSString *percentageEscapedPath = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self.httpManager GET:percentageEscapedPath
+               parameters:params
+                 progress:nil
+                  success:^(NSURLSessionDataTask *task, id responseObject) {
+                      GfySafeExecute(result, [NSError errorWithDomain:@"com.gfycat" code:0 userInfo:nil], ((NSHTTPURLResponse *)[task response]).statusCode);
+                  }
+                  failure:^(NSURLSessionDataTask *task, NSError *error) {
+                      NSInteger statusCode = ((NSHTTPURLResponse *)[task response]).statusCode;
+                      if (statusCode == 401) {
+                          self.accessToken = nil;
+                      }
+                      GfySafeExecute(result, error, statusCode);
+                  }];
+}
 
 - (void)getPath:(NSString *)path
      parameters:(NSDictionary *)parameters
@@ -442,7 +666,11 @@ NSInteger const kTokenExpirationThreshold = 30;
                       GfySafeExecute(success, modelObject);
                   }
                   failure:^(NSURLSessionDataTask *task, NSError *error) {
-                      GfySafeExecute(failure, error, ((NSHTTPURLResponse *)[task response]).statusCode);
+                      NSInteger statusCode = ((NSHTTPURLResponse *)[task response]).statusCode;
+                      if (statusCode == 401) {
+                          self.accessToken = nil;
+                      }
+                      GfySafeExecute(failure, error, statusCode);
                   }];
 }
 
@@ -480,7 +708,11 @@ NSInteger const kTokenExpirationThreshold = 30;
                       GfySafeExecute(success, modelObject, paginationInfo);
                   }
                   failure:^(NSURLSessionDataTask *task, NSError *error) {
-                      GfySafeExecute(failure, error, ((NSHTTPURLResponse *)[task response]).statusCode);
+                      NSInteger statusCode = ((NSHTTPURLResponse *)[task response]).statusCode;
+                      if (statusCode == 401) {
+                          self.accessToken = nil;
+                      }
+                      GfySafeExecute(failure, error, statusCode);
                   }];
 }
 
@@ -498,7 +730,11 @@ NSInteger const kTokenExpirationThreshold = 30;
                        GfySafeExecute(success, (NSDictionary *)responseObject);
                    }
                    failure:^(NSURLSessionDataTask *task, NSError *error) {
-                       GfySafeExecute(failure, error,((NSHTTPURLResponse*)[task response]).statusCode);
+                       NSInteger statusCode = ((NSHTTPURLResponse *)[task response]).statusCode;
+                       if (statusCode == 401) {
+                           self.accessToken = nil;
+                       }
+                       GfySafeExecute(failure, error, statusCode);
                    }];
 }
 
@@ -515,7 +751,11 @@ NSInteger const kTokenExpirationThreshold = 30;
                          GfySafeExecute(success, (NSDictionary *)responseObject);
                      }
                      failure:^(NSURLSessionDataTask *task, NSError *error) {
-                         GfySafeExecute(failure, error,((NSHTTPURLResponse*)[task response]).statusCode);
+                         NSInteger statusCode = ((NSHTTPURLResponse *)[task response]).statusCode;
+                         if (statusCode == 401) {
+                             self.accessToken = nil;
+                         }
+                         GfySafeExecute(failure, error, statusCode);
                      }];
 }
 
@@ -531,7 +771,11 @@ NSInteger const kTokenExpirationThreshold = 30;
                       GfySafeExecute(success, (NSDictionary *)responseObject);
                   }
                   failure:^(NSURLSessionDataTask *task, NSError *error) {
-                      GfySafeExecute(failure, error,((NSHTTPURLResponse*)[task response]).statusCode);
+                      NSInteger statusCode = ((NSHTTPURLResponse *)[task response]).statusCode;
+                      if (statusCode == 401) {
+                          self.accessToken = nil;
+                      }
+                      GfySafeExecute(failure, error, statusCode);
                   }];
     
 }
@@ -1137,33 +1381,32 @@ NSInteger const kTokenExpirationThreshold = 30;
     }];
 }
 
-NSString *const kFileDropEndpointPath = @"https://filedrop.gfycat.com/";
+NSString *const kFileDropEndpointPath = @"https://filedrop.gfycat.com/%@";
 - (void)uploadFileUrl:(NSURL *)fileUrl
          forUploadKey:(GfycatUploadKey *)uploadKey
               success:(GfycatSuccessBlock)success
              progress:(nullable GfycatProgressBlock)progress
               failure:(nullable GfycatFailureBlock)failure {
     
-    NSError *error;
-    NSString *urlString = [GfycatApi.shared URLByApplyingOverrideDomain:[NSURL URLWithString:uploadKey.gfyId relativeToURL:[NSURL URLWithString:kFileDropEndpointPath]]].absoluteString;
-    NSURLRequest *request = [self.httpUploadManager.requestSerializer multipartFormRequestWithMethod:@"PUT" URLString:urlString parameters:nil
-                             constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                                 [formData appendPartWithFileURL:fileUrl name:uploadKey.gfyId error:nil];
-                             } error:&error];
+    NSString *urlString = [NSString stringWithFormat:kFileDropEndpointPath, uploadKey.gfyId];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+    request.HTTPMethod = @"PUT";
+    [request setValue:@"application/octet-stream" forHTTPHeaderField:@"Content-Type"];
     
-    NSURLSessionDataTask *task = [self.httpUploadManager dataTaskWithRequest:request uploadProgress:progress downloadProgress:nil
-                                  completionHandler:^(NSURLResponse * response, id responseObject, NSError * error) {
-                                      if (error) {
-                                          if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                                              NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                                              GfySafeExecute(failure, error,httpResponse.statusCode);
-                                          } else {
-                                              GfySafeExecute(failure, error,0);
-                                          }
-                                      } else {
-                                          GfySafeExecute(success);
-                                      }
-                                  }];
+    NSURLSessionDataTask *task = [self.httpUploadManager uploadTaskWithRequest:request fromFile:fileUrl progress:nil
+                                                             completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                                                                 if (error) {
+                                                                     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                                                                         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                                                         GfySafeExecute(failure, error,httpResponse.statusCode);
+                                                                     } else {
+                                                                         GfySafeExecute(failure, error,0);
+                                                                     }
+                                                                 } else {
+                                                                     GfySafeExecute(success);
+                                                                 }
+                                                             }];
+    
     [task resume];
 }
 

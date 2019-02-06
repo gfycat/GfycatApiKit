@@ -28,4 +28,5 @@
 #import "GfycatUploadKey.h"
 #import "GfycatEventTracker.h"
 #import "GfycatReferencedMedia.h"
+#import "GfycatUserProfile.h"
 #import "GfycatConfigurationObject.h"

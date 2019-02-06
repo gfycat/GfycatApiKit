@@ -94,6 +94,15 @@ extern const GfycatAgeRating GfycatAgeRatingR NS_SWIFT_NAME(ratedR);
 
 #pragma mark - Authentication -
 
+- (void)loginWithUsername:(NSString *)username
+                 password:(NSString *)password
+                  success:(GfycatResponseBlock)success
+                  failure:(nullable GfycatFailureBlock)failure;
+
+- (void)loginWithFacebook:(NSString *)facebookToken
+                  success:(GfycatResponseBlock)success
+                  failure:(nullable GfycatFailureBlock)failure;
+
 /**
  *  Creates a new user account
  *
@@ -108,6 +117,23 @@ extern const GfycatAgeRating GfycatAgeRatingR NS_SWIFT_NAME(ratedR);
                             email:(nullable NSString *)email
                           success:(GfycatResponseBlock)success
                           failure:(nullable GfycatFailureBlock)failure;
+
+- (void)createAccountWithUsername:(NSString *)username
+                    facebookToken:(NSString *)facebookToken
+                          success:(GfycatResponseBlock)success
+                          failure:(nullable GfycatFailureBlock)failure;
+
+- (void)requestPasswordResetWithUsername:(NSString *)username
+                                 success:(GfycatSuccessBlock)success
+                                 failure:(nullable GfycatFailureBlock)failure;
+
+- (void)checkUsername:(NSString *)username
+              success:(void(^)(BOOL))success
+              failure:(nullable GfycatFailureBlock)failure;
+
+- (void)getUserProfile:(NSString *)username
+               success:(GfycatUserProfileBlock)success
+               failure:(nullable GfycatFailureBlock)failure;
 
 /**
  *  Gets authorization token and validates this session.
