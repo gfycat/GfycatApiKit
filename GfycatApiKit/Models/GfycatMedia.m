@@ -35,6 +35,7 @@
 @property (nonatomic, assign, getter=isNsfw, readwrite) BOOL nsfw;
 @property (nonatomic, assign, readwrite) NSInteger numberOfFrames;
 @property (nonatomic, assign, getter=isPublished, readwrite) BOOL published;
+@property (nonatomic, assign, readwrite) BOOL hasSound;
 @property (nonatomic, copy, readwrite) NSString *userName;
 @property (nonatomic, copy, readwrite) NSString *userDisplayName;
 @property (nonatomic, copy, readwrite) NSURL *userProfileImageUrl;
@@ -115,6 +116,7 @@
         self.nsfw = [gfyItem gfy_boolValueForKey:kNsfw];
         self.numberOfFrames = [gfyItem gfy_integerValueForKey:kNumberOfFrames];
         self.published = [gfyItem gfy_boolValueForKey:kPublished];
+        self.hasSound = [gfyItem gfy_boolValueForKey:kHasSound];
         self.tags = [gfyItem gfy_arrayValueForKey:kTags] ?: [NSArray new];
         self.title = [gfyItem gfy_stringValueForKey:kTitle];
         self.userName = [gfyItem gfy_stringValueForKey:kUserName];
@@ -174,6 +176,7 @@
         self.nsfw = [decoder decodeBoolForKey:kNsfw];
         self.numberOfFrames = [decoder decodeIntegerForKey:kNumberOfFrames];
         self.published = [decoder decodeBoolForKey:kPublished];
+        self.hasSound = [decoder decodeBoolForKey:kHasSound];
         self.tags = [[decoder decodeObjectOfClass:[NSArray class] forKey:kTags] copy];
         self.title = [decoder decodeObjectOfClass:[NSString class] forKey:kTitle];
         self.userName = [decoder decodeObjectOfClass:[NSString class] forKey:kUserName];
@@ -227,6 +230,7 @@
     [encoder encodeBool:self.nsfw forKey:kNsfw];
     [encoder encodeInteger:self.numberOfFrames forKey:kNumberOfFrames];
     [encoder encodeBool:self.published forKey:kPublished];
+    [encoder encodeBool:self.hasSound forKey:kHasSound];
     [encoder encodeObject:self.tags forKey:kTags];
     [encoder encodeObject:self.title forKey:kTitle];
     [encoder encodeObject:self.userName forKey:kUserName];
@@ -372,6 +376,7 @@
     copy.nsfw = self.nsfw;
     copy.numberOfFrames = self.numberOfFrames;
     copy.published = self.published;
+    copy.hasSound = self.hasSound;
     copy.tags = [self.tags copyWithZone:zone];
     copy.title = self.title;
     copy.userName = self.userName;

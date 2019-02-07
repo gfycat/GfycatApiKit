@@ -53,6 +53,7 @@ NSString *const kNumberOfFrames =   @"numFrames";
 NSString *const kPosterUrl =        @"posterUrl";
 NSString *const kPngPosterUrl =     @"pngPosterUrl";
 NSString *const kPublished =        @"published";
+NSString *const kHasSound =         @"hasSound";
 NSString *const kSourceType =       @"source";
 NSString *const kSourceUrl =        @"url";
 NSString *const kTags =             @"tags";

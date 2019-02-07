@@ -24,6 +24,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NSString *GfycatAgeRating NS_EXTENSIBLE_STRING_ENUM;
+extern const GfycatAgeRating GfycatAgeRatingG NS_SWIFT_NAME(ratedG);
+extern const GfycatAgeRating GfycatAgeRatingPG NS_SWIFT_NAME(ratedPG);
+extern const GfycatAgeRating GfycatAgeRatingPG13 NS_SWIFT_NAME(ratedPG13);
+extern const GfycatAgeRating GfycatAgeRatingR NS_SWIFT_NAME(ratedR);
+
+@interface GfycatSearchOptions : NSObject
+
+@property (nonatomic, nullable, copy) NSNumber *maxLength;
+@property (nonatomic, nullable, copy) NSNumber *minLength;
+@property (nonatomic, nullable, copy) NSNumber *maxAspectRatio;
+@property (nonatomic, nullable, copy) NSNumber *minAspectRatio;
+@property (nonatomic, nullable, copy) GfycatAgeRating rating;
+
+@end
+
 @interface GfycatApi : NSObject
 
 /*!
@@ -219,6 +235,30 @@ NS_ASSUME_NONNULL_BEGIN
                       failure:(nullable GfycatFailureBlock)failure;
 
 /**
+ *  Get a list of trending media objects with sound.
+ *
+ *  @param count    Count of objects to fetch.
+ *  @param success  Provides an array of Media objects and Pagination info.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)getSoundMediaCount:(NSInteger)count
+               withSuccess:(GfycatMediaCacheableBlock)success
+                   failure:(nullable GfycatFailureBlock)failure;
+
+/**
+ *  Get a list of trending media objects with sound.
+ *
+ *  @param count    Count of objects to fetch.
+ *  @param options  Search options.
+ *  @param success  Provides an array of Media objects and Pagination info.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)getSoundMediaCount:(NSInteger)count
+                   options:(nullable GfycatSearchOptions *)options
+               withSuccess:(GfycatMediaCacheableBlock)success
+                   failure:(nullable GfycatFailureBlock)failure;
+
+/**
  *  Get a list of media objects from a user.
  *
  *  @param userName User name.
@@ -268,6 +308,46 @@ NS_ASSUME_NONNULL_BEGIN
                         count:(NSInteger)count
                   withSuccess:(GfycatMediaBlock)success
                       failure:(nullable GfycatFailureBlock)failure;
+
+/**
+ *  Search published Media with string.
+ *
+ *  @param count    Count of objects to fetch.
+ *  @param options  Search options.
+ *  @param success  Provides a media list object.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)searchMediaWithString:(NSString *)searchString
+                        count:(NSInteger)count
+                      options:(nullable GfycatSearchOptions *)options
+                  withSuccess:(GfycatMediaBlock)success
+                      failure:(nullable GfycatFailureBlock)failure;
+
+/**
+ *  Search published Media with sound by string.
+ *
+ *  @param count    Count of objects to fetch.
+ *  @param success  Provides a media list object.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)searchSoundMediaWithString:(NSString *)searchString
+                             count:(NSInteger)count
+                       withSuccess:(GfycatMediaBlock)success
+                           failure:(nullable GfycatFailureBlock)failure;
+
+/**
+ *  Search published Media with sound by string.
+ *
+ *  @param count    Count of objects to fetch.
+ *  @param options  Search options.
+ *  @param success  Provides a media list object.
+ *  @param failure  Provides an error and a server status code.
+ */
+- (void)searchSoundMediaWithString:(NSString *)searchString
+                             count:(NSInteger)count
+                           options:(nullable GfycatSearchOptions *)options
+                       withSuccess:(GfycatMediaBlock)success
+                           failure:(nullable GfycatFailureBlock)failure;
 
 /**
  *  Search stickers Media with string.

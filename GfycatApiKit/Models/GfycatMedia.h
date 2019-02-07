@@ -81,6 +81,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, getter=isPublished) BOOL published;
 
 /**
+ *  If the Media has sound
+ */
+@property (nonatomic, readonly) BOOL hasSound;
+
+/**
  *  Username of the creator of the Media
  */
 @property (nonatomic, copy, readonly) NSString *userName;

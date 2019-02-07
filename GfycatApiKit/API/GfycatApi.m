@@ -30,6 +30,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+const GfycatAgeRating GfycatAgeRatingG = @"G";
+const GfycatAgeRating GfycatAgeRatingPG = @"PG";
+const GfycatAgeRating GfycatAgeRatingPG13 = @"PG13";
+const GfycatAgeRating GfycatAgeRatingR = @"R";
+
 NSString *const kKeychainUsernameKey = @"username";
 NSString *const kKeychainPasswordKey = @"password";
 
@@ -66,6 +71,9 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 
 @property (nonatomic) dispatch_queue_t authenticationQueue;
 
+@end
+
+@implementation GfycatSearchOptions
 @end
 
 @implementation GfycatApi
@@ -169,6 +177,29 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     
     NSURL *baseURL = _baseURL ?: [NSURL URLWithString:kGfycatApiKitBaseURL];
     [self configureHTTPManagersWithBaseURL:[self URLByApplyingOverrideDomain:baseURL]];
+}
+
+- (NSMutableDictionary *)searchParametersForOptions:(nullable GfycatSearchOptions *)options
+{
+    NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
+
+    if (options.maxLength) {
+        [result setObject:[options.maxLength copy] forKey:@"maxLength"];
+    }
+    if (options.minLength) {
+        [result setObject:[options.minLength copy] forKey:@"minLength"];
+    }
+    if (options.maxAspectRatio) {
+        [result setObject:[options.maxAspectRatio copy] forKey:@"maxAspectRatio"];
+    }
+    if (options.minAspectRatio) {
+        [result setObject:[options.minAspectRatio copy] forKey:@"minAspectRatio"];
+    }
+    if (options.rating.length) {
+        [result setObject:[options.rating copy] forKey:@"rating"];
+    }
+
+    return result;
 }
 
 #pragma mark -
@@ -751,6 +782,37 @@ NSInteger const kTokenExpirationThreshold = 30;
     }];
 }
 
+- (void)getSoundMediaCount:(NSInteger)count
+               withSuccess:(GfycatMediaCacheableBlock)success
+                   failure:(nullable GfycatFailureBlock)failure {
+    [self getSoundMediaCount:count options:nil withSuccess:success failure:failure];
+}
+
+- (void)getSoundMediaCount:(NSInteger)count
+                   options:(nullable GfycatSearchOptions *)options
+               withSuccess:(GfycatMediaCacheableBlock)success
+                   failure:(nullable GfycatFailureBlock)failure {
+
+    NSMutableDictionary *params = [self searchParametersForOptions:options];
+    [params setObject:@(count) forKey:@"gfyCount"];
+
+    __weak __typeof(self) weakSelf = self;
+    GfycatMediaBlock successWrapper = ^(GfycatMediaCollection *mediaCollection, GfycatPaginationInfo * _Nullable paginationInfo) {
+        GfySafeExecute(success, mediaCollection, paginationInfo, NO);
+    };
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *paginatedPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"sound"].absoluteString;
+        [strongSelf getPaginatedPath:paginatedPath
+                          parameters:params
+                       responseModel:[GfycatMediaCollection class]
+                             success:successWrapper
+                             failure:failure];
+    } failure:^(NSError *error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
+
 - (void)getUserMedia:(NSString *)userName
                count:(NSInteger)count
          withSuccess:(GfycatMediaCacheableBlock)success
@@ -830,19 +892,59 @@ NSInteger const kTokenExpirationThreshold = 30;
                         count:(NSInteger)count
                   withSuccess:(GfycatMediaBlock)success
                       failure:(nullable GfycatFailureBlock)failure {
-    
+    [self searchMediaWithString:searchString count:count options:nil withSuccess:success failure:failure];
+}
+
+- (void)searchMediaWithString:(NSString *)searchString
+                        count:(NSInteger)count
+                      options:(nullable GfycatSearchOptions *)options
+                  withSuccess:(GfycatMediaBlock)success
+                      failure:(nullable GfycatFailureBlock)failure {
+
+    NSMutableDictionary *params = [self searchParametersForOptions:options];
+    [params setObject:@(count) forKey:@"count"];
+    [params setObject:searchString forKey:@"search_text"];
+
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         NSString *paginatedPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"gfycats/search"].absoluteString;
         [strongSelf getPaginatedPath:paginatedPath
-                    parameters:@{
-                                 @"search_text" : searchString,
-                                 @"count" : @(count)
-                                 }
+                    parameters:params
                  responseModel:[GfycatMediaCollection class]
                        success:success
                        failure:failure];
+    } failure:^(NSError *error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
+
+- (void)searchSoundMediaWithString:(NSString *)searchString
+                             count:(NSInteger)count
+                       withSuccess:(GfycatMediaBlock)success
+                           failure:(nullable GfycatFailureBlock)failure {
+    [self searchSoundMediaWithString:searchString count:count options:nil withSuccess:success failure:failure];
+}
+
+- (void)searchSoundMediaWithString:(NSString *)searchString
+                             count:(NSInteger)count
+                           options:(nullable GfycatSearchOptions *)options
+                       withSuccess:(GfycatMediaBlock)success
+                           failure:(nullable GfycatFailureBlock)failure {
+
+    NSMutableDictionary *params = [self searchParametersForOptions:options];
+    [params setObject:@(count) forKey:@"count"];
+    [params setObject:searchString forKey:@"search_text"];
+
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *paginatedPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"sound/search"].absoluteString;
+        [strongSelf getPaginatedPath:paginatedPath
+                          parameters:params
+                       responseModel:[GfycatMediaCollection class]
+                             success:success
+                             failure:failure];
     } failure:^(NSError *error, NSInteger serverStatusCode) {
         GfySafeExecute(failure, error, serverStatusCode);
     }];

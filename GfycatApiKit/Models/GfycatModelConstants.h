@@ -53,6 +53,7 @@ extern NSString *const kNumberOfFrames;
 extern NSString *const kPosterUrl;
 extern NSString *const kPngPosterUrl;
 extern NSString *const kPublished;
+extern NSString *const kHasSound;
 extern NSString *const kSourceType;
 extern NSString *const kSourceUrl;
 extern NSString *const kTags;
