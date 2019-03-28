@@ -129,7 +129,7 @@
 
 - (NSURL *)gfyUrl
 {
-    return self.gfyName.length ? [NSURL URLWithString:[NSString stringWithFormat:@"https://gfycat.com/gifs/detail/%@", self.gfyName]] : nil;
+    return self.gfyName.length ? [NSURL URLWithString:[NSString stringWithFormat:@"https://gfycat.com/%@", self.gfyName]] : nil;
 }
 
 - (NSURL *)gifUrl

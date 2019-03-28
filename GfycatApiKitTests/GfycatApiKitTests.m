@@ -331,7 +331,7 @@
 - (void)testGetReferencedMedia {
     XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
     
-    [GfycatApi.shared getReferencedMedia:[NSURL URLWithString:@"https://gfycat.com/gifs/detail/PerfumedLateGermanshorthairedpointer"] withSuccess:^(GfycatReferencedMedia * _Nonnull media) {
+    [GfycatApi.shared getReferencedMedia:[NSURL URLWithString:@"https://gfycat.com/PerfumedLateGermanshorthairedpointer"] withSuccess:^(GfycatReferencedMedia * _Nonnull media) {
         [expectation fulfill];
     } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
         XCTAssertNil(error);
@@ -404,6 +404,25 @@
     XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
     
     [GfycatApi.shared reportMedia:@"ActualSlimyGilamonster" withSuccess:^(NSDictionary * _Nonnull serverResponse) {
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testUserProfile {
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    
+    [GfycatApi.shared getUserProfile:@"golbanstorage" success:^(GfycatUserProfile * _Nonnull userProfile) {
+        NSLog(@"%@", userProfile);
         [expectation fulfill];
     } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
         XCTAssertNil(error);
