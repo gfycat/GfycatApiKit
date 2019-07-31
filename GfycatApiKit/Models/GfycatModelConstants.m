@@ -93,6 +93,12 @@ NSString *const kTagText =          @"tagText";
 NSString *const kGfycatMedia =      @"gfycatMedia";
 NSString *const kGfycatCategories = @"gfycatCategories";
 
+// GfycatCategory
+NSString *const kFolderName =       @"folderName";
+NSString *const kFolderId =         @"folderId";
+NSString *const kPosterMedia =      @"posterGfycat";
+NSString *const kGfyCollections =   @"gfyCollections";
+
 // GfycatUploadKey
 NSString *const kGfycatUploadName =   @"gfyname";
 NSString *const kGfycatUploadSecret = @"secret";

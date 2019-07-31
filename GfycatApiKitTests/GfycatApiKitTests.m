@@ -23,6 +23,7 @@
 #import "GfycatApi.h"
 #import "GfycatMedia.h"
 #import "GfycatCategory.h"
+#import "GfycatCollection.h"
 
 @interface GfycatApiKitTests : XCTestCase
 
@@ -239,6 +240,116 @@
         XCTAssertNil(error);
     }];
     
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testGetCollections {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    NSInteger count = 5;
+
+    [GfycatApi.shared getUserCollections:@"dubudabu" count:count success:^(GfycatCollections * _Nonnull collections, GfycatPaginationInfo * _Nullable paginationInfo) {
+        XCTAssertTrue(collections.array.count <= count);
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+        [expectation fulfill];
+    }];
+
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testGetCollectionMedia {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    NSInteger count = 5;
+
+    [GfycatApi.shared getUserCollectionMedia:@"dubudabu" folderId:@"26c83310e086ac29bcc10cfa2cf54f77" count:count withSuccess:^(GfycatMediaCollection * _Nonnull mediaCollection, GfycatPaginationInfo * _Nullable paginationInfo) {
+        XCTAssertTrue(mediaCollection.array.count <= count);
+        [expectation fulfill];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        XCTAssertNil(error);
+        [expectation fulfill];
+    }];
+
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testGetMyCollections {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    NSInteger count = 5;
+    NSString *userName = nil;
+    NSString *userPassword = nil;
+
+    NSParameterAssert(userName);
+    NSParameterAssert(userPassword);
+    
+    [GfycatApi.shared loginWithUsername:userName password:userPassword success:^(NSDictionary * _Nonnull serverResponse) {
+        [GfycatApi.shared getCurrentUserCollectionsCount:count success:^(GfycatCollections * _Nonnull collections, GfycatPaginationInfo * _Nullable paginationInfo) {
+            XCTAssertTrue(collections.array.count <= count);
+            [expectation fulfill];
+        } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+            XCTAssertNil(error);
+            [expectation fulfill];
+        }];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testGetMyCollectionMedia {
+
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"%s", __FUNCTION__]];
+    NSInteger count = 5;
+    NSString *userName = nil;
+    NSString *userPassword = nil;
+    NSString *collectionId = nil;
+    
+    NSParameterAssert(userName);
+    NSParameterAssert(userPassword);
+    NSParameterAssert(collectionId);
+
+    [GfycatApi.shared loginWithUsername:userName password:userPassword success:^(NSDictionary * _Nonnull serverResponse) {
+        [GfycatApi.shared getCurrentUserCollectionMedia:collectionId count:count withSuccess:^(GfycatMediaCollection * _Nonnull mediaCollection, GfycatPaginationInfo * _Nullable paginationInfo) {
+            XCTAssertTrue(mediaCollection.array.count <= count);
+            [expectation fulfill];
+        } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+            XCTAssertNil(error);
+            [expectation fulfill];
+        }];
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        XCTAssertNil(error);
+    }];
+
     [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);

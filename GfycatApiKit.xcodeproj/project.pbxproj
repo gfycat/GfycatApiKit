@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570B0F2122F0D3E90094CDD2 /* GfycatCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 570B0F1F22F0D3E60094CDD2 /* GfycatCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		570B0F2222F0D3E90094CDD2 /* GfycatCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 570B0F2022F0D3E90094CDD2 /* GfycatCollection.m */; };
 		576DD1D01E92A88100CAA1C9 /* GfycatApiKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 576DD1CF1E92A88100CAA1C9 /* GfycatApiKitTests.m */; };
 		576DD1E01E92AA4200CAA1C9 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576DD1DE1E92AA4200CAA1C9 /* AFNetworking.framework */; };
 		576DD1E11E92AA4200CAA1C9 /* UICKeyChainStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576DD1DF1E92AA4200CAA1C9 /* UICKeyChainStore.framework */; };
@@ -69,6 +71,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		570B0F1F22F0D3E60094CDD2 /* GfycatCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfycatCollection.h; sourceTree = "<group>"; };
+		570B0F2022F0D3E90094CDD2 /* GfycatCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfycatCollection.m; sourceTree = "<group>"; };
 		573A368E1F7BEC27001BA029 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		573CE84F1E92871C009F8AF6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		573CE8501E92871C009F8AF6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 			children = (
 				E12AC9991E4D0BBC00F76BE2 /* GfycatCategory.h */,
 				E12AC99A1E4D0BBC00F76BE2 /* GfycatCategory.m */,
+				570B0F1F22F0D3E60094CDD2 /* GfycatCollection.h */,
+				570B0F2022F0D3E90094CDD2 /* GfycatCollection.m */,
 				D83789901EFA647C003BE0B3 /* GfycatConfigurationObject.h */,
 				D83789911EFA647C003BE0B3 /* GfycatConfigurationObject.m */,
 				C6379DBD1EE8380F00D607BC /* GfycatExtendedMedia.h */,
@@ -257,6 +263,7 @@
 			files = (
 				D83789921EFA647C003BE0B3 /* GfycatConfigurationObject.h in Headers */,
 				E10B7E691E4BFDE4004DD902 /* GfycatModelConstants.h in Headers */,
+				570B0F2122F0D3E90094CDD2 /* GfycatCollection.h in Headers */,
 				C6379DBF1EE8380F00D607BC /* GfycatExtendedMedia.h in Headers */,
 				E17737FA1E3ABFD200276E0E /* GfycatApiKit.h in Headers */,
 				57E958492101FFBC003E11E8 /* GfycatUserProfile.h in Headers */,
@@ -339,6 +346,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = E17737EB1E3ABFD200276E0E;
@@ -390,6 +398,7 @@
 				E19BB0FD1E3BF6C1007E1933 /* GfycatPaginationInfo.m in Sources */,
 				57E9584A2101FFBC003E11E8 /* GfycatUserProfile.m in Sources */,
 				D83789931EFA647C003BE0B3 /* GfycatConfigurationObject.m in Sources */,
+				570B0F2222F0D3E90094CDD2 /* GfycatCollection.m in Sources */,
 				C6379DC01EE8380F00D607BC /* GfycatExtendedMedia.m in Sources */,
 				E177380A1E3AC01100276E0E /* GfycatApi.m in Sources */,
 				C60FDF661EEA9ACD0099F935 /* NSDictionary+GfycatApiKit.m in Sources */,

@@ -94,6 +94,12 @@ extern NSString *const kGfycatMedia;
 extern NSString *const kGfycatCategories;
 extern NSString *const kGfycatMediaCollection;
 
+// GfycatCategory
+extern NSString *const kFolderName;
+extern NSString *const kFolderId;
+extern NSString *const kPosterMedia;
+extern NSString *const kGfyCollections;
+
 // GfycatUploadKey
 extern NSString *const kGfycatUploadName;
 extern NSString *const kGfycatUploadSecret;

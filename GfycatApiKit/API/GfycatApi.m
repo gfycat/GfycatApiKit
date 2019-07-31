@@ -22,6 +22,7 @@
 #import "GfycatMedia.h"
 #import "GfycatExtendedMedia.h"
 #import "GfycatCategory.h"
+#import "GfycatCollection.h"
 #import "GfycatPaginationInfo.h"
 #import "GfycatUploadKey.h"
 #import "GfycatConfigurationObject.h"
@@ -780,9 +781,95 @@ NSInteger const kTokenExpirationThreshold = 30;
     
 }
 
+#pragma mark - Collections -
+
+- (void)getUserCollections:(NSString *)username
+                     count:(NSInteger)count
+                   success:(GfycatCollectionArrayBlock)success
+                   failure:(nullable GfycatFailureBlock)failure {
+
+    NSParameterAssert(username.length);
+
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+
+        NSString *paginatedPath = [[[strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"users"] URLByAppendingPathComponent:username] URLByAppendingPathComponent:@"collections"].absoluteString;
+        [strongSelf getPaginatedPath:paginatedPath
+                          parameters:@{ kLocale: [self currentLanguageCode],  @"count" : @(count) }
+                       responseModel:[GfycatCollections class]
+                             success:success
+                             failure:failure];
+    } failure:^(NSError *error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
+
+- (void)getUserCollectionMedia:(NSString *)username
+                      folderId:(NSString *)folderId
+                         count:(NSInteger)count
+                   withSuccess:(GfycatMediaBlock)success
+                       failure:(nullable GfycatFailureBlock)failure {
+
+    NSParameterAssert(username.length);
+    NSParameterAssert(folderId.length);
+
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *paginatedPath = [[[[[strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"users"] URLByAppendingPathComponent:username] URLByAppendingPathComponent:@"collections"] URLByAppendingPathComponent:folderId] URLByAppendingPathComponent:@"gfycats"].absoluteString;
+        [strongSelf getPaginatedPath:paginatedPath
+                          parameters:@{ @"count": @(1), }
+                       responseModel:[GfycatMediaCollection class]
+                             success:success
+                             failure:failure];
+    } failure:^(NSError *error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
+
+- (void)getCurrentUserCollectionsCount:(NSInteger)count
+                               success:(GfycatCollectionArrayBlock)success
+                               failure:(nullable GfycatFailureBlock)failure {
+
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+
+        NSString *paginatedPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"me/collections"].absoluteString;
+        [strongSelf getPaginatedPath:paginatedPath
+                          parameters:@{ kLocale: [self currentLanguageCode],  @"count" : @(count) }
+                       responseModel:[GfycatCollections class]
+                             success:success
+                             failure:failure];
+    } failure:^(NSError *error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
+
+
+- (void)getCurrentUserCollectionMedia:(NSString *)folderId
+                                count:(NSInteger)count
+                          withSuccess:(GfycatMediaBlock)success
+                              failure:(nullable GfycatFailureBlock)failure {
+
+    NSParameterAssert(folderId.length);
+
+    __weak __typeof(self) weakSelf = self;
+    [self refreshSession:^(NSDictionary *serverResponse) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        NSString *paginatedPath = [[[strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"me/collections"] URLByAppendingPathComponent:folderId] URLByAppendingPathComponent:@"gfycats"].absoluteString;
+        [strongSelf getPaginatedPath:paginatedPath
+                          parameters:@{ @"count": @(1), }
+                       responseModel:[GfycatMediaCollection class]
+                             success:success
+                             failure:failure];
+    } failure:^(NSError *error, NSInteger serverStatusCode) {
+        GfySafeExecute(failure, error, serverStatusCode);
+    }];
+}
 
 #pragma mark - Media -
-
 
 - (void)getMedia:(NSString *)mediaId
      withSuccess:(GfycatMediaObjectBlock)success

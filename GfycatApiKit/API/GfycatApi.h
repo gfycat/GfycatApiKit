@@ -173,6 +173,27 @@ extern const GfycatAgeRating GfycatAgeRatingR NS_SWIFT_NAME(ratedR);
  */
 - (void)logout;
 
+#pragma mark - Collections -
+
+- (void)getUserCollections:(NSString *)username
+                     count:(NSInteger)count
+                   success:(GfycatCollectionArrayBlock)success
+                   failure:(nullable GfycatFailureBlock)failure;
+
+- (void)getUserCollectionMedia:(NSString *)username
+                      folderId:(NSString *)collection
+                         count:(NSInteger)count
+                   withSuccess:(GfycatMediaBlock)success
+                       failure:(nullable GfycatFailureBlock)failure;
+
+- (void)getCurrentUserCollectionsCount:(NSInteger)count
+                               success:(GfycatCollectionArrayBlock)success
+                               failure:(nullable GfycatFailureBlock)failure;
+
+- (void)getCurrentUserCollectionMedia:(NSString *)folderId
+                                count:(NSInteger)count
+                          withSuccess:(GfycatMediaBlock)success
+                              failure:(nullable GfycatFailureBlock)failure;
 
 #pragma mark - Media -
 

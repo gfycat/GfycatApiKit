@@ -21,6 +21,7 @@
 #import "GfycatApiConstants.h"
 #import "GfycatApi.h"
 #import "GfycatCategory.h"
+#import "GfycatCollection.h"
 #import "GfycatMedia.h"
 #import "GfycatExtendedMedia.h"
 #import "GfycatModel.h"

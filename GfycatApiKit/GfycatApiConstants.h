@@ -152,6 +152,7 @@ typedef NS_ENUM(NSInteger, GfycatApiKitErrorCode)
 @class GfycatPaginationInfo;
 @class GfycatModel;
 @class GfycatCategories;
+@class GfycatCollections;
 @class GfycatMediaCollection;
 @class GfycatUploadKey;
 @class GfycatConfigurationObject;
@@ -196,6 +197,14 @@ typedef void (^GfycatMediaCacheableBlock)(GfycatMediaCollection *mediaCollection
  *  @param isFromCache      Returns YES if data retrieved from cache
  */
 typedef void (^GfycatCategoryArrayBlock)(GfycatCategories *categories, GfycatPaginationInfo * _Nullable paginationInfo, BOOL isFromCache);
+
+/**
+ *  A callback block providing a collection of Collection objects.
+ *
+ *  @param collections      A GfycatCollections object.
+ *  @param paginationInfo   A PaginationInfo object.
+ */
+typedef void (^GfycatCollectionArrayBlock)(GfycatCollections *collections, GfycatPaginationInfo * _Nullable paginationInfo);
 
 /**
  *  A callback block providing a collection of GfycatConfigurationObject objects.
