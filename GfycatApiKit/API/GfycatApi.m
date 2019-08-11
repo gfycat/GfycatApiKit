@@ -819,7 +819,7 @@ NSInteger const kTokenExpirationThreshold = 30;
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         NSString *paginatedPath = [[[[[strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"users"] URLByAppendingPathComponent:username] URLByAppendingPathComponent:@"collections"] URLByAppendingPathComponent:folderId] URLByAppendingPathComponent:@"gfycats"].absoluteString;
         [strongSelf getPaginatedPath:paginatedPath
-                          parameters:@{ @"count": @(1), }
+                          parameters:@{ @"count": @(count), }
                        responseModel:[GfycatMediaCollection class]
                              success:success
                              failure:failure];
@@ -860,7 +860,7 @@ NSInteger const kTokenExpirationThreshold = 30;
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         NSString *paginatedPath = [[[strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"me/collections"] URLByAppendingPathComponent:folderId] URLByAppendingPathComponent:@"gfycats"].absoluteString;
         [strongSelf getPaginatedPath:paginatedPath
-                          parameters:@{ @"count": @(1), }
+                          parameters:@{ @"count": @(count), }
                        responseModel:[GfycatMediaCollection class]
                              success:success
                              failure:failure];

@@ -45,7 +45,7 @@
 - (void)testExample {
 }
 
-- (void)testDiconaryCategory {
+- (void)testDictionaryCategory {
     NSDictionary *dict = @{
                            @"nullStr": @"<null>",
                            @"null": [NSNull null],
