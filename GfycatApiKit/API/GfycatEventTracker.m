@@ -30,19 +30,19 @@
 
 @end
 
-static NSString *stringValueForObject(id object) {
-    if (object == [NSNull null]) {
-        return @"";
-    }
-    if ([object isKindOfClass:[NSString class]]) {
-        return object;
-    }
-    if ([object respondsToSelector:@selector(stringValue)]) {
-        return [object stringValue];
-    }
-    NSCAssert1(NO, @"[ERROR] GfycatEventTracker: '%@' can't be converted to string.", object);
-    return @"";
-}
+//static NSString *stringValueForObject(id object) {
+//    if (object == [NSNull null]) {
+//        return @"";
+//    }
+//    if ([object isKindOfClass:[NSString class]]) {
+//        return object;
+//    }
+//    if ([object respondsToSelector:@selector(stringValue)]) {
+//        return [object stringValue];
+//    }
+//    NSCAssert1(NO, @"[ERROR] GfycatEventTracker: '%@' can't be converted to string.", object);
+//    return @"";
+//}
 
 @implementation GfycatEventTracker
 
@@ -106,32 +106,32 @@ static NSString *stringValueForObject(id object) {
 }
 
 - (void)trackEvent:(NSString *)name withParameters:(NSDictionary<NSString *, id> *)parameters {
-    NSURLComponents *URLComponents = [NSURLComponents componentsWithURL:_baseURL resolvingAgainstBaseURL:YES];
-
-    NSMutableDictionary<NSString *, id> *aggregatedParameters = [[NSMutableDictionary alloc] init];
-    [URLComponents.queryItems enumerateObjectsUsingBlock:^(NSURLQueryItem *obj, NSUInteger idx, BOOL *stop) {
-        if (obj.name && obj.value) {
-            [aggregatedParameters setObject:obj.value forKey:obj.name];
-        }
-    }];
-    
-    [aggregatedParameters setObject:name forKey:@"event"];
-    [aggregatedParameters addEntriesFromDictionary:[[self class] globalParameters]];
-    [aggregatedParameters addEntriesFromDictionary:parameters ?: @{}];
-    
-    NSMutableArray<NSURLQueryItem *> *queryItems = [[NSMutableArray alloc] initWithCapacity:aggregatedParameters.count];
-    [aggregatedParameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
-        [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:stringValueForObject(obj)]];
-    }];
-    
-    URLComponents.queryItems = queryItems;
-
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URLComponents.URL];
-    request.HTTPMethod = @"POST";
-    [request setValue:@"text/plain" forHTTPHeaderField:@"Content-Type"];
-    request.HTTPBody = [NSData data];
-    
-    [[_sessionManager dataTaskWithRequest:[request copy] completionHandler:nil] resume];
+//    NSURLComponents *URLComponents = [NSURLComponents componentsWithURL:_baseURL resolvingAgainstBaseURL:YES];
+//
+//    NSMutableDictionary<NSString *, id> *aggregatedParameters = [[NSMutableDictionary alloc] init];
+//    [URLComponents.queryItems enumerateObjectsUsingBlock:^(NSURLQueryItem *obj, NSUInteger idx, BOOL *stop) {
+//        if (obj.name && obj.value) {
+//            [aggregatedParameters setObject:obj.value forKey:obj.name];
+//        }
+//    }];
+//
+//    [aggregatedParameters setObject:name forKey:@"event"];
+//    [aggregatedParameters addEntriesFromDictionary:[[self class] globalParameters]];
+//    [aggregatedParameters addEntriesFromDictionary:parameters ?: @{}];
+//
+//    NSMutableArray<NSURLQueryItem *> *queryItems = [[NSMutableArray alloc] initWithCapacity:aggregatedParameters.count];
+//    [aggregatedParameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
+//        [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:stringValueForObject(obj)]];
+//    }];
+//
+//    URLComponents.queryItems = queryItems;
+//
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URLComponents.URL];
+//    request.HTTPMethod = @"POST";
+//    [request setValue:@"text/plain" forHTTPHeaderField:@"Content-Type"];
+//    request.HTTPBody = [NSData data];
+//
+//    [[_sessionManager dataTaskWithRequest:[request copy] completionHandler:nil] resume];
 }
 
 @end
