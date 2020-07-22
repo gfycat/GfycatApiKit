@@ -389,8 +389,17 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 }
 
 - (void)createAccountWithUsername:(NSString *)username
+              password:(NSString *)password
+                 email:(nullable NSString *)email
+               success:(GfycatResponseBlock)success
+               failure:(nullable GfycatFailureBlock)failure {
+    [self createAccountWithUsername:username password:password email:email termsAndPrivacyConsent:false success:success failure:failure];
+}
+
+- (void)createAccountWithUsername:(NSString *)username
                          password:(NSString *)password
                             email:(nullable NSString *)email
+           termsAndPrivacyConsent:(BOOL) termsAndPrivacyConsent
                           success:(GfycatResponseBlock)success
                           failure:(nullable GfycatFailureBlock)failure {
     
@@ -405,7 +414,8 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
 
         NSMutableDictionary *params = [@{
             @"username": username,
-            @"password": password
+            @"password": password,
+            @"consent_terms_privacy": termsAndPrivacyConsent ? @"true" : @"false"
         } mutableCopy];
 
         if (email) {
