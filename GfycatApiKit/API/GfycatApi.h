@@ -119,6 +119,13 @@ extern const GfycatAgeRating GfycatAgeRatingR NS_SWIFT_NAME(ratedR);
                           failure:(nullable GfycatFailureBlock)failure;
 
 - (void)createAccountWithUsername:(NSString *)username
+                         password:(NSString *)password
+                            email:(nullable NSString *)email
+           termsAndPrivacyConsent:(BOOL) termsAndPrivacyConsent
+                          success:(GfycatResponseBlock)success
+                          failure:(nullable GfycatFailureBlock)failure;
+
+- (void)createAccountWithUsername:(NSString *)username
                     facebookToken:(NSString *)facebookToken
                           success:(GfycatResponseBlock)success
                           failure:(nullable GfycatFailureBlock)failure;
