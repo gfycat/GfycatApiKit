@@ -323,18 +323,21 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
     });
 }
 
-- (void)requestPasswordResetWithUsername:(NSString *)username
+- (void)requestPasswordResetWithEmail:(NSString *)email
                                  success:(GfycatSuccessBlock)success
                                  failure:(nullable GfycatFailureBlock)failure {
     
-    NSParameterAssert(username);
+    NSParameterAssert(email);
     
     __weak __typeof(self) weakSelf = self;
     [self refreshSession:^(NSDictionary *serverResponse) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
-        NSString *path = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"me/send_verification_email"].absoluteString;
-        NSDictionary *params = [self dictionaryWithClientKeysAndParameters:@{}];
-        [self.httpManager POST:path parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSString *path = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:@"users"].absoluteString;
+        NSMutableDictionary *params = [@{
+            @"action": @"send_password_reset_email",
+            @"value": email,
+        } mutableCopy];
+        [self.httpManager PATCH:path parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
             NSInteger serverStatusCode = ((NSHTTPURLResponse*)[task response]).statusCode;
             if (serverStatusCode / 100 == 2) {
                 GfySafeExecute(success);

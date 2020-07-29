@@ -130,7 +130,7 @@ extern const GfycatAgeRating GfycatAgeRatingR NS_SWIFT_NAME(ratedR);
                           success:(GfycatResponseBlock)success
                           failure:(nullable GfycatFailureBlock)failure;
 
-- (void)requestPasswordResetWithUsername:(NSString *)username
+- (void)requestPasswordResetWithEmail:(NSString *)email
                                  success:(GfycatSuccessBlock)success
                                  failure:(nullable GfycatFailureBlock)failure;
 
