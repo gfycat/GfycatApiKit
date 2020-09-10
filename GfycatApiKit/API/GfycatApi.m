@@ -337,7 +337,7 @@ NSString *const kKeychainRefreshTokenExpirationDateKey = @"refreshTokenExpiratio
             @"action": @"send_password_reset_email",
             @"value": email,
         } mutableCopy];
-        [self.httpManager PATCH:path parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self.httpManager PATCH:path parameters:params headers:nil success:^(NSURLSessionDataTask *task, id responseObject) {
             NSInteger serverStatusCode = ((NSHTTPURLResponse*)[task response]).statusCode;
             if (serverStatusCode / 100 == 2) {
                 GfySafeExecute(success);
@@ -642,6 +642,7 @@ NSInteger const kTokenExpirationThreshold = 30;
     NSString *percentageEscapedPath = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.httpManager GET:percentageEscapedPath
                parameters:params
+                  headers:nil
                  progress:nil
                   success:^(NSURLSessionDataTask *task, id responseObject) {
                       GfySafeExecute(result, [NSError errorWithDomain:@"com.gfycat" code:0 userInfo:nil], ((NSHTTPURLResponse *)[task response]).statusCode);
@@ -665,6 +666,7 @@ NSInteger const kTokenExpirationThreshold = 30;
     NSString *percentageEscapedPath = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.httpManager GET:percentageEscapedPath
                parameters:params
+                  headers:nil
                  progress:nil
                   success:^(NSURLSessionDataTask *task, id responseObject) {
                       if (!success) return;
@@ -698,6 +700,7 @@ NSInteger const kTokenExpirationThreshold = 30;
     NSString *percentageEscapedPath = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.httpManager GET:percentageEscapedPath
                parameters:params
+                  headers:nil
                  progress:nil
                   success:^(NSURLSessionDataTask *task, id responseObject) {
                       if (!success) return;
@@ -739,6 +742,7 @@ NSInteger const kTokenExpirationThreshold = 30;
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
     [self.httpManager POST:path
                 parameters:params
+                   headers:nil
                   progress:nil
                    success:^(NSURLSessionDataTask *task, id responseObject) {
                        GfySafeExecute(success, (NSDictionary *)responseObject);
@@ -761,6 +765,7 @@ NSInteger const kTokenExpirationThreshold = 30;
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
     [self.httpManager DELETE:path
                   parameters:params
+                     headers:nil
                      success:^(NSURLSessionDataTask *task, id responseObject) {
                          GfySafeExecute(success, (NSDictionary *)responseObject);
                      }
@@ -781,6 +786,7 @@ NSInteger const kTokenExpirationThreshold = 30;
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
     [self.httpManager PUT:path
                parameters:params
+                  headers:nil
                   success:^(NSURLSessionDataTask *task, id responseObject) {
                       GfySafeExecute(success, (NSDictionary *)responseObject);
                   }
@@ -920,7 +926,7 @@ NSInteger const kTokenExpirationThreshold = 30;
         [self _parseReferencedMedia:mediaURL withSuccess:success failure:failure];
         return;
     }
-    [self.httpRedirectManager GET:mediaURL.absoluteString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.httpRedirectManager GET:mediaURL.absoluteString parameters:nil headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self _parseReferencedMedia:task.currentRequest.URL withSuccess:success failure:failure];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         GfySafeExecute(failure, error, 0);
@@ -958,6 +964,7 @@ NSInteger const kTokenExpirationThreshold = 30;
         
         [self.httpManager GET:percentageEscapedPath
                    parameters:params
+                      headers:nil
                      progress:nil
                       success:^(NSURLSessionDataTask *task, id responseObject) {
                           if (!success) return;
@@ -1085,7 +1092,7 @@ NSInteger const kTokenExpirationThreshold = 30;
     }
     
     NSURLRequest *request = [NSURLRequest requestWithURL:urlToUse];
-    NSURLSessionDataTask *dataTask = [self.httpManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    NSURLSessionDataTask *dataTask = [self.httpManager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil  completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error != nil) {
             GfySafeExecute(failure, error, 0);
         } else {
