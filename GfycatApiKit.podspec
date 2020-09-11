@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.public_header_files = 'GfycatApiKit/**/*.h'
   s.static_framework = true
 
-  s.dependency 'AFNetworking', '4.0.1'
-  s.dependency 'UICKeyChainStore', '2.1.1'
+  s.dependency 'AFNetworking', '~> 4.0'
+  s.dependency 'UICKeyChainStore', '~> 2.1'
 
 end
