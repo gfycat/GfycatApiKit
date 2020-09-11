@@ -10,13 +10,13 @@ Pod::Spec.new do |s|
   s.source              = { :git => 'https://github.com/gfycat/GfycatApiKit.git', :tag => s.version.to_s }
   s.social_media_url    = 'https://twitter.com/gfycat'
 
-  s.platform            = :ios, '8.0'
+  s.platform            = :ios, '9.0'
   s.requires_arc        = true
   s.source_files        = 'GfycatApiKit/**/*.[h,m]'
   s.public_header_files = 'GfycatApiKit/**/*.h'
   s.static_framework = true
 
-  s.dependency 'AFNetworking'
-  s.dependency 'UICKeyChainStore'
+  s.dependency 'AFNetworking', '4.0.1'
+  s.dependency 'UICKeyChainStore', '2.1.1'
 
 end
