@@ -639,7 +639,7 @@ NSInteger const kTokenExpirationThreshold = 30;
           result:(nullable GfycatFailureBlock)result {
     
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
-    NSString *percentageEscapedPath = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *percentageEscapedPath = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
     [self.httpManager GET:percentageEscapedPath
                parameters:params
                   headers:nil
@@ -663,7 +663,7 @@ NSInteger const kTokenExpirationThreshold = 30;
         failure:(nullable GfycatFailureBlock)failure {
     
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
-    NSString *percentageEscapedPath = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *percentageEscapedPath = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
     [self.httpManager GET:percentageEscapedPath
                parameters:params
                   headers:nil
@@ -697,7 +697,7 @@ NSInteger const kTokenExpirationThreshold = 30;
                  failure:(nullable GfycatFailureBlock)failure {
     
     NSDictionary *params = [self dictionaryWithClientKeysAndParameters:parameters];
-    NSString *percentageEscapedPath = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *percentageEscapedPath = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
     [self.httpManager GET:percentageEscapedPath
                parameters:params
                   headers:nil
@@ -954,7 +954,7 @@ NSInteger const kTokenExpirationThreshold = 30;
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         
         NSString *getPath = [strongSelf.gfycatApiKitBaseURL URLByAppendingPathComponent:[NSString stringWithFormat:@"me/gfycats/%@/like", media.gfyName]].absoluteString;
-        NSString *percentageEscapedPath = [getPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *percentageEscapedPath = [getPath stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
         NSDictionary *params = [self dictionaryWithClientKeysAndParameters:@{}];
 
         void(^responseProcessor)(NSInteger) = ^(NSInteger statusCode) {
